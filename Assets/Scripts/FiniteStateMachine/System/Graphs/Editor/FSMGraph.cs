@@ -1,4 +1,4 @@
-﻿using ProjectSigma.Scripts.FiniteStateMachine;
+﻿using FiniteStateMachine;
 using Scripts.Graphs.Editor;
 using System.Collections;
 using System.Collections.Generic;

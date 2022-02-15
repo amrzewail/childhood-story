@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace ProjectSigma.Scripts.FiniteStateMachine
+namespace FiniteStateMachine
 {
     [System.Serializable]
     public abstract class FSMState : ScriptableObject

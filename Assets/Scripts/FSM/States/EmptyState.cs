@@ -1,5 +1,5 @@
 using Characters;
-using ProjectSigma.Scripts.FiniteStateMachine;
+using FiniteStateMachine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
