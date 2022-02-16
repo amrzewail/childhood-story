@@ -57,14 +57,6 @@ namespace Characters
             if (!_rigidBody)
                 return;
 
-            var velocity = _rigidBody.velocity;
-
-            Vector3 targetVelocity = Vector3.zero;
-            targetVelocity.y = velocity.y;
-            //velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
-
-            _change = targetVelocity - velocity;
-            _rigidBody.AddForce(_change * _stopFriction * _rigidBody.mass, ForceMode.Force);
 
             _move = false;
 
@@ -152,8 +144,20 @@ namespace Characters
 
                 _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _speed);
             }
+            else
+            {
+                var velocity = _rigidBody.velocity;
 
-            if(_rotate)
+                Vector3 targetVelocity = Vector3.zero;
+                targetVelocity.y = velocity.y;
+                //velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
+
+                _change = targetVelocity - velocity;
+                _rigidBody.AddForce(_change * _stopFriction * _rigidBody.mass, ForceMode.Force);
+
+            }
+
+            if (_rotate)
             {
                 if (_rotateAxis.x != 0 || _rotateAxis.y != 0)
                 {
