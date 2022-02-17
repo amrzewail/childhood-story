@@ -7,6 +7,9 @@ public class CameraTarget : MonoBehaviour, ICameraTarget
     // Start is called before the first frame update
     void Start()
     {
+
+        this.FindInterfaceOfType<ICamera>().AddTarget(this);
     }
+
 
 }
