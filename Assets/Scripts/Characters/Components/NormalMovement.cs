@@ -37,6 +37,7 @@ namespace Characters
         protected void Awake()
         {
             if (_collider is CapsuleCollider) _colliderRadius = ((CapsuleCollider)_collider).radius;
+
         }
 
         public void Move(Vector3 direction, float speed)
