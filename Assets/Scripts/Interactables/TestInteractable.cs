@@ -17,4 +17,8 @@ public class TestInteractable : MonoBehaviour, IInteractable
     {
         return true;
     }
+    public bool CanInteract() 
+    {
+        return true;
+    }
 }
