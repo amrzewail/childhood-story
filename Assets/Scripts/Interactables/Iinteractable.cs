@@ -5,4 +5,5 @@ public interface IInteractable
     void Interact(IDictionary<string, object> data);
 
     bool IsComplete();
+    bool CanInteract();
 }
