@@ -20,7 +20,7 @@ namespace FiniteStateMachine.Player
             IInput input = actor.GetActorComponent<IInput>(0);
             IInteractor interactor = actor.GetActorComponent<IInteractor>(0);
 
-            if (interactor.GetInteractable() != null && input.IsKeyDown(interactKey)) return true;
+            if (interactor.GetInteractable() != null && interactor.GetInteractable().CanInteract() && input.IsKeyDown(interactKey)) return true;
             return false;
         }
     }
