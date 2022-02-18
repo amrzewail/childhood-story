@@ -12,6 +12,8 @@ public class SystemInput : MonoBehaviour, IInput
 
     public Vector2 absAxis { get; private set; }
 
+    private bool _isInteract = false;
+
     public void onMove(InputAction.CallbackContext context)
     {
         axis = context.ReadValue<Vector2>();
@@ -28,13 +30,24 @@ public class SystemInput : MonoBehaviour, IInput
             absAxis = axis;
         }
     }
-    private void Update()
+
+
+    public void OnInteract(InputAction.CallbackContext context)
     {
-        
+        if (context.performed) _isInteract = true;
+    }
+
+    private void LateUpdate()
+    {
+        _isInteract = false;
     }
 
     public bool IsKeyDown(string key)
     {
+        switch (key)
+        {
+            case "interact": return _isInteract;
+        }
         return false;
     }
 

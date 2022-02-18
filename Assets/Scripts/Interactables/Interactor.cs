@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Interactor : MonoBehaviour,IInteractor
+public class Interactor : MonoBehaviour, IInteractor
 {
     private IInteractable currentInteractable = null;
     private void Update()

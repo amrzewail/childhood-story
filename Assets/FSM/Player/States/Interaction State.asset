@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8b287772e6baefd4685d8c5d2ed5adc0, type: 3}
-  m_Name: Move State
+  m_Script: {fileID: 11500000, guid: 409da3891a241c04ca1ee602727305db, type: 3}
+  m_Name: Interaction State
   m_EditorClassIdentifier: 
   inherit: {fileID: 0}
   OnStartPluggers: []
@@ -18,7 +18,4 @@ MonoBehaviour:
   OnExitPluggers: []
   transitions:
   - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
-    transition: {fileID: 11400000, guid: 61a4845dd96ec7049bc4910c64c3ae02, type: 2}
-  - newState: {fileID: 11400000, guid: e56f836a9bd2a1e4bad03fdb6ea816fe, type: 2}
-    transition: {fileID: 11400000, guid: 0a3362520db33bd4ebdcd63ba253a1ba, type: 2}
-  moveSpeed: 5
+    transition: {fileID: 11400000, guid: e8f40edb590c48748b1deaa08c293d37, type: 2}
