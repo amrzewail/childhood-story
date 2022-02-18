@@ -12,7 +12,7 @@ public class LightTypeCalculator : MonoBehaviour
         if (light.type == LightType.Spot)
         {
             direction = light.transform.position - position;
-            if (Physics.Raycast(position, direction, out hit, direction.magnitude, layerMask: layer.value))
+            if (Physics.Raycast(position, direction, out hit, direction.magnitude, layerMask: layer.value, QueryTriggerInteraction.Ignore))
             {
                 return false;
             }
@@ -28,7 +28,7 @@ public class LightTypeCalculator : MonoBehaviour
         }else if(light.type == LightType.Directional)
         {
             direction = -light.transform.forward;
-            if (Physics.Raycast(position, direction, out hit, 10000, layerMask: layer.value))
+            if (Physics.Raycast(position, direction, out hit, 10000, layerMask: layer.value, QueryTriggerInteraction.Ignore))
             {
                 return false;
             }
