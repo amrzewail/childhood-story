@@ -38,7 +38,7 @@ MonoBehaviour:
     position: {x: 579, y: 209, z: 0}
     state: {fileID: 11400000, guid: e56f836a9bd2a1e4bad03fdb6ea816fe, type: 2}
   - GUID: cfc97293-cb37-4811-a305-42c2047089b0
-    position: {x: 496, y: 813, z: 0}
+    position: {x: 609, y: 835, z: 0}
     state: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
   transitionNodes:
   - GUID: cb2689d7-7e03-4a40-87fe-46571059fa5e
@@ -53,9 +53,9 @@ MonoBehaviour:
   - GUID: 3908c9d7-505c-467b-8f0e-9ea1600bd060
     position: {x: 305, y: 197, z: 0}
     transition: {fileID: 11400000, guid: 0a3362520db33bd4ebdcd63ba253a1ba, type: 2}
-  - GUID: b6ec1a7e-0909-4c55-a619-6cf4f6354345
-    position: {x: 304, y: 795, z: 0}
-    transition: {fileID: 11400000, guid: e8f40edb590c48748b1deaa08c293d37, type: 2}
+  - GUID: ede41912-2c0c-4341-b816-844cea05bb17
+    position: {x: 318, y: 813, z: 0}
+    transition: {fileID: 11400000, guid: 92755c873d50e0f4ca514fbcdc670ae1, type: 2}
   pluggerNodes: []
   stateTransitionLinks:
   - outputGUID: 6f172efb-eae8-4eed-9ce3-f08ae1d1162d
@@ -83,8 +83,8 @@ MonoBehaviour:
     inputGUID: 99b45d84-8192-4e52-ad4a-942bd6b4f245
     index: 0
   - outputGUID: 0d0fdd62-9cc0-44f7-a9b4-0e41c84502dd
-    inputGUID: b6ec1a7e-0909-4c55-a619-6cf4f6354345
+    inputGUID: ede41912-2c0c-4341-b816-844cea05bb17
     index: 0
-  - outputGUID: b6ec1a7e-0909-4c55-a619-6cf4f6354345
+  - outputGUID: ede41912-2c0c-4341-b816-844cea05bb17
     inputGUID: cfc97293-cb37-4811-a305-42c2047089b0
     index: 0

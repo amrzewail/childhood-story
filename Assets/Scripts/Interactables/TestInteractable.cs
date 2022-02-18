@@ -12,4 +12,9 @@ public class TestInteractable : MonoBehaviour, IInteractable
         Debug.Log(((IActor)data["actor"]).transform.name);
 
     }
+
+    public bool IsComplete()
+    {
+        return true;
+    }
 }
