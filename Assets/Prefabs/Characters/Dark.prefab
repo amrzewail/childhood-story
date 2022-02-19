@@ -45,7 +45,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   time: 0.5
   distance: 4
-  cooldown: 1
+  cooldown: 0.35
   _actor: {fileID: 3363965681928698967}
   colliders:
   - {fileID: 3363965681928698971}
