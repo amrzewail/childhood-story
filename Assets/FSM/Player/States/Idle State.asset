@@ -12,13 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d305d307248a034e81d5323b1ccf77d, type: 3}
   m_Name: Idle State
   m_EditorClassIdentifier: 
-  inherit: {fileID: 0}
+  inherit: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
   transitions:
   - newState: {fileID: 11400000, guid: 4efde91ba8f31644bbea89825f309e3d, type: 2}
     transition: {fileID: 11400000, guid: 891e6714adfb6724ebe563bae0f4f1e6, type: 2}
-  - newState: {fileID: 11400000, guid: e56f836a9bd2a1e4bad03fdb6ea816fe, type: 2}
-    transition: {fileID: 11400000, guid: 0a3362520db33bd4ebdcd63ba253a1ba, type: 2}
   moveSpeed: 5

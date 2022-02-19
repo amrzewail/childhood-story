@@ -13,16 +13,24 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     public Vector2 absAxis { get; private set; }
 
     private bool _isInteract = false;
+    private bool _isAbility = false;
+    private bool _isShoot = false;
 
 
     internal void Start()
     {
         InputEvents.instance.OnMove += MoveCallback;
         InputEvents.instance.OnInteract += InteractCallback;
+        InputEvents.instance.OnAbility += AbilityCallback;
+        InputEvents.instance.OnShoot += ShootCallback;
+
     }
     internal void LateUpdate()
     {
         _isInteract = false;
+        _isAbility = false;
+        _isShoot = false;
+
     }
 
 
@@ -52,13 +60,29 @@ public class PlayerSystemInput : MonoBehaviour, IInput
             _isInteract = true;
         }
     }
-
+    private void AbilityCallback(int index)
+    {
+        if (index == inputIndex)
+        {
+            _isAbility = true;
+        }
+    }
+    private void ShootCallback(int index)
+    {
+        if (index == inputIndex)
+        {
+            _isAbility = true;
+        }
+    }
 
     public bool IsKeyDown(string key)
     {
         switch (key)
         {
             case "interact": return _isInteract;
+            case "ability": return _isAbility;
+            case "shoot": return _isShoot;
+
         }
         return false;
     }

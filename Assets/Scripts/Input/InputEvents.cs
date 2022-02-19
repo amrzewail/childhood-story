@@ -10,5 +10,9 @@ public class InputEvents : Singleton<InputEvents>
 
     public Action<int> OnInteract;
 
+    public Action<int> OnAbility;
+
+    public Action<int> OnShoot;
+
     public Action<int> OnClearInput;
 }

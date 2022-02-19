@@ -7,22 +7,20 @@ using UnityEngine.InputSystem;
 
 public class SystemInput : MonoBehaviour
 {
-    private static int _inputCount = 0;
-
     private int _inputIndex = 0;
 
 
     internal void Start()
     {
-        _inputIndex = _inputCount++;
+        _inputIndex = GetComponent<PlayerInput>().playerIndex;
         DontDestroyOnLoad(this.gameObject);
 
         InputEvents.instance.OnClearInput += ClearInputCallback;
-    }
 
-    internal void OnDestroy()
-    {
-        _inputCount--;
+        for(int i = 0; i < _inputIndex; i++)
+        {
+            InputEvents.instance.OnMove?.Invoke(i, Vector2.zero);
+        }
     }
 
 
@@ -38,6 +36,20 @@ public class SystemInput : MonoBehaviour
         if (context.performed)
         {
             InputEvents.instance.OnInteract?.Invoke(_inputIndex);
+        }
+    }
+    public void OnAbility(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InputEvents.instance.OnAbility?.Invoke(_inputIndex);
+        }
+    }
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InputEvents.instance.OnShoot?.Invoke(_inputIndex);
         }
     }
 
