@@ -22,97 +22,11 @@ public class CameraController : MonoBehaviour, ICamera
     private Vector3 velocity;
     public float smoothTime;
 
-    void Start()
+    void Awake()
     {
         targets = new List<ICameraTarget>();
         angle = transform.eulerAngles.x;
     }
-
-    /*  void FixedUpdateF()
-      {
-          Vector3 start = transform.position;
-          Vector3 right = RightEnd(start);
-          Vector3 left = LeftEnd(start);
-          Vector3 up = UpEnd(start);
-          Vector3 down = DownEnd(start);
-          RaycastHit hit;
-          if(Physics.Raycast(start, right - start, out hit, 1000))
-          {
-              clampBound.right = hit.point.x;
-          }
-          if (Physics.Raycast(start, left - start, out hit, 1000))
-          {
-              clampBound.left = hit.point.x;
-          }
-          if (Physics.Raycast(start, up - start, out hit, 1000))
-          {
-              clampBound.up = hit.point.z;
-          }
-          if (Physics.Raycast(start, down - start, out hit, 1000))
-          {
-              clampBound.down = hit.point.z;
-          }
-      }
-
-
-
-      void OnDrawGizmos()
-      {
-          Gizmos.color = Color.red;
-
-          Vector3 start = transform.position;
-
-
-          Gizmos.DrawLine(start, RightEnd(start) + (RightEnd(start) - start) * 1000);
-          Gizmos.DrawLine(start, UpEnd(start) + (UpEnd(start) - start) * 1000);
-          Gizmos.DrawLine(start, DownEnd(start) + (DownEnd(start) - start) * 1000);
-          Gizmos.DrawLine(start, LeftEnd(start) + (LeftEnd(start) - start) * 1000);
-
-          Gizmos.color = Color.white;
-      }
-
-      private Vector3 RightEnd(Vector3 start)
-      {
-          Vector3 end = start;
-          float y = Mathf.Sin(boundAngle * Mathf.PI / 180f);
-          float x = Mathf.Cos(boundAngle * Mathf.PI / 180f);
-
-          end += transform.right * x;
-          end += transform.forward * y;
-          return end;
-      }
-      private Vector3 UpEnd(Vector3 start)
-      {
-          Vector3 end = start;
-          float y = Mathf.Sin(boundAngle * Mathf.PI / 180f);
-          float x = Mathf.Cos(boundAngle * Mathf.PI / 180f);
-
-          end += transform.up * y;
-          end += transform.forward * x;
-          return end;
-      }
-      private Vector3 DownEnd(Vector3 start)
-      {
-          Vector3 end = start;
-          float y = Mathf.Sin(boundAngle * Mathf.PI / 180f);
-          float x = Mathf.Cos(boundAngle * Mathf.PI / 180f);
-
-          end -= transform.up * y;
-          end += transform.forward * x;
-          return end;
-      }
-      private Vector3 LeftEnd(Vector3 start)
-      {
-          Vector3 end = start;
-          float y = Mathf.Sin(boundAngle * Mathf.PI / 180f);
-          float x = Mathf.Cos(boundAngle * Mathf.PI / 180f);
-
-          end -= transform.right * x;
-          end += transform.forward * y;
-          return end;
-      }
-    */
-
 
     void LateUpdate()
     {
@@ -125,15 +39,6 @@ public class CameraController : MonoBehaviour, ICamera
 
         Move();
         Zoom();
-
-        //foreach (var p in targets)
-        //{
-        //    float x = Mathf.Clamp(p.transform.position.x, clampBound.left, clampBound.right);
-        //    float z = Mathf.Clamp(p.transform.position.z, clampBound.down, clampBound.up);
-        //    p.transform.position = new Vector3(x, p.transform.position.y, z);
-        //}
-
-
     }
     void Zoom()
     {
