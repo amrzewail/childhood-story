@@ -51,8 +51,6 @@ public class DarkDashAbility : MonoBehaviour, IAbility
                 }
             }
         }
-
-        Debug.Log(_allowedDistance);
     }
 
     public bool CanPerform()
