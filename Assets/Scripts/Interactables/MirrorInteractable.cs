@@ -1,3 +1,4 @@
+using System.Linq;
 using Characters;
 using System.Collections;
 using System.Collections.Generic;
@@ -8,7 +9,6 @@ public class MirrorInteractable : MonoBehaviour,IInteractable
     [SerializeField]private Transform pivot;
     [SerializeField]private MirrorInteractable mirror;
     private bool caninteract = true, iscomplete = false;
-    private bool froze = false;
     // Update is called once per frame
     public void Interact(IDictionary<string, object> data)
     {
@@ -39,11 +39,11 @@ public class MirrorInteractable : MonoBehaviour,IInteractable
     {
         
         IActor actor = (IActor)data["actor"];
-        actor.transform.gameObject.SetActive(false);
+        actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
         yield return new WaitForSeconds(2);
-        
         actor.transform.position = mirror.pivot.position;
-        actor.transform.gameObject.SetActive(true);
+        actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
+
 
         //transform.GetComponent<Renderer>().material.color = Color.red;
     }
@@ -52,6 +52,7 @@ public class MirrorInteractable : MonoBehaviour,IInteractable
         if (!mirror) return;
         Gizmos.DrawLine(transform.position, mirror.pivot.position);
     }
+
     public bool CanInteract() => caninteract;
 
    
