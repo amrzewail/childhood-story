@@ -8,7 +8,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform pivot;
     [SerializeField] private Transform particle;
-    [SerializeField] private MirrorInteractable mirror;
+    [SerializeField] private MirrorInteractable targetMirror;
     private bool caninteract, iscomplete;
     [SerializeField] private float timedelay;
     private float distance;
@@ -23,7 +23,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     {
         if (CanInteract() == false && IsComplete() == false)
         {
-            particle.position = Vector3.MoveTowards(particle.position, mirror.transform.position, (distance / timedelay) * Time.deltaTime);
+            particle.position = Vector3.MoveTowards(particle.position, targetMirror.transform.position, (distance / timedelay) * Time.deltaTime);
         }
     }
     public void Interact(IDictionary<string, object> data)
@@ -31,7 +31,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         particle.position = originalPos;
         iscomplete = false;
         caninteract = false;
-        if (pivot == null || mirror == null) { return; }
+        if (pivot == null || targetMirror == null) { return; }
 
         IActor actor = (IActor)data["actor"];
         StartCoroutine(TimeDelay(data));
@@ -45,31 +45,26 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
         particle.gameObject.SetActive(true);
 
-        distance = Vector3.Distance(originalPos, mirror.transform.position);
+        distance = Vector3.Distance(originalPos, targetMirror.transform.position);
 
         yield return new WaitForSeconds(timedelay);
 
-        Vector3 eulerRotation = mirror.pivot.eulerAngles;
-        actor.transform.eulerAngles = new Vector3(0, eulerRotation.y, 0);
+        Vector3 targetMirrorPivotRotation = targetMirror.pivot.eulerAngles;
+        actor.transform.eulerAngles = new Vector3(0, targetMirrorPivotRotation.y, 0);
         iscomplete = true;
         caninteract = true;
         particle.transform.position = originalPos;
         particle.gameObject.SetActive(false);
-        actor.transform.position = mirror.pivot.position;
+        actor.transform.position = targetMirror.pivot.position;
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
     }
     private void OnDrawGizmos()
     {
-        if (!mirror) return;
-        Gizmos.DrawLine(transform.position, mirror.pivot.position);
+        if (!targetMirror) return;
+        Gizmos.DrawLine(transform.position, targetMirror.pivot.position);
     }
 
     public bool CanInteract() => caninteract;
-
-
-
     public bool IsComplete() => iscomplete;
-
-    // Start is called before the first frame update
 
 }
