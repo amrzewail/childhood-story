@@ -18,7 +18,7 @@ namespace FiniteStateMachine.Player
         public override bool StartState(Dictionary<string, object> data)
         {
             _actor = (IActor)data["actor"];
-            _actor.GetActorComponent<IInteractor>(0).GetInteractable().Interact(new Dictionary<string, object>() { { "actor", _actor } });
+            _actor.GetActorComponent<IInteractor>(0).Interact(new Dictionary<string, object>() { { "actor", _actor } });
 
             return true;
         }
