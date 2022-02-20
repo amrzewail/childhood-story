@@ -5,8 +5,6 @@ using UnityEngine.Events;
 
 public class LightDetector : MonoBehaviour, ILightDetector
 {
-    [SerializeField] LayerMask _obstacleLayerMask;
-
     public bool isOnLight { get; private set; }
 
     private int _lastLight = -1;
@@ -16,18 +14,7 @@ public class LightDetector : MonoBehaviour, ILightDetector
 
     private void FixedUpdate()
     {
-        List<LightEffector> lights = LightEffector.effectors;
-        if (lights == null) return;
-
-        bool isLight = false;
-        foreach(var light in lights)
-        {
-            if(LightTypeCalculator.IsLightHit(transform.position, light, _obstacleLayerMask))
-            {
-                isLight = true;
-                break;
-            }
-        }
+        bool isLight = LightTypeCalculator.IsPositionLighted(transform.position);
 
         if (isLight)
         {
@@ -46,10 +33,5 @@ public class LightDetector : MonoBehaviour, ILightDetector
             }
         }
         isOnLight = isLight;
-    }
-
-    internal void Reset()
-    {
-        _obstacleLayerMask = LayerMask.GetMask(new string[] { "Obstacle" });
     }
 }

@@ -5,37 +5,60 @@ using UnityEngine.InputSystem;
 
 
 
-public class SystemInput : MonoBehaviour, IInput
+public class SystemInput : MonoBehaviour
 {
+    private int _inputIndex = 0;
 
-    public Vector2 axis { get; private set; }
 
-    public Vector2 absAxis { get; private set; }
+    internal void Start()
+    {
+        _inputIndex = GetComponent<PlayerInput>().playerIndex;
+        DontDestroyOnLoad(this.gameObject);
+
+        InputEvents.instance.OnClearInput += ClearInputCallback;
+
+        for(int i = 0; i < _inputIndex; i++)
+        {
+            InputEvents.instance.OnMove?.Invoke(i, Vector2.zero);
+        }
+    }
+
 
     public void onMove(InputAction.CallbackContext context)
     {
-        axis = context.ReadValue<Vector2>();
+        var axis = context.ReadValue<Vector2>();
+        InputEvents.instance.OnMove?.Invoke(_inputIndex, axis);
 
-        float radians = -Camera.main.transform.eulerAngles.y * Mathf.PI / 180;
-        float cos = Mathf.Cos(radians), sin = Mathf.Sin(radians);
-        var ax = axis;
-        ax.x = cos * axis.x - sin * axis.y;
-        ax.y = cos * axis.y + sin * axis.x;
+    }
 
-        axis = ax;
-        if (axis.magnitude != 0)
+    public void OnInteract(InputAction.CallbackContext context)
+    {
+        if (context.performed)
         {
-            absAxis = axis;
+            InputEvents.instance.OnInteract?.Invoke(_inputIndex);
         }
     }
-    private void Update()
+    public void OnAbility(InputAction.CallbackContext context)
     {
-        
+        if (context.performed)
+        {
+            InputEvents.instance.OnAbility?.Invoke(_inputIndex);
+        }
+    }
+    public void OnShoot(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InputEvents.instance.OnShoot?.Invoke(_inputIndex);
+        }
     }
 
-    public bool IsKeyDown(string key)
+    private void ClearInputCallback(int index)
     {
-        return false;
+        if(index == _inputIndex)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
 }
