@@ -18,7 +18,7 @@ namespace FiniteStateMachine.Player
             IInteractor interactor = actor.GetActorComponent<IInteractor>(0);
 
             if (interactor.GetInteractable() == null) return true;
-            if (interactor.GetInteractable().IsComplete()) return true;
+            if (interactor.IsComplete()) return true;
             return false;
         }
     }

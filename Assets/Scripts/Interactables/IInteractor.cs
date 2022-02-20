@@ -6,4 +6,8 @@ public interface IInteractor:IComponent
 {
     IInteractable GetInteractable();
 
+    void Interact(IDictionary<string,object> data);
+
+    bool IsComplete();
+
 }
