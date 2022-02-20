@@ -39,11 +39,11 @@ public class MirrorInteractable : MonoBehaviour,IInteractable
     {
         
         IActor actor = (IActor)data["actor"];
-        actor.gameObject.SetActive(false);
+        actor.transform.gameObject.SetActive(false);
         yield return new WaitForSeconds(2);
         
         actor.transform.position = mirror.pivot.position;
-        actor.gameObject.SetActive(true);
+        actor.transform.gameObject.SetActive(true);
 
         //transform.GetComponent<Renderer>().material.color = Color.red;
     }
