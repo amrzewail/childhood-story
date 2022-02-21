@@ -9,28 +9,31 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     [SerializeField] private Transform pivot;
     [SerializeField] private Transform particle;
     [SerializeField] private MirrorInteractable targetMirror;
-    private bool caninteract, iscomplete;
     [SerializeField] private float timedelay;
+
     private float distance;
     private Vector3 originalPos;
+    private bool canInteract, isComplete;
 
 
     private void Awake()
     {
+        canInteract = true;
+        isComplete = false;
         originalPos = particle.position;
     }
     private void Update()
     {
         if (CanInteract() == false && IsComplete() == false)
         {
-            particle.position = Vector3.MoveTowards(particle.position, targetMirror.transform.position, (distance / timedelay) * Time.deltaTime);
+            particle.position = Vector3.MoveTowards(particle.position, targetMirror.originalPos, (distance / timedelay) * Time.deltaTime);
         }
     }
     public void Interact(IDictionary<string, object> data)
     {
         particle.position = originalPos;
-        iscomplete = false;
-        caninteract = false;
+        isComplete = false;
+        canInteract = false;
         if (pivot == null || targetMirror == null) { return; }
 
         IActor actor = (IActor)data["actor"];
@@ -51,8 +54,8 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 
         Vector3 targetMirrorPivotRotation = targetMirror.pivot.eulerAngles;
         actor.transform.eulerAngles = new Vector3(0, targetMirrorPivotRotation.y, 0);
-        iscomplete = true;
-        caninteract = true;
+        isComplete = true;
+        canInteract = true;
         particle.transform.position = originalPos;
         particle.gameObject.SetActive(false);
         actor.transform.position = targetMirror.pivot.position;
@@ -61,10 +64,11 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     private void OnDrawGizmos()
     {
         if (!targetMirror) return;
-        Gizmos.DrawLine(transform.position, targetMirror.pivot.position);
+        if (!particle) return;
+        Gizmos.DrawLine(particle.position, targetMirror.pivot.position);
     }
 
-    public bool CanInteract() => caninteract;
-    public bool IsComplete() => iscomplete;
+    public bool CanInteract() => canInteract;
+    public bool IsComplete() => isComplete;
 
 }
