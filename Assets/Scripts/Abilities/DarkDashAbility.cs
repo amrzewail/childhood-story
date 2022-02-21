@@ -43,7 +43,14 @@ public class DarkDashAbility : MonoBehaviour, IAbility
         {
             for (float i = _allowedDistance / 4f; i <= _allowedDistance; i += _allowedDistance / 4f)
             {
-                bool isLight = LightTypeCalculator.IsPositionLighted(actor.transform.position + actor.transform.forward * i);
+                Vector3 checkPosition = actor.transform.position + actor.transform.forward * i;
+                bool isLight = LightTypeCalculator.IsPositionLighted(checkPosition);
+                bool isEmpty = !Physics.Raycast(checkPosition + Vector3.up * 0.5f, Vector3.down, 1.1f);
+                if (isEmpty)
+                {
+                    _allowedDistance = 0;
+                    break;
+                }else
                 if (isLight)
                 {
                     _allowedDistance = i - _allowedDistance / 4f;
