@@ -180,6 +180,17 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d458773eea9b5514ea94b3928b648b0a, type: 3}
+--- !u!114 &342581516 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+  m_PrefabInstance: {fileID: 4722821710007947569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225fbde1f35ec544daec0fd106b2e7d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &621571562
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1284,6 +1295,110 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 9130e5402838f164dba44fb3013dbceb, type: 3}
+--- !u!1001 &2078583989
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3968986777912658409, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2dd6c25b29ef0544abc2f08fdf728a9d, type: 2}
+    - target: {fileID: 4722821711006822652, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_Name
+      value: Lever (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.27
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.075
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 12.12
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: oneTimeOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 342581516}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLever
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LeverInteractable, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+--- !u!114 &2078583990 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+  m_PrefabInstance: {fileID: 2078583989}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 225fbde1f35ec544daec0fd106b2e7d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2138677391
 GameObject:
   m_ObjectHideFlags: 0
@@ -1456,6 +1571,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 3968986777912658409, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 2dd6c25b29ef0544abc2f08fdf728a9d, type: 2}
     - target: {fileID: 4722821711006822652, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
       propertyPath: m_Name
       value: Lever
@@ -1503,6 +1622,38 @@ PrefabInstance:
     - target: {fileID: 4722821711006822655, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: oneTimeOnly
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 2078583990}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ResetLever
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: LeverInteractable, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 8207899243174065164, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2cd0941be014f2e47b65aff864112fed, type: 3}

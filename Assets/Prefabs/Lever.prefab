@@ -9,6 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5793594856873752585}
+  - component: {fileID: 3968986777912658409}
   m_Layer: 0
   m_Name: Pivot
   m_TagString: Untagged
@@ -31,6 +32,25 @@ Transform:
   m_Father: {fileID: 4722821711006822655}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &3968986777912658409
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4210763919790922812}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2dd6c25b29ef0544abc2f08fdf728a9d, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &4356665429178782207
 GameObject:
   m_ObjectHideFlags: 0
@@ -256,6 +276,9 @@ MonoBehaviour:
   pivot_rotation_angle: {fileID: 5793594856873752585}
   timedelay: 1
   maximumrotation: 50
+  OnTriggerLever:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &4722821711707999461
 GameObject:
   m_ObjectHideFlags: 0

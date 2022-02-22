@@ -13,7 +13,6 @@ public class TriggerButton : MonoBehaviour
 
     public UnityEvent OnButtonDown;
     public UnityEvent OnButtonUp;
-
     public void ButtonDown(Collider col)
     {
         if (col.GetComponent<IActor>() != null)
