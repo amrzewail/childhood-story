@@ -25,6 +25,7 @@ namespace Characters
 
         private bool _move;
         private bool _rotate;
+        private bool _isEnabled = false;
         private float _speed;
         private float _colliderRadius;
         private Vector2 _moveAxis;
@@ -37,7 +38,7 @@ namespace Characters
         protected void Awake()
         {
             if (_collider is CapsuleCollider) _colliderRadius = ((CapsuleCollider)_collider).radius;
-
+            _isEnabled = true;
         }
 
         public void Move(Vector3 direction, float speed)
@@ -62,6 +63,11 @@ namespace Characters
             _move = false;
 
             //_rotate = false;
+        }
+
+        public void Enable(bool value)
+        {
+            _isEnabled = value;
         }
 
         public void StopInstant()
@@ -98,6 +104,8 @@ namespace Characters
 
         protected void FixedUpdate()
         {
+            if (!_isEnabled) return;
+
             if(_lastDeltaTime != _deltaTime)
             {
                 _count = 0;
@@ -133,8 +141,9 @@ namespace Characters
                     _rigidBody.AddForce(Vector3.up * (hitClimbable.point.y - _rigidBody.transform.position.y) * 8 * _rigidBody.mass, ForceMode.Impulse);
                     climbingStairs = true;
                 }
-                velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
+                //velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
                 _change = targetVelocity - velocity;
+                _change.y = 0;
                 _rigidBody.AddForce(_change * _friction * _rigidBody.mass, ForceMode.Force);
                 _count++;
                 if (_count >= times)
@@ -143,7 +152,10 @@ namespace Characters
                     _count = 0;
                 }
 
-                _rigidBody.velocity = Vector3.ClampMagnitude(_rigidBody.velocity, _speed);
+                targetVelocity = new Vector3(_rigidBody.velocity.x, 0, _rigidBody.velocity.z);
+                targetVelocity = Vector3.ClampMagnitude(targetVelocity, _speed);
+                targetVelocity.y = _rigidBody.velocity.y;
+                _rigidBody.velocity = targetVelocity;
             }
             else
             {

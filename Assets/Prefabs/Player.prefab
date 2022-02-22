@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1246640436522853389
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6200944932741094258}
+  - component: {fileID: 384604597843888691}
+  m_Layer: 7
+  m_Name: Ground Detection
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6200944932741094258
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246640436522853389}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6001291292255534948}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &384604597843888691
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1246640436522853389}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f793f3248399e8468a75fcfc8c24618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groundLayer:
+    serializedVersion: 2
+    m_Bits: 64
+  _extraDistance: 0
+  _sphereRadius: 0.25
+  OnGrounded:
+    m_PersistentCalls:
+      m_Calls: []
+  OnUnGrounded:
+    m_PersistentCalls:
+      m_Calls: []
 --- !u!1 &3272820724041383992
 GameObject:
   m_ObjectHideFlags: 0
@@ -230,6 +284,7 @@ Transform:
   - {fileID: 5191112488167555614}
   - {fileID: 2318835923102210804}
   - {fileID: 6323422037408976019}
+  - {fileID: 6200944932741094258}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -287,6 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6001291292549482293}
   - component: {fileID: 6001291292549482292}
+  - component: {fileID: 2839683815699729106}
   m_Layer: 0
   m_Name: Mover
   m_TagString: Untagged
@@ -329,6 +385,19 @@ MonoBehaviour:
   _stopFriction: 10
   _climbableHeight: 0.5
   _climbableDetectDistance: 0.1
+--- !u!114 &2839683815699729106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001291292549482294}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d15fd595d9ad2c44a8ac1b5d1f47821d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _rigidBody: {fileID: 6001291292255534954}
 --- !u!1 &6001291292899428993
 GameObject:
   m_ObjectHideFlags: 0
