@@ -8,7 +8,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     [SerializeField]private Transform pivot_rotation_angle;
     [SerializeField]private float timedelay;
     [SerializeField]private float maximumrotation = 50f;
-    [SerializeField] private bool oneTimeOnly;
+    [SerializeField]private bool oneTimeOnly;
     private bool canInteract, isComplete;
     private Animator anim;
     public UnityEvent OnTriggerLever;
@@ -59,8 +59,12 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     //}
     public void ResetLever()
     {
-        this.anim.SetTrigger("Up");
-        canInteract = true;
+        if(canInteract == false)
+        { 
+            this.anim.SetTrigger("Up");
+            canInteract = true;
+            StopAllCoroutines();
+        }
     }
     public bool CanInteract() => canInteract;
 
