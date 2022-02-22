@@ -9,6 +9,6 @@ namespace Characters
         public void Move(Vector3 direction, float speed);
         public void Stop();
         public void Rotate(Vector3 direction);
-
+        public void Enable(bool value);
     }
 }
