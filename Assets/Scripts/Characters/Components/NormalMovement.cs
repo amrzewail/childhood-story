@@ -138,8 +138,8 @@ namespace Characters
                 if (Physics.SphereCast(stairRayOrigin, radius, Vector3.down, out hitClimbable, _climbableHeight, layerMask))
                 {
                     //Debug.Log($"{hitClimbable.transform.name} {(hitClimbable.point.y - transform.position.y)}");
-                    _rigidBody.AddForce(Vector3.up * (hitClimbable.point.y - _rigidBody.transform.position.y) * 8 * _rigidBody.mass, ForceMode.Impulse);
-                    climbingStairs = true;
+                    //_rigidBody.AddForce(Vector3.up * (hitClimbable.point.y - _rigidBody.transform.position.y) * 8 * _rigidBody.mass, ForceMode.Impulse);
+                    //climbingStairs = true;
                 }
                 //velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
                 _change = targetVelocity - velocity;

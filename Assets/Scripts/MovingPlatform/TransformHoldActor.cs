@@ -29,7 +29,10 @@ public class TransformHoldActor : MonoBehaviour
     {
         if (col.GetComponent<IActor>() != null)
         {
-            _transforms.Add(col.transform);
+            if (!_transforms.Contains(col.transform))
+            {
+                _transforms.Add(col.transform);
+            }
         }
     }
     public void TriggerExit(Collider col)
