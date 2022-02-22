@@ -24,7 +24,7 @@ public class LightTypeCalculator : MonoBehaviour
 
     public static bool IsLightHit(Vector3 position, LightEffector lightEffector)
     {
-        LayerMask layer = LayerMask.GetMask(new string[] { "Ground", "Default" });
+        LayerMask layer = LayerMask.GetMask(new string[] { "Obstacle", "Ground" });
         Light light = lightEffector.light;
         RaycastHit hit;
         Vector3 direction;

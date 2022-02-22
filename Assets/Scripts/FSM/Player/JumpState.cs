@@ -41,6 +41,7 @@ namespace FiniteStateMachine.Player
         public override bool ExitState(Dictionary<string, object> data)
         {
             _mover.Enable(true);
+            _airMover.Stop();
             return true;
         }
     }

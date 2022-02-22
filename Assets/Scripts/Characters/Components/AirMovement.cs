@@ -23,6 +23,8 @@ namespace Characters
 
         private void FixedUpdate()
         {
+            if (!_isEnabled) return;
+
             if (_isMoving)
             {
                 _rigidBody.AddForce(_moveDirection * _rigidBody.mass, ForceMode.VelocityChange);
@@ -52,6 +54,7 @@ namespace Characters
 
         public void Stop()
         {
+            _isMoving = false;
             _moveDirection = Vector3.zero;
         }
     }
