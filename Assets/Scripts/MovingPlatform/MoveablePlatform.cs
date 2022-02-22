@@ -2,11 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovePlatform : MonoBehaviour
+public class MoveablePlatform : MonoBehaviour
 {
     public float speed;
-    Rigidbody pRigid;
-    bool isMoving = false;
+    
+    private Rigidbody pRigid;
+    private bool isMoving = false;
+    private Vector3 movingDirection;
+
+
+
 
     public void Start()
     {
@@ -16,30 +21,26 @@ public class MovePlatform : MonoBehaviour
     public void StartMoving(Vector3 direction)
     {
         isMoving = true;
-        pRigid.velocity = direction * speed;
+        movingDirection = direction;
     }
 
-    /*public void moveLeft()
+    public void MoveLeft()
     {
-        isMoving = true;
-        pRigid.velocity = new Vector3(-1, 0, 0) * speed;
-        
+        StartMoving(new Vector3(-1, 0, 0));
+
     }
-    public void moveRight()
+    public void MoveRight()
     {
-        isMoving = true;
-        pRigid.velocity = new Vector3(1, 0, 0) * speed;
+        StartMoving(new Vector3(1, 0, 0));
     }
-    public void moveForward()
+    public void MoveForward()
     {
-        isMoving = true;
-        pRigid.velocity = new Vector3(0, 0, 1) * speed;
+        StartMoving(new Vector3(0, 0, 1));
     }
-    public void moveBackward()
+    public void MoveBackward()
     {
-        isMoving = true;
-        pRigid.velocity = new Vector3(0, 0, -1) * speed;
-    }*/
+        StartMoving(new Vector3(0, 0, -1));
+    }
     public void StopMoving()
     {
         isMoving = false;
@@ -88,15 +89,19 @@ public class MovePlatform : MonoBehaviour
         {
             StopMoving();
         }
-        if (isMoving == false)
+
+    }
+
+
+    private void FixedUpdate()
+    {
+        if (isMoving)
+        {
+            pRigid.velocity = movingDirection * speed;
+        }
+        else
         {
             pRigid.velocity = Vector3.zero;
         }
-
-
-    }
-    private void FixedUpdate()
-    {
-        
     }
 }
