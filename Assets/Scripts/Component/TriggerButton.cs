@@ -13,11 +13,19 @@ public class TriggerButton : MonoBehaviour
 
     public UnityEvent OnButtonDown;
     public UnityEvent OnButtonUp;
+
+    private Vector3 startPosition;
+
+    private void Start()
+    {
+        startPosition = renderer.transform.position;
+    }
+
     public void ButtonDown(Collider col)
     {
         if (col.GetComponent<IActor>() != null)
         {
-            renderer.transform.Translate(Vector3.down * pressDistance);
+            renderer.transform.position = startPosition + Vector3.down * pressDistance;
             OnButtonDown?.Invoke();
         }
     }
@@ -25,7 +33,7 @@ public class TriggerButton : MonoBehaviour
     {
         if (col.GetComponent<IActor>() != null)
         {
-            renderer.transform.Translate(Vector3.up * pressDistance);
+            renderer.transform.position = startPosition;
             OnButtonUp?.Invoke();
         }
     }

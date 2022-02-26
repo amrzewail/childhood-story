@@ -258,10 +258,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a4a5ccae9aeec1e4e95b35e5cb7ba198, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  offset: {x: 10, y: 14, z: -10}
-  angle: 45.000004
-  boundAngle: 30
-  smoothTime: 0
+  angle: 60
+  distanceMultiplier: 1
+  minDistance: 15
+  maxDistance: 45
+  smoothTime: 0.3
 --- !u!1 &6154942630477481964
 GameObject:
   m_ObjectHideFlags: 0

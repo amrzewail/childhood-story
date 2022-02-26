@@ -13,9 +13,12 @@ public class CameraController : MonoBehaviour, ICamera
     }
 
     public List<ICameraTarget> targets;
-    public Vector3 offset;
     public float angle;
-    public float boundAngle = 30;
+    public float distanceMultiplier = 10;
+    public float minDistance = 5;
+    public float maxDistance = 30;
+
+    private float _distanceBetweenPlayers;
 
     private Bound clampBound;
 
@@ -25,7 +28,6 @@ public class CameraController : MonoBehaviour, ICamera
     void Awake()
     {
         targets = new List<ICameraTarget>();
-        angle = transform.eulerAngles.x;
     }
 
     void LateUpdate()
@@ -50,27 +52,52 @@ public class CameraController : MonoBehaviour, ICamera
     {
         Vector3 centerPoint = GetCenterPoint();
 
-        Vector3 newPosition = centerPoint + offset;
+        Vector3 off = Vector3.zero;
+        off.y = Mathf.Sin(angle * Mathf.Deg2Rad) * Mathf.Clamp(distanceMultiplier * _distanceBetweenPlayers, minDistance, maxDistance);
 
-        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        Vector3 newPosition = centerPoint + off;
+
+        transform.position = newPosition;
+        //transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }
 
             
         
     Vector3 GetCenterPoint()
     {
+        Vector3 sum = Vector3.zero;
+        Vector3 direction = Vector3.zero;
         if (targets.Count == 1)
         {
             return targets[0].transform.position;
         }
-
-        var bounds = new Bounds(targets[0].transform.position, Vector3.zero);
-        for (int i=0;i < targets.Count; i++)
+        for (int i = 0; i < targets.Count; i++)
         {
-            bounds.Encapsulate(targets[i].transform.position);
+            sum += targets[i].transform.position;
+            direction = targets[i].transform.position - direction;
         }
+        sum /= targets.Count;
 
-        return bounds.center;
+        float cos = Mathf.Cos(angle * Mathf.Deg2Rad);
+
+        sum.x += cos * Mathf.Clamp(distanceMultiplier * _distanceBetweenPlayers, minDistance, maxDistance);
+        sum.z -= cos * Mathf.Clamp(distanceMultiplier * _distanceBetweenPlayers, minDistance, maxDistance);
+
+        _distanceBetweenPlayers = direction.magnitude;
+
+        return sum;
+        //if (targets.Count == 1)
+        //{
+        //    return targets[0].transform.position;
+        //}
+
+        //var bounds = new Bounds(targets[0].transform.position, Vector3.zero);
+        //for (int i=0;i < targets.Count; i++)
+        //{
+        //    bounds.Encapsulate(targets[i].transform.position);
+        //}
+
+        //return bounds.center;
     }
 
     public void SetAngle(float angle)
@@ -80,7 +107,7 @@ public class CameraController : MonoBehaviour, ICamera
 
     public void SetDistance(float distance)
     {
-        offset.y = distance;
+        distanceMultiplier = distance;
     }
 
     public void AddTarget(ICameraTarget target)
