@@ -1,20 +1,17 @@
 fileFormatVersion: 2
-guid: d4d114152ec43204d835aae4277875b3
+guid: 9a3f07a84c036bb43838dac7e4375246
 ModelImporter:
   serializedVersion: 20200
   internalIDToNameTable:
   - first:
-      74: -9216280340643350740
-    second: Lever2Bones|LeverSwitch
-  - first:
-      74: -947611797494203005
-    second: Lever2Bones|LeverSwitch2
+      74: -623603649343465320
+    second: Scene
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Gradient
-    second: {fileID: 2100000, guid: 5525a820dcb4f314c9a7bd9423d2e344, type: 2}
+      name: Material.002
+    second: {fileID: 2100000, guid: bff759f434475ff40afcfaa2a3e1b598, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -45,7 +42,7 @@ ModelImporter:
     isReadable: 0
   meshes:
     lODScreenPercentages: []
-    globalScale: 1
+    globalScale: 3.8
     meshCompression: 0
     addColliders: 0
     useSRGBMaterialColor: 1
@@ -96,7 +93,7 @@ ModelImporter:
     armStretch: 0.05
     legStretch: 0.05
     feetSpacing: 0
-    globalScale: 1
+    globalScale: 3.8
     rootMotionBoneName: 
     hasTranslationDoF: 0
     hasExtraRoot: 0

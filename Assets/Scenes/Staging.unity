@@ -810,7 +810,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2418146121652924417, guid: 1e473407af72fe24d8ceff497f30d07a, type: 3}
   m_PrefabInstance: {fileID: 2418146121635608703}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 1230544502}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5849c368bba39184ea4e53acf0f16b5d, type: 3}
@@ -3316,6 +3316,11 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!1 &1230544502 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2418146121652924423, guid: 1e473407af72fe24d8ceff497f30d07a, type: 3}
+  m_PrefabInstance: {fileID: 2418146121635608703}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1255921447
 GameObject:
   m_ObjectHideFlags: 0
@@ -6489,6 +6494,34 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1230544502}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: SetActive
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.GameObject, UnityEngine
+      objectReference: {fileID: 0}
+    - target: {fileID: 7742936227768117199, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
+      propertyPath: OnTriggerLever.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 8142357000172116975, guid: 11d38da1441b7674aa6626c1f6d00b98, type: 3}
       propertyPath: m_Name
       value: Lever2
