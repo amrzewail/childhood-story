@@ -5,9 +5,9 @@ using UnityEngine.Events;
 
 public class LeverInteractable : MonoBehaviour, IInteractable
 {
-    [SerializeField]private Transform pivot_rotation_angle;
+    //[SerializeField]private Transform pivot_rotation_angle;
     [SerializeField]private float timedelay;
-    [SerializeField]private float maximumrotation = 50f;
+    //[SerializeField]private float maximumrotation = 50f;
     [SerializeField]private bool oneTimeOnly;
     private bool canInteract, isComplete;
     private Animator anim;
@@ -15,7 +15,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     void Start()
     {
-        this.anim = this.GetComponentInChildren<Animator>();
+        this.anim = this.GetComponent<Animator>();
         canInteract = true;
         isComplete = false;
         //pivot_rotation_angle.localEulerAngles = new Vector3(-maximumrotation, 0, 0);
@@ -36,7 +36,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     public void Interact(IDictionary<string, object> data)
     {
         OnTriggerLever.Invoke();
-        if (pivot_rotation_angle == null) { return; }
+        //if (pivot_rotation_angle == null) { return; }
         isComplete = true;
         canInteract = false;
         if(!oneTimeOnly){ StartCoroutine(TimeDelay()); }
