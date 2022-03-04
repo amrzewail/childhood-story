@@ -14,6 +14,9 @@ public class TriggerButton : MonoBehaviour
     public UnityEvent OnButtonDown;
     public UnityEvent OnButtonUp;
 
+    public UnityEvent OnSoundDown;
+    public UnityEvent OnSoundUp;
+
     private Vector3 startPosition;
 
     private void Start()
@@ -27,6 +30,7 @@ public class TriggerButton : MonoBehaviour
         {
             renderer.transform.position = startPosition + Vector3.down * pressDistance;
             OnButtonDown?.Invoke();
+            OnSoundDown?.Invoke();
         }
     }
     public void ButtonUp(Collider col)
@@ -35,6 +39,7 @@ public class TriggerButton : MonoBehaviour
         {
             renderer.transform.position = startPosition;
             OnButtonUp?.Invoke();
+            OnSoundUp?.Invoke();
         }
     }
 }

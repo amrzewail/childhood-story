@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class DarkDashAbility : MonoBehaviour, IAbility
 {
@@ -19,6 +20,9 @@ public class DarkDashAbility : MonoBehaviour, IAbility
     [SerializeField] List<Collider> colliders;
     [SerializeField] Rigidbody rigidBody;
     [SerializeField] GameObject effect;
+
+    public UnityEvent OnDashStart;
+    public UnityEvent OnDashComplete;
 
     private IActor actor => ((IActor)_actor);
 
@@ -90,6 +94,8 @@ public class DarkDashAbility : MonoBehaviour, IAbility
 
         float timer = time;
 
+        OnDashStart?.Invoke();
+
         while(timer > 0)
         {
             if (true || !_obstacleAhead)
@@ -108,6 +114,7 @@ public class DarkDashAbility : MonoBehaviour, IAbility
         _isComplete = true;
         GameObject.Instantiate(effect, actor.transform.position, Quaternion.identity);
 
+        OnDashComplete?.Invoke();
 
         yield return new WaitForSeconds(cooldown);
 

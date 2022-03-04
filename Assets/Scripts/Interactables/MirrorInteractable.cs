@@ -3,6 +3,7 @@ using Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class MirrorInteractable : MonoBehaviour, IInteractable
 {
@@ -15,6 +16,8 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     private Vector3 originalPos;
     private bool canInteract, isComplete;
 
+    public UnityEvent OnBegin;
+    public UnityEvent OnEnd;
 
     private void Awake()
     {
@@ -50,6 +53,8 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 
         distance = Vector3.Distance(originalPos, targetMirror.transform.position);
 
+        OnBegin?.Invoke();
+
         yield return new WaitForSeconds(timedelay);
 
         Vector3 targetMirrorPivotRotation = targetMirror.pivot.eulerAngles;
@@ -60,6 +65,8 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         particle.gameObject.SetActive(false);
         actor.transform.position = targetMirror.pivot.position;
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
+
+        OnEnd?.Invoke();
     }
     private void OnDrawGizmos()
     {
