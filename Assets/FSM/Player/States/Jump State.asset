@@ -20,3 +20,5 @@ MonoBehaviour:
   - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
     transition: {fileID: 11400000, guid: 8c46a4812c95f2a44b30644a0125c591, type: 2}
   moveSpeed: 0.1
+  jumpAnimationName: Jump
+  fallAnimationName: Fall
