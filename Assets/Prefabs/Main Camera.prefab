@@ -260,7 +260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 60
   distanceMultiplier: 1
-  minDistance: 15
+  minDistance: 8
   maxDistance: 45
   smoothTime: 0.3
 --- !u!1 &6154942630477481964

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Move State
   m_EditorClassIdentifier: 
   inherit: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
-  OnStartPluggers: []
+  OnStartPluggers:
+  - {fileID: 11400000, guid: 325ca41e465f826419173e8ead9ec8b9, type: 2}
   OnUpdatePluggers: []
   OnExitPluggers: []
   transitions:

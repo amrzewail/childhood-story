@@ -47,7 +47,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   renderer: {fileID: 8850829545420652146}
-  pressDistance: 0.15
+  pressDistance: 0.35
   OnButtonDown:
     m_PersistentCalls:
       m_Calls: []
