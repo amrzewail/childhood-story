@@ -337,7 +337,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _clips:
   - name: teleport
-    clip: {fileID: 8300000, guid: ab20585a575ba7946aeffbfe24d326d4, type: 3}
+    clip: {fileID: 8300000, guid: 5baa97555416bf14b9539c8bd25d21e0, type: 3}
 --- !u!1 &7105193418592117525
 GameObject:
   m_ObjectHideFlags: 0

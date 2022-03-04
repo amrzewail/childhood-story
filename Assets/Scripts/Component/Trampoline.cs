@@ -7,6 +7,7 @@ using UnityEngine.Events;
 public class Trampoline : MonoBehaviour
 {
     [SerializeField] float distance = 100f;
+    [SerializeField] Animator animator;
 
     public UnityEvent OnShoot;
 
@@ -17,6 +18,8 @@ public class Trampoline : MonoBehaviour
         {
             rb.velocity = transform.up * distance / rb.mass;// new Vector3(rb.velocity.x, distance, rb.velocity.z);
             OnShoot?.Invoke();
+
+            animator.Play("Bounce");
         }
     }
 }

@@ -669,6 +669,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473863757067236473}
   - component: {fileID: 6473863757067236357}
+  - component: {fileID: 260356548638059358}
   m_Layer: 0
   m_Name: Trampoline
   m_TagString: Untagged
@@ -709,6 +710,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   distance: 12
+  animator: {fileID: 260356548638059358}
   OnShoot:
     m_PersistentCalls:
       m_Calls:
@@ -724,6 +726,25 @@ MonoBehaviour:
           m_StringArgument: shoot
           m_BoolArgument: 0
         m_CallState: 2
+--- !u!95 &260356548638059358
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6473863757067236354}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 1c7427c0a170a674cb6a4b0f00190fcd, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &6951479757537746239
 GameObject:
   m_ObjectHideFlags: 0
@@ -1015,6 +1036,14 @@ PrefabInstance:
     - target: {fileID: -3887185075125053422, guid: 78d1a171378007246bd3e11337243158, type: 3}
       propertyPath: m_AABB.m_Extent.z
       value: 0.0019999999
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 78d1a171378007246bd3e11337243158, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: -3887185075125053422, guid: 78d1a171378007246bd3e11337243158, type: 3}
+      propertyPath: m_BlendShapeWeights.Array.data[0]
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: 78d1a171378007246bd3e11337243158, type: 3}
       propertyPath: m_Name
