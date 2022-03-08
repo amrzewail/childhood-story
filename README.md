@@ -39,8 +39,8 @@
 * `git merge master` to merge your branch with the master branch (this affects your branch but does not affect master)
 * `git push` to upload your merged changes to the github servers
 
-### Reset your work with main bransh in github
-* `git reset --hard
+### Reset your work with main branch in github
+* `git reset --hard` to reset your project with latest updated in github
 
 
 
