@@ -2365,6 +2365,10 @@ PrefabInstance:
       propertyPath: m_WarningMessage
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4822503937632809087, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+      propertyPath: playerIndex
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6001291292255534944, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
       propertyPath: m_Name
       value: Light
