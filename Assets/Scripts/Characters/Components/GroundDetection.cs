@@ -17,6 +17,7 @@ namespace Characters
         [SerializeField] float _sphereRadius = 0.25f;
         private float _lastGroundHeight = 0;
 
+        [SerializeField] bool _isGrounded;
         [SerializeField] UnityEvent OnGrounded;
         [SerializeField] UnityEvent OnUnGrounded;
 
@@ -32,13 +33,18 @@ namespace Characters
             RaycastHit hit;
             bool lastGrounded = isGrounded;
             isGrounded = Physics.SphereCast(transform.position + Vector3.up * 0.5f, _sphereRadius, Vector3.down, out hit, 0.6f + _extraDistance, _groundLayer, QueryTriggerInteraction.Ignore);
+
+            _isGrounded = isGrounded;
+
+
             if (isGrounded) _lastGroundHeight = transform.position.y;
             else fallHeight = _lastGroundHeight - transform.position.y;
 
             if(!lastGrounded && isGrounded)
             {
                 OnGrounded?.Invoke();
-            }else if(lastGrounded && !isGrounded)
+            }
+            else if(lastGrounded && !isGrounded)
             {
                 OnUnGrounded?.Invoke();
             }
@@ -46,7 +52,7 @@ namespace Characters
 
         private void OnDrawGizmos()
         {
-            Gizmos.DrawLine(transform.position + Vector3.up * 0.5f, transform.position + Vector3.up * 0.5f + Vector3.down * (0.6f + _extraDistance));
+            Gizmos.DrawLine(transform.position + Vector3.up * 0.5f, transform.position + Vector3.up * 0.5f + Vector3.down * (0.6f + _extraDistance + _sphereRadius));
         }
     }
 }
