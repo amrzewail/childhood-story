@@ -6,12 +6,15 @@ using UnityEngine.Events;
 public class LightDetector : MonoBehaviour, ILightDetector
 {
     public bool isOnLight { get; private set; }
-
+    [SerializeField] private bool startingValue;
     private int _lastLight = -1;
 
     public UnityEvent OnLight;
     public UnityEvent OnShadow;
-
+    private void Awake()
+    {
+        isOnLight = startingValue;
+    }
     private void FixedUpdate()
     {
         bool isLight = LightTypeCalculator.IsPositionLighted(transform.position);
