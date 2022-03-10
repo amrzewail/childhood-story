@@ -597,7 +597,7 @@ GameObject:
   - component: {fileID: 94882964}
   - component: {fileID: 94882963}
   - component: {fileID: 94882962}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube (9)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -629,8 +629,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 8.17886}
+  m_Center: {x: 0, y: 0, z: -3.5894299}
 --- !u!23 &94882963
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1611,15 +1611,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: d458773eea9b5514ea94b3928b648b0a, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 146.57
+      value: 158.53
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: d458773eea9b5514ea94b3928b648b0a, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.405
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: d458773eea9b5514ea94b3928b648b0a, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -69.56
+      value: -69.13
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: d458773eea9b5514ea94b3928b648b0a, type: 3}
       propertyPath: m_LocalRotation.w
@@ -6747,15 +6747,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 162.91
+      value: 160.07
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.032
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -63.75
+      value: -69.22
       objectReference: {fileID: 0}
     - target: {fileID: 3363965681928698968, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
       propertyPath: m_LocalRotation.w
