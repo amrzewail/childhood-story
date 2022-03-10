@@ -8,8 +8,8 @@ public class LevelController : MonoBehaviour
     [SerializeField] [RequireInterface(typeof(IActor))] Object _darkPlayer;
     [SerializeField] [RequireInterface(typeof(IActor))] Object _lightPlayer;
 
-    [SerializeField] Transform darkPlayerRespawnPoint;
-    [SerializeField] Transform lightPlayerRespawnPoint;
+    //[SerializeField] Transform darkPlayerRespawnPoint;
+    //[SerializeField] Transform lightPlayerRespawnPoint;
 
 
     public IActor darkPlayer => (IActor)_darkPlayer;
@@ -21,12 +21,13 @@ public class LevelController : MonoBehaviour
     {
         if (darkPlayer.GetActorComponent<ILightDetector>(0).isOnLight == true)
         {
-            darkPlayer.transform.position = darkPlayerRespawnPoint.position;
+            darkPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(0);
         }
 
         if (lightPlayer.GetActorComponent<ILightDetector>(0).isOnLight == false)
         {
-            lightPlayer.transform.position = lightPlayerRespawnPoint.position;
+            lightPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(1);
+
         }
     }
 }

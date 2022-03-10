@@ -30,6 +30,11 @@ public class CameraController : MonoBehaviour, ICamera
         targets = new List<ICameraTarget>();
     }
 
+    void FixedUpdate()
+    {
+        Move();
+    }
+
     void LateUpdate()
     {
         if (targets.Count == 0)

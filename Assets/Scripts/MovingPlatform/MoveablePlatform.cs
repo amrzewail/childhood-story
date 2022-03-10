@@ -44,7 +44,10 @@ public class MoveablePlatform : MonoBehaviour
     public void StopMoving()
     {
         isMoving = false;
-        pRigid.velocity = Vector3.zero;
+        if(pRigid)
+        {
+            pRigid.velocity = Vector3.zero;
+        }
     }
     
 
