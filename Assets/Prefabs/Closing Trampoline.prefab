@@ -27,8 +27,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1515062446024811619}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.04, z: 0}
-  m_LocalScale: {x: 5, y: 1, z: 5}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 4, y: 1, z: 4}
   m_Children: []
   m_Father: {fileID: 2483198862759525253}
   m_RootOrder: 4
@@ -110,33 +110,17 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 1612259804175144668, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1612259804175144668, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 2080708129877986371, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
       propertyPath: m_RootOrder
       value: 5
       objectReference: {fileID: 0}
-    - target: {fileID: 2868114625512671973, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
+    - target: {fileID: 2786947530895404057, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2868114625512671973, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2868114625512671973, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 50
-      objectReference: {fileID: 0}
-    - target: {fileID: 2868114625512671973, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 100
+      propertyPath: m_RootOrder
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3889877524460653613, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
       propertyPath: m_RootOrder
@@ -161,14 +145,6 @@ PrefabInstance:
     - target: {fileID: 6473863756603052125, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
       propertyPath: m_LocalScale.z
       value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473863756924619289, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 6473863756924619289, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0.5
       objectReference: {fileID: 0}
     - target: {fileID: 6473863757067236354, guid: 4ea98c27d6929f64fbe3c23e53e2ab91, type: 3}
       propertyPath: m_Name
