@@ -5,12 +5,14 @@ using UnityEngine;
 public class Pushable : MonoBehaviour,IPushable
 {
     [SerializeField] private Transform sidescontroller;
+    [SerializeField]private GameObject holdingpoint;
+    [SerializeField]private GameObject actor;
+
     private Transform[] transform_sides;
     private float[] distance;
-    [SerializeField]private Transform holdingpoint;
-    [SerializeField]private Transform actor;
     private float mindistance;
     private int indexmindistance;
+    private IDictionary<string, object> data;
     void Start()
     {
         transform_sides = new Transform[4];
@@ -24,30 +26,28 @@ public class Pushable : MonoBehaviour,IPushable
     }
     void Update()
     {
+
         for (int i = 0; i < transform_sides.Length; i++)
         {
-            distance[i] = Vector3.Distance(transform_sides[i].position, holdingpoint.position);
+            distance[i] = Vector3.Distance(transform_sides[i].position, holdingpoint.transform.position);
             Debug.Log("index  " + i + "   " + distance[i]);
         }
 
         mindistance = Mathf.Min(distance);
         indexmindistance=System.Array.IndexOf(distance, mindistance);
-
     }
 
     public void StartPush(IDictionary<string, object> data)
     {
-        actor.LookAt(transform_sides[indexmindistance]);
+        actor.transform.LookAt(transform_sides[indexmindistance]);
+        gameObject.GetComponent<FixedJoint>().connectedBody = actor.GetComponent<Rigidbody>();
+        
     }
 
     public void StopPush(IDictionary<string, object> data)
     {
-        throw new System.NotImplementedException();
+        actor.transform.LookAt(null);
+        this.GetComponent<FixedJoint>().connectedBody = null;
     }
-
-    // Start is called before the first frame update
-
-
-    // Update is called once per frame
 
 }

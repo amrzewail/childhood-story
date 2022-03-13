@@ -337,6 +337,7 @@ GameObject:
   - component: {fileID: 69608142}
   - component: {fileID: 69608146}
   - component: {fileID: 69608147}
+  - component: {fileID: 69608148}
   m_Layer: 0
   m_Name: Box
   m_TagString: Untagged
@@ -431,8 +432,8 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1000
   m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_AngularDrag: 0
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 116
@@ -449,6 +450,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8478d04d7c53b1442be3a3b6ac739276, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sidescontroller: {fileID: 1317446198}
+  holdingpoint: {fileID: 1813691026}
+  actor: {fileID: 1809945103}
+--- !u!138 &69608148
+FixedJoint:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 69608141}
+  m_ConnectedBody: {fileID: 0}
+  m_ConnectedArticulationBody: {fileID: 0}
+  m_BreakForce: Infinity
+  m_BreakTorque: Infinity
+  m_EnableCollision: 0
+  m_EnablePreprocessing: 1
+  m_MassScale: 1
+  m_ConnectedMassScale: 1
 --- !u!4 &75880118 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 110542033183382472, guid: 48c04ff7350777244902f71e899f11e0, type: 3}
@@ -3702,7 +3721,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1.2, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: 0, y: 0, z: 0.21}
 --- !u!114 &902958630
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8405,8 +8424,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1809945103}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 140.022, y: 0.5, z: -70.632}
-  m_LocalScale: {x: 0.25, y: 1.5, z: 0.25}
+  m_LocalPosition: {x: 140.022, y: 0.737, z: -70.632}
+  m_LocalScale: {x: 0.8, y: 1.5, z: 1}
   m_Children:
   - {fileID: 902958628}
   m_Father: {fileID: 0}
@@ -8465,7 +8484,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1813691026}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0.336, z: -0.203}
+  m_LocalPosition: {x: 0, y: 0.08, z: -0.076}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 902958628}
