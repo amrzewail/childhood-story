@@ -17,6 +17,7 @@ public class Interactor : MonoBehaviour, IInteractor
         if (Input.GetKeyDown(KeyCode.E))
         {
             //currentInteractable.Interact(new Dictionary<string, object>() { { "player", "this is player" } }
+            Debug.Log("HELL WORLD");
 
         }
 
