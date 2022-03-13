@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Pushable : MonoBehaviour,IPushable
 {
-    [SerializeField] private Transform sidescontroller;
+    [SerializeField]private Transform sidescontroller;
     [SerializeField]private GameObject holdingpoint;
     [SerializeField]private GameObject actor;
 
@@ -49,5 +49,6 @@ public class Pushable : MonoBehaviour,IPushable
         actor.transform.LookAt(null);
         this.GetComponent<FixedJoint>().connectedBody = null;
     }
+    
 
 }
