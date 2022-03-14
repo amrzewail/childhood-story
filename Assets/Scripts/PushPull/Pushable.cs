@@ -13,6 +13,8 @@ public class Pushable : MonoBehaviour,IPushable
     private float mindistance;
     private int indexmindistance;
     private IDictionary<string, object> data;
+    private Vector3 differenceOffeset;
+    private bool ispush=false;
     void Start()
     {
         transform_sides = new Transform[4];
@@ -22,32 +24,48 @@ public class Pushable : MonoBehaviour,IPushable
         }
         distance = new float[4];
 
-
     }
-    void Update()
+
+    void LateUpdate()
     {
-
-        for (int i = 0; i < transform_sides.Length; i++)
+        //transform_sides[0].position = holdingpoint.transform.position;
+        if(ispush)
         {
-            distance[i] = Vector3.Distance(transform_sides[i].position, holdingpoint.transform.position);
-            Debug.Log("index  " + i + "   " + distance[i]);
+            differenceOffeset = holdingpoint.transform.position-transform_sides[indexmindistance].position;
+            this.gameObject.transform.position += differenceOffeset;
         }
-
-        mindistance = Mathf.Min(distance);
-        indexmindistance=System.Array.IndexOf(distance, mindistance);
+        //transform_sides[0].localPosition = transformside1;
     }
 
     public void StartPush(IDictionary<string, object> data)
     {
-        actor.transform.LookAt(transform_sides[indexmindistance]);
-        gameObject.GetComponent<FixedJoint>().connectedBody = actor.GetComponent<Rigidbody>();
-        
-    }
 
+        ispush = true;
+        for (int i = 0; i < transform_sides.Length; i++)
+        {
+            distance[i] = Vector3.Distance(transform_sides[i].position, holdingpoint.transform.position);
+            //Debug.Log("index  " + i + "   " + distance[i]);
+        }
+
+        mindistance = Mathf.Min(distance);
+        indexmindistance = System.Array.IndexOf(distance, mindistance);
+        actor.transform.eulerAngles = transform_sides[indexmindistance].eulerAngles; 
+        differenceOffeset = transform_sides[indexmindistance].position - holdingpoint.transform.position;
+        actor.transform.position += differenceOffeset;
+        //var actorEuler = actor.transform.eulerAngles;
+        //actor.transform.LookAt(transform_sides[indexmindistance]);
+        //actor.transform.eulerAngles = new Vector3(actorEuler.x, actor.transform.eulerAngles.y,actorEuler.z);
+
+        //actorEuler.y = actor.transform.eulerAngles.y;
+        //actor.transform.eulerAngles = actorEuler;
+
+
+    }
     public void StopPush(IDictionary<string, object> data)
     {
-        actor.transform.LookAt(null);
-        this.GetComponent<FixedJoint>().connectedBody = null;
+        ispush = false;
+        //actor.transform.LookAt(null);
+        //this.GetComponent<FixedJoint>().connectedBody = null;
     }
     
 

@@ -13,16 +13,7 @@ public class Pusher : MonoBehaviour,IPusher
         if (_ispushing) return currentpushable;
         return availablepushable;
     }
-    private void CheckForPushing()
-    {
-        if (availablepushable == null) { return; }
 
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //currentInteractable.Interact(new Dictionary<string, object>() { { "player", "this is player" } }
-        }
-
-    }
     public void StartPush(IDictionary<string, object> data)
     {
         if (availablepushable == null) return;
@@ -35,6 +26,8 @@ public class Pusher : MonoBehaviour,IPusher
     public void StopPush(IDictionary<string, object> data)
     {
         _ispushing = false;
+        currentpushable.StopPush(data);
+        currentpushable = null;
     }
     private void OnTriggerEnter(Collider other)
     {
