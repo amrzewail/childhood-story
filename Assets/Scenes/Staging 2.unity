@@ -6834,6 +6834,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   actor: {fileID: 1796669988}
   DarkLightDectector: {fileID: 1639519356}
+  abilityTime: 5
+  cooldown: 5
 --- !u!1 &1603833687 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1515062446024811619, guid: a920b653379f9f54aa465f8656a30512, type: 3}
