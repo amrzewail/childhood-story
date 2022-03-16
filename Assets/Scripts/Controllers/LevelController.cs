@@ -17,7 +17,7 @@ public class LevelController : MonoBehaviour
 
 
     // Update is called once per frame
-    void UpdateF()
+    void Update()
     {
         if (darkPlayer.GetActorComponent<ILightDetector>(0).isOnLight == true)
         {
