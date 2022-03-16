@@ -49,4 +49,8 @@ public class LegacyInput : MonoBehaviour, IInput
         return false;
     }
 
+    public bool IsKeyUp(string key)
+    {
+        throw new System.NotImplementedException();
+    }
 }

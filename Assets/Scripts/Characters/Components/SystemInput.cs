@@ -37,6 +37,10 @@ public class SystemInput : MonoBehaviour
         {
             InputEvents.instance.OnInteract?.Invoke(_inputIndex);
         }
+        else
+        {
+            InputEvents.instance.OnInteractUp?.Invoke(_inputIndex);
+        }
     }
     public void OnAbility(InputAction.CallbackContext context)
     {

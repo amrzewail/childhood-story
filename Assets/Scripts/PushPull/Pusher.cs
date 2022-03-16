@@ -4,10 +4,13 @@ using UnityEngine;
 
 public class Pusher : MonoBehaviour,IPusher
 {
+    [SerializeField] Transform HoldPoint;
     private IPushable availablepushable = null;
-
     private IPushable currentpushable = null;
     private bool _ispushing = false;
+
+    public Transform holdingPoint => HoldPoint;
+
     public IPushable GetPushable()
     {
         if (_ispushing) return currentpushable;

@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55e3d75a4538ee649905196ea28877b2, type: 3}
+  m_Name: PushPull State
+  m_EditorClassIdentifier: 
+  inherit: {fileID: 0}
+  OnStartPluggers: []
+  OnUpdatePluggers: []
+  OnExitPluggers: []
+  transitions:
+  - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
+    transition: {fileID: 11400000, guid: 6ba569ae444d29d4cb09daee5db4e305, type: 2}
+  moveSpeed: 5

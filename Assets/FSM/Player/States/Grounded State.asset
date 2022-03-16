@@ -23,3 +23,5 @@ MonoBehaviour:
     transition: {fileID: 11400000, guid: 2b90066f7b195c642b5c85bdf2d83fc0, type: 2}
   - newState: {fileID: 11400000, guid: 52ec077bfbba8c64892becb9f5bd77fe, type: 2}
     transition: {fileID: 11400000, guid: 62299a9c460416647ba1d190accc11ab, type: 2}
+  - newState: {fileID: 11400000, guid: 5ec5ff49257bc734191b81b007dca992, type: 2}
+    transition: {fileID: 11400000, guid: d147fcef28f70014bbf7ecd94bb5e852, type: 2}

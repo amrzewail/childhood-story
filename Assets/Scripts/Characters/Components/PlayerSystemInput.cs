@@ -16,17 +16,24 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     private bool _isAbility = false;
     private bool _isShoot = false;
 
+    private bool _isInteractUp = false;
+    private bool _isAbilityUp = false;
+    private bool _isShootUp = false;
 
     internal void Start()
     {
         InputEvents.instance.OnMove += MoveCallback;
         InputEvents.instance.OnInteract += InteractCallback;
+        InputEvents.instance.OnInteractUp += InteractUpCallback;
         InputEvents.instance.OnAbility += AbilityCallback;
         InputEvents.instance.OnShoot += ShootCallback;
-
     }
     internal void LateUpdate()
     {
+        _isInteractUp = false;
+        _isAbilityUp = false;
+        _isShootUp = false;
+
         _isInteract = false;
         _isAbility = false;
         _isShoot = false;
@@ -60,6 +67,13 @@ public class PlayerSystemInput : MonoBehaviour, IInput
             _isInteract = true;
         }
     }
+    private void InteractUpCallback(int index)
+    {
+        if (index == inputIndex)
+        {
+            _isInteractUp = true;
+        }
+    }
     private void AbilityCallback(int index)
     {
         if (index == inputIndex)
@@ -87,4 +101,14 @@ public class PlayerSystemInput : MonoBehaviour, IInput
         return false;
     }
 
+    public bool IsKeyUp(string key)
+    {
+        switch (key)
+        {
+            case "interact": return _isInteractUp;
+            //ability
+            //shoot
+        }
+        return false;
+    }
 }
