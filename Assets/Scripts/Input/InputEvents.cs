@@ -13,6 +13,7 @@ public class InputEvents : Singleton<InputEvents>
     public Action<int> OnInteract;
 
     public Action<int> OnAbility;
+    public Action<int> OnDash;
 
     public Action<int> OnShoot;
 

@@ -16,6 +16,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private bool _isInteract = false;
     private bool _isAbility = false;
+    private bool _isDash = false;
     private bool _isShoot = false;
 
 
@@ -25,6 +26,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
         InputEvents.instance.OnAim += AimCallback;
         InputEvents.instance.OnInteract += InteractCallback;
         InputEvents.instance.OnAbility += AbilityCallback;
+        InputEvents.instance.OnDash += DashCallback;
         InputEvents.instance.OnShoot += ShootCallback;
 
     }
@@ -32,6 +34,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     {
         _isInteract = false;
         _isAbility = false;
+        _isDash = false;
         _isShoot = false;
 
     }
@@ -77,6 +80,15 @@ public class PlayerSystemInput : MonoBehaviour, IInput
             _isInteract = true;
         }
     }
+
+    private void DashCallback(int index)
+    {
+        if(index == inputIndex)
+        {
+            _isDash = true;
+        }
+    }
+
     private void AbilityCallback(int index)
     {
         if (index == inputIndex)
@@ -98,6 +110,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
         {
             case "interact": return _isInteract;
             case "ability": return _isAbility;
+            case "dash": return _isDash;
             case "shoot": return _isShoot;
 
         }

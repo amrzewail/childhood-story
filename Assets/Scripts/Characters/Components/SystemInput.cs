@@ -40,6 +40,15 @@ public class SystemInput : MonoBehaviour
             InputEvents.instance.OnInteract?.Invoke(_inputIndex);
         }
     }
+
+    public void OnDash(InputAction.CallbackContext context)
+    {
+        if (context.performed)
+        {
+            InputEvents.instance.OnDash?.Invoke(_inputIndex);
+        }
+    }
+
     public void OnAbility(InputAction.CallbackContext context)
     {
         if (context.performed)
