@@ -13,6 +13,9 @@ GameObject:
   - component: {fileID: 4807050002280068210}
   - component: {fileID: 4432681185117291038}
   - component: {fileID: -3962598819879777354}
+  - component: {fileID: 92383816953403223}
+  - component: {fileID: 668206796746740722}
+  - component: {fileID: 3601105512590257163}
   m_Layer: 0
   m_Name: Bullet
   m_TagString: Untagged
@@ -110,3 +113,61 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 10
   destroyAfter: 5
+--- !u!114 &92383816953403223
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470835343501773145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08a4204c3bf778040b53d2203d8097be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _groups: 01000000
+  _amount: 1
+--- !u!114 &668206796746740722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470835343501773145}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d30cb8b5827233541867709b2365eb58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _damage: {fileID: 92383816953403223}
+  OnDamage:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -3962598819879777354}
+        m_TargetAssemblyTypeName: Bullet, Assembly-CSharp
+        m_MethodName: DestroyNow
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!54 &3601105512590257163
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7470835343501773145}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0

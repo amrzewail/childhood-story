@@ -24,6 +24,11 @@ public class Bullet : MonoBehaviour, IBullet
         Shoot(target.transform.position);
     }
 
+    public void DestroyNow()
+    {
+        Destroy(this.gameObject);
+    }
+
     private void Update()
     {
         transform.position += (_direction * speed * Time.deltaTime);

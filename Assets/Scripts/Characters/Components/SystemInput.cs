@@ -63,7 +63,6 @@ public class SystemInput : MonoBehaviour
             {
                 InputEvents.instance.OnAim?.Invoke(_inputIndex, value);
             }
-            Debug.Log($"mouse value x:{value.x} y:{value.y} mag:{value.magnitude}");
         }
         else
         {
