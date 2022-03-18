@@ -9,16 +9,16 @@ public class DarkDashAbility : MonoBehaviour, IAbility
 {
     private bool _canPerform = true;
     private bool _isComplete = true;
-    private bool _obstacleAhead = false;
+    private bool _obstacleAhead = false;//?
     private float _allowedDistance = 0;
-    private LayerMask _mask;
+    private LayerMask _mask;//?
 
 
     [SerializeField] float time = 0.5f;
     [SerializeField] float distance = 1f;
     [SerializeField] float cooldown = 1f;
-    [SerializeField] [RequireInterface(typeof(IActor))] Object _actor;
-    [SerializeField] List<Collider> colliders;
+    [SerializeField] [RequireInterface(typeof(IActor))] Object _actor;//?
+    [SerializeField] List<Collider> colliders;//?
     [SerializeField] Rigidbody rigidBody;
     [SerializeField] GameObject effect;
     [SerializeField] GameObject effectUp;

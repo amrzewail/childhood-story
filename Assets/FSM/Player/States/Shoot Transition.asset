@@ -10,8 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1e53393b8d515f943a316c6d73ccb30f, type: 3}
-  m_Name: Input Key Transition
+  m_Name: Shoot Transition
   m_EditorClassIdentifier: 
   negative: 0
   probability: 1
   probabilityCheckCooldown: 0
+  key: shoot
+  pressType: 1

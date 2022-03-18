@@ -12,6 +12,8 @@ public class SystemInput : MonoBehaviour
 
     internal void Start()
     {
+        Cursor.lockState = CursorLockMode.Locked;
+
         _inputIndex = GetComponent<PlayerInput>().playerIndex;
         DontDestroyOnLoad(this.gameObject);
 
@@ -51,6 +53,22 @@ public class SystemInput : MonoBehaviour
         {
             InputEvents.instance.OnShoot?.Invoke(_inputIndex);
         }
+    }
+    public void OnAim(InputAction.CallbackContext context)
+    {
+        Vector2 value = context.ReadValue<Vector2>();
+        if (context.control.device.deviceId == Mouse.current.deviceId)
+        {
+            if(value.magnitude > 5)
+            {
+                InputEvents.instance.OnAim?.Invoke(_inputIndex, value);
+            }
+        }
+        else
+        {
+            InputEvents.instance.OnAim?.Invoke(_inputIndex, value);
+        }
+
     }
 
     private void ClearInputCallback(int index)
