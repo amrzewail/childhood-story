@@ -5141,7 +5141,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1269384487}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -6832,7 +6832,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e56a9ca3725c34a8f08723f19cd889, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  actor: {fileID: 1796669988}
+  cloud: {fileID: 1269384487}
   DarkLightDectector: {fileID: 1639519356}
   abilityTime: 5
   cooldown: 5
@@ -7955,7 +7955,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3363965681928698967, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
   m_PrefabInstance: {fileID: 1589048493}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1796669988}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: cde4b8e21e2dc7b4ebfbaa59e718cdb4, type: 3}
@@ -8069,11 +8069,6 @@ Transform:
   m_Father: {fileID: 1184192603}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &1796669988 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 3363965681928698972, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
-  m_PrefabInstance: {fileID: 1589048493}
-  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1796669992 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 3363965681928698968, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}

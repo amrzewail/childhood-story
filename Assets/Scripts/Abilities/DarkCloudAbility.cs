@@ -8,7 +8,7 @@ public class DarkCloudAbility : MonoBehaviour, IAbility
     private bool canPerform = true;
     //this is property isComplete
     private bool isComplete = true;
-    public GameObject actor;
+    [SerializeField] private GameObject cloud;
     public LightDetector DarkLightDectector;
     [SerializeField] private float abilityTime;
     [SerializeField] private float cooldown;
@@ -44,6 +44,7 @@ public class DarkCloudAbility : MonoBehaviour, IAbility
 
     IEnumerator StartAbility()
     {
+        cloud.SetActive(true);
         canPerform = false;
         isComplete = true;
 
@@ -56,8 +57,8 @@ public class DarkCloudAbility : MonoBehaviour, IAbility
         //This is a cooldown for the ability
         yield return new WaitForSeconds(abilityTime);
         DarkLightDectector.enabled = true;
+        cloud.SetActive(false);
 
-        
         yield return new WaitForSeconds(cooldown);
         Debug.Log("Ability is available");
 
