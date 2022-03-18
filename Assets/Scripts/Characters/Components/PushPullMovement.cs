@@ -9,7 +9,7 @@ namespace Characters
         [SerializeField]
         private Rigidbody _rigidBody;
 
-        [SerializeField] float maxAirSpeed = 5;
+        [SerializeField] float maxPushSpeed = 1;
 
         private bool _isEnabled = true;
 
@@ -30,7 +30,7 @@ namespace Characters
                 _rigidBody.AddForce(_moveDirection * _rigidBody.mass, ForceMode.VelocityChange);
                 Vector3 v = _rigidBody.velocity;
                 v.y = 0;
-                v = Vector3.ClampMagnitude(v, maxAirSpeed);
+                v = Vector3.ClampMagnitude(v, maxPushSpeed);
                 _rigidBody.velocity = new Vector3(v.x, _rigidBody.velocity.y, v.z);
 
             }
@@ -44,7 +44,15 @@ namespace Characters
         public void Move(Vector3 direction, float speed)
         {
             _isMoving = true;
-            _moveDirection = new Vector3(direction.x, 0, direction.y) * speed;
+
+            var actorForward = transform.forward;
+            actorForward.y = 0;
+
+            var speedFactor = Vector3.Dot(actorForward, new Vector3(direction.x, 0, direction.y));
+
+
+
+            _moveDirection = actorForward * speed * speedFactor;
         }
 
         public void Rotate(Vector3 direction)

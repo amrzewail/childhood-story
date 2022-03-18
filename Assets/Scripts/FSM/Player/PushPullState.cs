@@ -15,7 +15,7 @@ namespace FiniteStateMachine.Player
         private IInput _input;
         private IMover _mover;
         private IPusher pusher;
-        private Vector3 actorForward;
+
         public float moveSpeed = 5;
 
         public override bool StartState(Dictionary<string, object> data)
@@ -24,21 +24,19 @@ namespace FiniteStateMachine.Player
             _input = _actor.GetActorComponent<IInput>(0);
             _mover = _actor.GetActorComponent<IMover>(2);
             pusher = _actor.GetActorComponent<IPusher>(0);
-            actorForward = _actor.transform.forward;
-            actorForward.y = actorForward.z;
+
             pusher.StartPush(data);
             return true;
         }
 
         public override void UpdateState(Dictionary<string, object> data)
         {
-            var SpeedFactor =  Vector2.Dot(actorForward, _input.axis);
-            Debug.Log(SpeedFactor);
-            _mover.Move(actorForward, moveSpeed*SpeedFactor);
+            _mover.Move(_input.axis, moveSpeed);
         }
         public override bool ExitState(Dictionary<string, object> data)
         {
             pusher.StopPush(data);
+            _mover.Stop();
             return true;
         }
     }
