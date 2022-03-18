@@ -16,10 +16,13 @@ public class Trampoline : MonoBehaviour
         Rigidbody rb = col.GetComponent<Rigidbody>();
         if (rb != null)
         {
-            rb.velocity = transform.up * distance / rb.mass;// new Vector3(rb.velocity.x, distance, rb.velocity.z);
-            OnShoot?.Invoke();
+            if (rb.transform.position.y >= transform.position.y - 1)
+            {
+                rb.velocity = transform.up * distance / rb.mass;// new Vector3(rb.velocity.x, distance, rb.velocity.z);
+                OnShoot?.Invoke();
 
-            animator.Play("Bounce");
+                animator.Play("Bounce");
+            }
         }
     }
 }

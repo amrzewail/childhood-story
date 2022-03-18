@@ -100,7 +100,7 @@ public class CameraController : MonoBehaviour, ICamera
         center += centerOffset * Vector3.Distance(transform.position, center) + highestAndLowestOffset * yDiff * heightDiffFactor;
 
         result = center;
-        Debug.Log(Vector3.Distance(targets[0].transform.position, targets[1].transform.position));
+        //Debug.Log(Vector3.Distance(targets[0].transform.position, targets[1].transform.position));
 
         return result;
     }

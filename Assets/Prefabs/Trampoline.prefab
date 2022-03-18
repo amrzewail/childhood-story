@@ -591,7 +591,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6473863756924619289}
   - component: {fileID: 6473863756924619288}
-  - component: {fileID: 759012156386912061}
+  - component: {fileID: 2926981530916977503}
   m_Layer: 0
   m_Name: Trigger
   m_TagString: Untagged
@@ -646,8 +646,8 @@ MonoBehaviour:
   triggerExit:
     m_PersistentCalls:
       m_Calls: []
---- !u!65 &759012156386912061
-BoxCollider:
+--- !u!135 &2926981530916977503
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -657,8 +657,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 8, y: 0.5, z: 8}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 2.4
+  m_Center: {x: 0, y: -1.5, z: 0}
 --- !u!1 &6473863757067236354
 GameObject:
   m_ObjectHideFlags: 0
