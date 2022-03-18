@@ -8,6 +8,8 @@ public class InputEvents : Singleton<InputEvents>
 
     public Action<int, Vector2> OnMove;
 
+    public Action<int, Vector2> OnAim;
+
     public Action<int> OnInteract;
 
     public Action<int> OnAbility;

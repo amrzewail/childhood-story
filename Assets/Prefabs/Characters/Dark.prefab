@@ -27867,6 +27867,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 694690048474919469, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+      propertyPath: m_Color.b
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 694690048474919469, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+      propertyPath: m_Color.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 694690048474919469, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+      propertyPath: m_Color.r
+      value: 0.68242836
+      objectReference: {fileID: 0}
     - target: {fileID: 1624064964925540546, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
       propertyPath: m_Avatar
       value: 
@@ -27950,6 +27962,10 @@ PrefabInstance:
     - target: {fileID: 6001291292255534948, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6200944932741094258, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+      propertyPath: m_RootOrder
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 7139991550001953072, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
       propertyPath: _abilities.Array.size

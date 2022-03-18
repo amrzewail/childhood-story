@@ -12,6 +12,8 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     public Vector2 absAxis { get; private set; }
 
+    public Vector2 aimAxis { get; private set; }
+
     private bool _isInteract = false;
     private bool _isAbility = false;
     private bool _isShoot = false;
@@ -20,6 +22,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     internal void Start()
     {
         InputEvents.instance.OnMove += MoveCallback;
+        InputEvents.instance.OnAim += AimCallback;
         InputEvents.instance.OnInteract += InteractCallback;
         InputEvents.instance.OnAbility += AbilityCallback;
         InputEvents.instance.OnShoot += ShootCallback;
@@ -33,22 +36,36 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     }
 
+    private Vector2 TransformAxis(Vector2 a)
+    {
+        float radians = -Camera.main.transform.eulerAngles.y * Mathf.PI / 180;
+        float cos = Mathf.Cos(radians), sin = Mathf.Sin(radians);
+        var ax = a;
+        ax.x = cos * a.x - sin * a.y;
+        ax.y = cos * a.y + sin * a.x;
+        return ax;
+    }
 
     private void MoveCallback(int index, Vector2 a)
     {
         if(index == inputIndex)
         {
-            axis = a;
-            float radians = -Camera.main.transform.eulerAngles.y * Mathf.PI / 180;
-            float cos = Mathf.Cos(radians), sin = Mathf.Sin(radians);
-            var ax = axis;
-            ax.x = cos * axis.x - sin * axis.y;
-            ax.y = cos * axis.y + sin * axis.x;
-
-            axis = ax;
+            axis = TransformAxis(a);
             if (axis.magnitude != 0)
             {
                 absAxis = axis;
+            }
+        }
+    }
+
+    private void AimCallback(int index, Vector2 a)
+    {
+        if(index == inputIndex)
+        {
+            a = TransformAxis(a);
+            if(a.magnitude != 0)
+            {
+                aimAxis = a;
             }
         }
     }
@@ -71,7 +88,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     {
         if (index == inputIndex)
         {
-            _isAbility = true;
+            _isShoot = true;
         }
     }
 

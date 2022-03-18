@@ -30,6 +30,7 @@ namespace FiniteStateMachine.Player
             switch (pressType)
             {
                 case PressType.Down: return input.IsKeyDown(key);
+                //case PressType.Up: return input.is
             }
             return false;
         }
