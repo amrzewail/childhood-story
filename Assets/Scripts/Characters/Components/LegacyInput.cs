@@ -9,6 +9,7 @@ public class LegacyInput : MonoBehaviour, IInput
 
     public Vector2 absAxis { get; private set; }
 
+    public Vector2 aimAxis => throw new System.NotImplementedException();
 
     private void Update()
     {
@@ -49,4 +50,8 @@ public class LegacyInput : MonoBehaviour, IInput
         return false;
     }
 
+    public bool IsKeyUp(string key)
+    {
+        throw new System.NotImplementedException();
+    }
 }

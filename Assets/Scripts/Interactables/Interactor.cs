@@ -9,18 +9,6 @@ public class Interactor : MonoBehaviour, IInteractor
 
     private bool _isInteracting = false;
 
-
-    private void CheckForInteraction()
-    {
-        if (availableInteractable == null) { return; }
-
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            //currentInteractable.Interact(new Dictionary<string, object>() { { "player", "this is player" } }
-
-        }
-
-    }
     private void OnTriggerEnter(Collider other)
     {
         var interactable = other.GetComponent<IInteractable>();

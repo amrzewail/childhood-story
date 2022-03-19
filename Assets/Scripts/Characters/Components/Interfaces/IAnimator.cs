@@ -17,4 +17,8 @@ public interface IAnimator : IComponent
     public void SetNormalizedTime(int layer, float time);
 
     public string GetCurrentAnimation(int layer);
+
+    public void Pause();
+
+    public void Unpause();
 }

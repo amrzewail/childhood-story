@@ -86,7 +86,19 @@ MonoBehaviour:
     m_ActionId: 3c2b1973-89ad-42e3-8454-460dceee7b4e
     m_ActionName: Player/Movement[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d,/XInputControllerWindows1/leftStick,/XInputControllerWindows/leftStick]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 187568678059115010}
+        m_TargetAssemblyTypeName: SystemInput, Assembly-CSharp
+        m_MethodName: OnDash
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 9da82881-af6e-42f0-9e67-9f9b7d9af269
     m_ActionName: Player/Jump[/Keyboard/space,/XInputControllerWindows1/buttonSouth,/XInputControllerWindows/buttonSouth]
   - m_PersistentCalls:
@@ -137,6 +149,22 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: 08df36f8-fecb-41ad-9ea7-3391539e7e05
     m_ActionName: Player/Shoot[/XInputControllerWindows/rightShoulder,/Mouse/leftButton]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 187568678059115010}
+        m_TargetAssemblyTypeName: SystemInput, Assembly-CSharp
+        m_MethodName: OnAim
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f4429168-db3e-447c-80ac-e33623ee32df
+    m_ActionName: Player/Aim[/Mouse/position]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player

@@ -6686,6 +6686,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dark
       objectReference: {fileID: 0}
+    - target: {fileID: 4133143523995510454, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
+      propertyPath: m_RootOrder
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 4859017622885652894, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 7741190985177402366, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
       propertyPath: m_WarningMessage
       value: 
@@ -9502,6 +9510,18 @@ PrefabInstance:
     - target: {fileID: 2883671787737324456, guid: ac28a9344953b0542bf1265ddb13644d, type: 3}
       propertyPath: m_Name
       value: Player Input Manager
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883671787737324457, guid: ac28a9344953b0542bf1265ddb13644d, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Id
+      value: e7920994-c869-48f1-9311-bad72dee8b1d
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883671787737324457, guid: ac28a9344953b0542bf1265ddb13644d, type: 3}
+      propertyPath: m_JoinAction.m_UseReference
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2883671787737324457, guid: ac28a9344953b0542bf1265ddb13644d, type: 3}
+      propertyPath: m_JoinAction.m_Action.m_Name
+      value: Join
       objectReference: {fileID: 0}
     - target: {fileID: 2883671787737324458, guid: ac28a9344953b0542bf1265ddb13644d, type: 3}
       propertyPath: m_RootOrder
