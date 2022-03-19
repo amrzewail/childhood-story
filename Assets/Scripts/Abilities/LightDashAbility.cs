@@ -12,6 +12,13 @@ public class LightDashAbility : MonoBehaviour, IAbility
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
     [SerializeField] private float cooldown;
+    public GameObject lightningObj;
+    public GameObject speedModeAura;
+
+
+
+
+
     [SerializeField] [RequireInterface(typeof(IMover))] Object _mover;
     public IMover mover => (IMover)_mover;
     [SerializeField] [RequireInterface(typeof(IInput))] Object _input;
@@ -21,6 +28,8 @@ public class LightDashAbility : MonoBehaviour, IAbility
     {
         canPerform = true;
         isComplete = true;
+        lightningObj.SetActive(false);
+        speedModeAura.SetActive(false);
     }
 
     private void Update()
@@ -49,16 +58,21 @@ public class LightDashAbility : MonoBehaviour, IAbility
         isComplete = false;
 
         Debug.Log("Perform new ability!!");
-
+        speedModeAura.SetActive(true);
+        lightningObj.SetActive(true);
         float startTime = Time.time;
         while(Time.time < startTime + dashTime)
         {
+
             mover.Move(input.absAxis,dashSpeed);
             yield return null;
         }
         isComplete = true;
+        yield return new WaitForSeconds(0.24f);
+        lightningObj.SetActive(false);
         //This is a cooldown for the ability
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(cooldown-0.24f);
+        speedModeAura.SetActive(false);
 
         Debug.Log("Ability is available");
 
