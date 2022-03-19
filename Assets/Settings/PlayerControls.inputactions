@@ -15,7 +15,16 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "Jump",
+                    "name": "Aim",
+                    "type": "Value",
+                    "id": "f4429168-db3e-447c-80ac-e33623ee32df",
+                    "expectedControlType": "Vector2",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": true
+                },
+                {
+                    "name": "Dash",
                     "type": "Button",
                     "id": "9da82881-af6e-42f0-9e67-9f9b7d9af269",
                     "expectedControlType": "Button",
@@ -59,18 +68,18 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
-                    "action": "Jump",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
                     "id": "5e07bf01-55b8-4e8c-a9c5-5067a0236f82",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
-                    "action": "Jump",
+                    "action": "Dash",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -132,7 +141,7 @@
                 {
                     "name": "",
                     "id": "cf3ae1f6-9658-4ff0-a163-3c94e4ad3013",
-                    "path": "<Gamepad>/leftStick",
+                    "path": "<XInputController>/leftStick",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -154,7 +163,7 @@
                 {
                     "name": "",
                     "id": "81f8bd54-075e-4eaf-8144-8afa5496074d",
-                    "path": "<Gamepad>/buttonSouth",
+                    "path": "<XInputController>/buttonSouth",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -165,7 +174,7 @@
                 {
                     "name": "",
                     "id": "dee03b36-d35a-41fb-99e8-e6b8bdf3a849",
-                    "path": "<Gamepad>/buttonEast",
+                    "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -176,7 +185,7 @@
                 {
                     "name": "",
                     "id": "5331a983-d62d-4ec1-9e6d-21705133cb1f",
-                    "path": "<Keyboard>/q",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": "Keyboard",
@@ -187,7 +196,7 @@
                 {
                     "name": "",
                     "id": "93b33b4e-539b-492f-892f-45ec55060689",
-                    "path": "<Gamepad>/rightShoulder",
+                    "path": "<XInputController>/rightShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -205,6 +214,28 @@
                     "action": "Shoot",
                     "isComposite": false,
                     "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "a4f2790e-90c8-4468-9dc9-56e32b1c0ef1",
+                    "path": "<XInputController>/rightStick",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Controller",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "586f8aae-3bcf-4e11-b0b1-a06cf1157e74",
+                    "path": "<Mouse>/delta",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "Keyboard",
+                    "action": "Aim",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         }
@@ -216,6 +247,11 @@
             "devices": [
                 {
                     "devicePath": "<Keyboard>",
+                    "isOptional": false,
+                    "isOR": false
+                },
+                {
+                    "devicePath": "<Mouse>",
                     "isOptional": false,
                     "isOR": false
                 }

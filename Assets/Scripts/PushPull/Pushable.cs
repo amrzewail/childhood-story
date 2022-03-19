@@ -3,7 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Pushable : MonoBehaviour,IPushable
+public class Pushable : MonoBehaviour, IPushable
 {
     [SerializeField]private Transform sidescontroller;
     private Transform holdingPoint;
@@ -13,8 +13,12 @@ public class Pushable : MonoBehaviour,IPushable
     private float minDistance;
     private int minDistanceIndex;
     private IDictionary<string, object> data;
-    private Vector3 differenceOffeset;
-    private bool isPushing=false;
+    private Vector3 differenceOffset;
+
+    private bool isPushing = false;
+    private bool canMove = false;
+
+
     void Start()
     {
         
@@ -30,9 +34,30 @@ public class Pushable : MonoBehaviour,IPushable
         //transform_sides[0].position = holdingpoint.transform.position;
         if(isPushing)
         {
-            differenceOffeset = holdingPoint.transform.position-transform_sides[minDistanceIndex].position;
-            this.gameObject.transform.position += differenceOffeset;
-            actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
+            if(canMove)
+            {
+
+                differenceOffset = holdingPoint.transform.position - transform_sides[minDistanceIndex].position;
+                differenceOffset.y = 0;
+                if (differenceOffset.magnitude > 0.05f)
+                {
+                    this.gameObject.transform.position += differenceOffset;
+                }
+                actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
+            }
+            else
+            {
+                actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
+
+                differenceOffset = transform_sides[minDistanceIndex].position - holdingPoint.transform.position;
+                differenceOffset.y = 0;
+                actor.transform.position += differenceOffset * Time.deltaTime * 5;
+
+                if(differenceOffset.magnitude < 0.05f)
+                {
+                    canMove = true;
+                }
+            }
 
         }
         //transform_sides[0].localPosition = transformside1;
@@ -55,22 +80,26 @@ public class Pushable : MonoBehaviour,IPushable
             }
         }
 
-        actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles; 
-        differenceOffeset = transform_sides[minDistanceIndex].position - holdingPoint.transform.position;
-        actor.transform.position += differenceOffeset;
+        actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
 
         isPushing = true;
+        canMove = false;
     }
 
 
     public void StopPush(IDictionary<string, object> data)
     {
         isPushing = false;
-
+        canMove = false;
     }
 
     public bool CanPush()
     {
         return !isPushing;
+    }
+
+    public bool CanMove()
+    {
+        return canMove;
     }
 }

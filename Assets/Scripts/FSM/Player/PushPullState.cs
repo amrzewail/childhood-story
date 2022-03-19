@@ -31,7 +31,10 @@ namespace FiniteStateMachine.Player
 
         public override void UpdateState(Dictionary<string, object> data)
         {
-            _mover.Move(_input.axis, moveSpeed);
+            if (pusher.GetPushable().CanMove())
+            {
+                _mover.Move(_input.axis, moveSpeed);
+            }
         }
         public override bool ExitState(Dictionary<string, object> data)
         {

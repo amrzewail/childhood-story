@@ -260,8 +260,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   angle: 60
   distanceMultiplier: 1
-  minDistance: 8
-  maxDistance: 45
+  minDistance: 10
+  maxDistance: 20
+  centerOffset: {x: 0, y: 0, z: 0}
+  heightDiffFactor: 0.03
+  zDiffFactor: 0.04
+  xDiffFactor: 0.04
   smoothTime: 0.3
 --- !u!1 &6154942630477481964
 GameObject:

@@ -15,5 +15,5 @@ MonoBehaviour:
   negative: 0
   probability: 1
   probabilityCheckCooldown: 0
-  abilityKey: ability
+  abilityKey: dash
   abilityIndex: 0
