@@ -81,6 +81,16 @@ namespace Characters
             return _layers[layer].currentAnimation;
         }
 
+        public void Pause()
+        {
+            _animator.speed = 0;
+        }
+
+        public void Unpause()
+        {
+            _animator.speed = 1;
+        }
+
         public class AnimatorLayer
         {
             private AnimatorStateInfo _stateInfo;

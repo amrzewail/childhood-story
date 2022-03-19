@@ -97,6 +97,9 @@ MonoBehaviour:
   - GUID: c07cf41e-7d0a-4f67-b6a1-dc19dde9468b
     position: {x: 1636, y: -497, z: 0}
     state: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
+  - GUID: 0d99c3d9-7f15-401a-9b7c-bafe313ef0d5
+    position: {x: 1015, y: -593, z: 0}
+    state: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
   transitionNodes:
   - GUID: cb2689d7-7e03-4a40-87fe-46571059fa5e
     position: {x: 311, y: 80, z: 0}
@@ -252,4 +255,7 @@ MonoBehaviour:
     index: 0
   - outputGUID: bb20d029-1d84-463e-ab32-2195537f5917
     inputGUID: c07cf41e-7d0a-4f67-b6a1-dc19dde9468b
+    index: 0
+  - outputGUID: 0d99c3d9-7f15-401a-9b7c-bafe313ef0d5
+    inputGUID: fc192ea1-4d9b-459f-9d3b-6ba0203cc4e9
     index: 0

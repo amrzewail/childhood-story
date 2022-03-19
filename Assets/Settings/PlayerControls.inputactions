@@ -75,7 +75,7 @@
                 {
                     "name": "",
                     "id": "5e07bf01-55b8-4e8c-a9c5-5067a0236f82",
-                    "path": "<XInputController>/buttonSouth",
+                    "path": "<XInputController>/buttonEast",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",
@@ -174,7 +174,7 @@
                 {
                     "name": "",
                     "id": "dee03b36-d35a-41fb-99e8-e6b8bdf3a849",
-                    "path": "<XInputController>/buttonEast",
+                    "path": "<XInputController>/leftShoulder",
                     "interactions": "",
                     "processors": "",
                     "groups": "Controller",

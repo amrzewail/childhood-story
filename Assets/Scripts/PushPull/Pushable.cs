@@ -44,6 +44,7 @@ public class Pushable : MonoBehaviour, IPushable
                     this.gameObject.transform.position += differenceOffset;
                 }
                 actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
+
             }
             else
             {

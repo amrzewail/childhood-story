@@ -12,11 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 55e3d75a4538ee649905196ea28877b2, type: 3}
   m_Name: PushPull State
   m_EditorClassIdentifier: 
-  inherit: {fileID: 0}
+  inherit: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
   transitions:
   - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
     transition: {fileID: 11400000, guid: 6ba569ae444d29d4cb09daee5db4e305, type: 2}
-  moveSpeed: 5
+  moveSpeed: 1
+  pushPoseAnimation: Push Pose
+  pushAnimation: Push
+  pullAnimation: Pull
