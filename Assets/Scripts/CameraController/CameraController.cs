@@ -24,6 +24,7 @@ public class CameraController : MonoBehaviour, ICamera
     public float zDiffFactor = 1;
     public float xDiffFactor = 1;
 
+    private bool _isEnabled = true;
     private float _distanceBetweenPlayers;
 
     private Bound clampBound;
@@ -38,12 +39,16 @@ public class CameraController : MonoBehaviour, ICamera
 
     void FixedUpdate()
     {
+        if (targets.Count == 0 || !_isEnabled)
+        {
+            return;
+        }
         Move();
     }
 
     void LateUpdate()
     {
-        if (targets.Count == 0)
+        if (targets.Count == 0 || !_isEnabled)
         {
             return;
         }
@@ -68,8 +73,8 @@ public class CameraController : MonoBehaviour, ICamera
 
         Vector3 newPosition = centerPoint;
 
-        transform.position = newPosition;
-        //transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
+        //transform.position = newPosition;
+        transform.position = Vector3.SmoothDamp(transform.position, newPosition, ref velocity, smoothTime);
     }
 
             
@@ -193,5 +198,10 @@ public class CameraController : MonoBehaviour, ICamera
     public void RemoveTarget(ICameraTarget target)
     {
         targets.Remove(target);
+    }
+
+    public void Enable(bool enable)
+    {
+        _isEnabled = enable;
     }
 }

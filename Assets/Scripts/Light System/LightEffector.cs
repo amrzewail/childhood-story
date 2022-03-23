@@ -8,6 +8,7 @@ public class LightEffector : MonoBehaviour
 
     public Light light;
     public float rangeRatio = 1;
+    public bool gizmos = false;
 
     internal void Start()
     {
@@ -15,6 +16,24 @@ public class LightEffector : MonoBehaviour
         if (!effectors.Contains(this))
         {
             effectors.Add(this);
+        }
+    }
+
+    internal void OnEnable()
+    {
+        if (effectors == null) return;
+
+        if (!effectors.Contains(this))
+        {
+            effectors.Add(this);
+        }
+    }
+
+    internal void OnDisable()
+    {
+        if (effectors.Contains(this))
+        {
+            effectors.Remove(this);
         }
     }
 
@@ -34,6 +53,7 @@ public class LightEffector : MonoBehaviour
     internal void OnDrawGizmosSelected()
     {
         if (!light) return;
+        if (!gizmos) return;
         Gizmos.DrawWireSphere(light.transform.position, light.range * rangeRatio);
     }
 }

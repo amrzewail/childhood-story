@@ -12,6 +12,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     private bool canInteract, isComplete;
     private Animator anim;
     public UnityEvent OnTriggerLever;
+    public UnityEvent OnLeverReturn;
 
     void Start()
     {
@@ -53,6 +54,12 @@ public class LeverInteractable : MonoBehaviour, IInteractable
         ResetLever();
         
     }
+
+    private IEnumerator DelayCanInteract()
+    {
+        yield return new WaitForSeconds(1);
+        canInteract = true;
+    }
     //private IEnumerator TimeDelay(IDictionary<string, object> data)
     //{
 
@@ -62,8 +69,10 @@ public class LeverInteractable : MonoBehaviour, IInteractable
         if(canInteract == false)
         { 
             this.anim.SetTrigger("Up");
-            canInteract = true;
+            OnLeverReturn?.Invoke();
             StopAllCoroutines();
+
+            StartCoroutine(DelayCanInteract());
         }
     }
     public bool CanInteract() => canInteract;

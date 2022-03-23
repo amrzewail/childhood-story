@@ -36,15 +36,15 @@ MonoBehaviour:
   - GUID: fccc705c-fc07-47d0-b726-8ecdcb1036fc
     position: {x: 1015, y: -183, z: 0}
     state: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
-  - GUID: 5554cfe8-b1e0-4bd8-85e6-2e9a10f8defe
-    position: {x: -104, y: 1069, z: 0}
-    state: {fileID: 11400000, guid: ab87db80c2b39d946b4883f4940162aa, type: 2}
   - GUID: cb48d44b-606f-45fc-b995-72bc82fb20b3
     position: {x: 1012, y: 962, z: 0}
     state: {fileID: 11400000, guid: e208effe4e01ee14a827cc6f52d6d116, type: 2}
   - GUID: fc192ea1-4d9b-459f-9d3b-6ba0203cc4e9
     position: {x: 1015, y: -593, z: 0}
     state: {fileID: 11400000, guid: 5ec5ff49257bc734191b81b007dca992, type: 2}
+  - GUID: 5554cfe8-b1e0-4bd8-85e6-2e9a10f8defe
+    position: {x: -104, y: 1069, z: 0}
+    state: {fileID: 11400000, guid: ab87db80c2b39d946b4883f4940162aa, type: 2}
   shortStateNodes:
   - GUID: 61dd295d-ff28-4eee-80de-3b73fdd12142
     position: {x: 562, y: 69, z: 0}
@@ -100,6 +100,9 @@ MonoBehaviour:
   - GUID: 0d99c3d9-7f15-401a-9b7c-bafe313ef0d5
     position: {x: 1015, y: -593, z: 0}
     state: {fileID: 11400000, guid: f91425c2fdb65224fa2fb12d65ed98d4, type: 2}
+  - GUID: 256bdfb6-23a3-402b-86a7-12feb0a7ab21
+    position: {x: 378, y: 1152, z: 0}
+    state: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
   transitionNodes:
   - GUID: cb2689d7-7e03-4a40-87fe-46571059fa5e
     position: {x: 311, y: 80, z: 0}
@@ -128,9 +131,6 @@ MonoBehaviour:
   - GUID: cd2292a6-49f9-4e29-b167-697360a1050f
     position: {x: 1449, y: 123, z: 0}
     transition: {fileID: 11400000, guid: 62299a9c460416647ba1d190accc11ab, type: 2}
-  - GUID: 878ec459-0bb9-4491-b213-a56c435b8035
-    position: {x: 1424, y: 393, z: 0}
-    transition: {fileID: 11400000, guid: 6b7b73a63957f354bbc8a073beb94179, type: 2}
   - GUID: 3d3b0bb6-69f8-4867-93f6-ccad97d04fc3
     position: {x: 1470, y: -131, z: 0}
     transition: {fileID: 11400000, guid: 2b90066f7b195c642b5c85bdf2d83fc0, type: 2}
@@ -146,6 +146,12 @@ MonoBehaviour:
   - GUID: bb20d029-1d84-463e-ab32-2195537f5917
     position: {x: 1364, y: -497, z: 0}
     transition: {fileID: 11400000, guid: 6ba569ae444d29d4cb09daee5db4e305, type: 2}
+  - GUID: 878ec459-0bb9-4491-b213-a56c435b8035
+    position: {x: 1424, y: 393, z: 0}
+    transition: {fileID: 11400000, guid: 6b7b73a63957f354bbc8a073beb94179, type: 2}
+  - GUID: 79ea9193-a92a-4755-b7ac-b2cf215754ec
+    position: {x: 155, y: 1141, z: 0}
+    transition: {fileID: 11400000, guid: a7cea3429f12596408eb80b581cd74e8, type: 2}
   pluggerNodes:
   - GUID: 5b37f921-af95-4ec2-8690-86020e6cac99
     position: {x: 302, y: -29, z: 0}
@@ -258,4 +264,10 @@ MonoBehaviour:
     index: 0
   - outputGUID: 0d99c3d9-7f15-401a-9b7c-bafe313ef0d5
     inputGUID: fc192ea1-4d9b-459f-9d3b-6ba0203cc4e9
+    index: 0
+  - outputGUID: 5554cfe8-b1e0-4bd8-85e6-2e9a10f8defe
+    inputGUID: 79ea9193-a92a-4755-b7ac-b2cf215754ec
+    index: 0
+  - outputGUID: 79ea9193-a92a-4755-b7ac-b2cf215754ec
+    inputGUID: 256bdfb6-23a3-402b-86a7-12feb0a7ab21
     index: 0

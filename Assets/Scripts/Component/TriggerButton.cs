@@ -22,6 +22,8 @@ public class TriggerButton : MonoBehaviour
     private void Start()
     {
         startPosition = renderer.transform.position;
+
+        OnButtonUp?.Invoke();
     }
 
     public void ButtonDown(Collider col)

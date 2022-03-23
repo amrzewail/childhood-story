@@ -16,5 +16,7 @@ MonoBehaviour:
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
-  transitions: []
+  transitions:
+  - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
+    transition: {fileID: 11400000, guid: a7cea3429f12596408eb80b581cd74e8, type: 2}
   animationName: Dead

@@ -8,6 +8,7 @@ public class CheckPoint : MonoBehaviour
     public bool Activated => ActivatedPlayers.Count > 0;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
     public List<int> ActivatedPlayers = new List<int>();
+    public int allowPlayerOnly = -1;
     private Transform[] transforms;
 
     void Start()
@@ -44,17 +45,20 @@ public class CheckPoint : MonoBehaviour
     }
     private void ActivateCheckPoint(int playerIndex)
     {
-        // We deactive all checkpoints in the scene
-        foreach (CheckPoint cp in CheckPointsList)
+        if (allowPlayerOnly == -1 || allowPlayerOnly == playerIndex)
         {
-            if(cp.ActivatedPlayers.Contains(playerIndex))
+            // We deactive all checkpoints in the scene
+            foreach (CheckPoint cp in CheckPointsList)
             {
-                cp.ActivatedPlayers.Remove(playerIndex);
+                if (cp.ActivatedPlayers.Contains(playerIndex))
+                {
+                    cp.ActivatedPlayers.Remove(playerIndex);
+                }
             }
-        }
 
-        // We activated the current checkpoint
-        ActivatedPlayers.Add(playerIndex);
+            // We activated the current checkpoint
+            ActivatedPlayers.Add(playerIndex);
+        }
     }
 
 

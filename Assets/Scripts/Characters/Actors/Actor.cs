@@ -63,6 +63,7 @@ namespace Characters
 
         public T GetActorComponent<T>(int index)
         {
+            if (!_componentDict.ContainsKey(typeof(T))) return default(T);
             return (T)_componentDict[typeof(T)][index];
         }
 

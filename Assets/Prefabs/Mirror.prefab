@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 110542033183382472}
   - component: {fileID: 110542033183382485}
   - component: {fileID: 110542033183382473}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Mirror
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -96,6 +96,7 @@ MonoBehaviour:
   particle: {fileID: 7016306247262097781}
   targetMirror: {fileID: 0}
   timedelay: 0.5
+  useRayCast: 0
   OnBegin:
     m_PersistentCalls:
       m_Calls:

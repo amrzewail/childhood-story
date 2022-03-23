@@ -15,19 +15,69 @@ public class LevelController : MonoBehaviour
     public IActor darkPlayer => (IActor)_darkPlayer;
     public IActor lightPlayer => (IActor)_lightPlayer;
 
+    private bool _isDeadDark = false;
+    private bool _isDeadLight = false;
+
 
     // Update is called once per frame
     void Update()
     {
         if (darkPlayer.GetActorComponent<ILightDetector>(0).isOnLight == true)
         {
-            darkPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(0);
+            if (!_isDeadDark)
+            {
+                darkPlayer.GetActorComponent<IActorHealth>(0).Damage(1000);
+            }
         }
 
         if (lightPlayer.GetActorComponent<ILightDetector>(0).isOnLight == false)
         {
-            lightPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(1);
-
+            if (!_isDeadLight)
+            {
+                lightPlayer.GetActorComponent<IActorHealth>(0).Damage(1000);
+            }
         }
+
+        if (darkPlayer.GetActorComponent<IActorHealth>(0).IsDead())
+        {
+            if (!_isDeadDark)
+            {
+                StartCoroutine(RespawnDarkPlayer());
+                _isDeadDark = true;
+            }
+        }
+        if (lightPlayer.GetActorComponent<IActorHealth>(0).IsDead())
+        {
+            if (!_isDeadLight)
+            {
+                StartCoroutine(RespawnLightPlayer());
+                _isDeadLight = true;
+            }
+        }
+    }
+
+    internal IEnumerator RespawnDarkPlayer()
+    {
+        yield return new WaitForSeconds(2);
+
+        darkPlayer.GetActorComponent<IActorHealth>(0).Heal(darkPlayer.GetActorComponent<IActorHealth>(0).GetMaxValue());
+        darkPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(0);
+
+        yield return new WaitForSeconds(Time.deltaTime);
+
+        _isDeadDark = false;
+    }
+
+    internal IEnumerator RespawnLightPlayer()
+    {
+        yield return new WaitForSeconds(2);
+
+        lightPlayer.GetActorComponent<IActorHealth>(0).Heal(lightPlayer.GetActorComponent<IActorHealth>(0).GetMaxValue());
+        lightPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(1);
+
+        yield return new WaitForSeconds(Time.deltaTime);
+
+        _isDeadLight = false;
+
     }
 }
