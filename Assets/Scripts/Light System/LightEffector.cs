@@ -31,6 +31,7 @@ public class LightEffector : MonoBehaviour
 
     internal void OnDisable()
     {
+        if (effectors == null) return;
         if (effectors.Contains(this))
         {
             effectors.Remove(this);

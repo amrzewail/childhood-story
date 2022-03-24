@@ -8,14 +8,15 @@ using UnityEngine.Events;
 public class MirrorInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] private Transform pivot;
+    [SerializeField] private Transform center;
     [SerializeField] private Transform particle;
+    [SerializeField] private Transform particleTrail;
     [SerializeField] private MirrorInteractable targetMirror;
     [SerializeField] private float timedelay;
     [SerializeField] private bool useRayCast;
     [SerializeField] private float raycastDistance = 20;
 
     private float distance;
-    private Vector3 originalPos;
     private bool canInteract, isComplete;
     private MirrorInteractable _targetMirror;
 
@@ -26,13 +27,31 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     {
         canInteract = true;
         isComplete = false;
-        originalPos = particle.localPosition;
     }
     private void Update()
     {
         if (CanInteract() == false && IsComplete() == false && _targetMirror)
         {
-            particle.position = Vector3.MoveTowards(particle.position, _targetMirror.transform.TransformPoint(_targetMirror.originalPos), (distance / timedelay) * Time.deltaTime);
+            particle.position = Vector3.MoveTowards(particle.position, _targetMirror.center.position, (distance / timedelay) * Time.deltaTime);
+        }
+
+        _targetMirror = targetMirror;
+
+        if (useRayCast)
+        {
+            if (RaycastFrontMirror(out MirrorInteractable m))
+            {
+                _targetMirror = m;
+            }
+        }
+        if (_targetMirror)
+        {
+            particleTrail.gameObject.SetActive(true);
+            particleTrail.position = Vector3.Lerp(center.position, _targetMirror.center.position, Mathf.Pow(Mathf.Sin(Time.time * 2), 2));
+        }
+        else
+        {
+            particleTrail.gameObject.SetActive(false);
         }
     }
     public void Interact(IDictionary<string, object> data)
@@ -43,34 +62,19 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 
         if (actor.GetActorComponent<IActorIdentity>(0).characterIdentifier == 0)
         {
-
-
             _targetMirror = targetMirror;
 
             if (useRayCast)
             {
-                if (Physics.Raycast(transform.position + transform.forward * 0.5f + Vector3.up * 1, transform.forward, out RaycastHit hit, raycastDistance, ~(1 << LayerMask.NameToLayer("Character")), QueryTriggerInteraction.Ignore))
+                if(RaycastFrontMirror(out MirrorInteractable m))
                 {
-                    if (hit.transform)
-                    {
-                        if (hit.transform.GetComponent<MirrorInteractable>())
-                        {
-                            if (Vector3.Dot(hit.transform.forward, transform.forward) < 0)
-                            {
-                                _targetMirror = hit.transform.GetComponent<MirrorInteractable>();
-                            }
-                        }
-                        else
-                        {
-                            Debug.Log($"Mirror raycast hit: {hit.transform.name}");
-                        }
-                    }
+                    _targetMirror = m;
                 }
             }
 
             if (pivot == null || _targetMirror == null) { return; }
 
-            particle.localPosition = originalPos;
+            particle.position = center.position;
             isComplete = false;
             canInteract = false;
 
@@ -80,13 +84,36 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         }
     }
 
+    private bool RaycastFrontMirror(out MirrorInteractable m)
+    {
+        if (Physics.Raycast(center.position, transform.forward, out RaycastHit hit, raycastDistance, ~(1 << LayerMask.NameToLayer("Character")), QueryTriggerInteraction.Ignore))
+        {
+            if (hit.transform)
+            {
+                if ((m = hit.transform.GetComponent<MirrorInteractable>()))
+                {
+                    if (Vector3.Dot(hit.transform.forward, transform.forward) < 0)
+                    {
+                        return true;
+                    }
+                }
+                else
+                {
+                    Debug.Log($"Mirror raycast hit: {hit.transform.name}");
+                }
+            }
+        }
+        m = null;
+        return false;
+    }
+
     private IEnumerator TimeDelay(IDictionary<string, object> data)
     {
         IActor actor = (IActor)data["actor"];
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
         particle.gameObject.SetActive(true);
 
-        distance = Vector3.Distance(particle.transform.parent.TransformPoint(originalPos), _targetMirror.transform.position);
+        distance = Vector3.Distance(center.position, _targetMirror.center.position);
 
         OnBegin?.Invoke();
 
@@ -96,7 +123,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         actor.transform.eulerAngles = new Vector3(0, targetMirrorPivotRotation.y, 0);
         isComplete = true;
         canInteract = true;
-        particle.transform.localPosition = originalPos;
+        particle.transform.position = center.position;
         particle.gameObject.SetActive(false);
         actor.transform.position = _targetMirror.pivot.position;
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
@@ -107,12 +134,12 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
     {
         if (useRayCast)
         {
-            Gizmos.DrawLine(transform.position + Vector3.up + transform.forward * 0.5f, transform.position + Vector3.up + transform.forward * raycastDistance);
+            Gizmos.DrawLine(center.position, transform.position + Vector3.up + transform.forward * raycastDistance);
             return;
         }
         if (!targetMirror) return;
         if (!particle) return;
-        Gizmos.DrawLine(particle.position, targetMirror.pivot.position);
+        Gizmos.DrawLine(center.position, targetMirror.pivot.position);
     }
 
     public bool CanInteract() => canInteract;

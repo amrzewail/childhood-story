@@ -75,7 +75,7 @@ public class LevelController : MonoBehaviour
         lightPlayer.GetActorComponent<IActorHealth>(0).Heal(lightPlayer.GetActorComponent<IActorHealth>(0).GetMaxValue());
         lightPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(1);
 
-        yield return new WaitForSeconds(Time.deltaTime);
+        yield return new WaitForSeconds(Time.deltaTime * 2);
 
         _isDeadLight = false;
 
