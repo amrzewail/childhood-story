@@ -34,7 +34,24 @@ namespace Characters
 
         private float _deltaTime = 0;
         private float _lastDeltaTime = 0;
+        //slope movement
+        public float maxSlopeAngle;
+        private RaycastHit slopeHit;
+        private bool OnSlope()
+        {
+            if(Physics.Raycast(transform.position,Vector3.down,out slopeHit, ((CapsuleCollider)_collider).height * 0.5f+0.3f))//Player Height
+            {
+                float angle = Vector3.Angle(Vector3.up, slopeHit.normal);
+                return angle < maxSlopeAngle && angle != 0;
+            }
+            return false;
+        }
 
+        private Vector3 GetSlopeMoveDirection()
+        {
+            var moveDirection = new Vector3(_moveAxis.x, 0, _moveAxis.y).normalized;
+            return Vector3.ProjectOnPlane(moveDirection, slopeHit.normal);//move direction
+        }
         protected void Awake()
         {
             if (_collider is CapsuleCollider) _colliderRadius = ((CapsuleCollider)_collider).radius;
@@ -94,7 +111,6 @@ namespace Characters
         {
             return _rigidBody.velocity.magnitude;
         }
-
         private void Update()
         {
             _deltaTime = Time.deltaTime;
@@ -144,7 +160,6 @@ namespace Characters
                 //velocity.y = Mathf.Clamp(velocity.y, -_speed, _speed);
                 _change = targetVelocity - velocity;
                 _change.y = 0;
-                _rigidBody.AddForce(_change * _friction * _rigidBody.mass, ForceMode.Force);
                 _count++;
                 if (_count >= times)
                 {
@@ -152,10 +167,30 @@ namespace Characters
                     _count = 0;
                 }
 
+               
+                
+                //slope handling
+                if(OnSlope())
+                {
+                    _rigidBody.AddForce(GetSlopeMoveDirection() * targetVelocity.magnitude * 10f,ForceMode.Force);
+
+                    //fix
+                    if (_rigidBody.velocity.y > 0)
+                    { 
+                        _rigidBody.AddForce(Vector3.down * 75f, ForceMode.Force); 
+                    }
+                    
+                }
+                else
+                {
+                    _rigidBody.AddForce(_change * _friction * _rigidBody.mass, ForceMode.Force);
+                }
                 targetVelocity = new Vector3(_rigidBody.velocity.x, 0, _rigidBody.velocity.z);
                 targetVelocity = Vector3.ClampMagnitude(targetVelocity, _speed);
                 targetVelocity.y = _rigidBody.velocity.y;
                 _rigidBody.velocity = targetVelocity;
+
+                _rigidBody.useGravity = !OnSlope();
             }
             else
             {

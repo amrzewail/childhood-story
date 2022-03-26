@@ -708,6 +708,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 98816631}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &98816631
 Light:
   m_ObjectHideFlags: 0
@@ -1184,6 +1185,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 251526742}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &251526742
 Light:
   m_ObjectHideFlags: 0
@@ -1292,6 +1294,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 258322165}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &258322165
 Light:
   m_ObjectHideFlags: 0
@@ -1400,6 +1403,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 287544041}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &287544041
 Light:
   m_ObjectHideFlags: 0
@@ -1696,6 +1700,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 356434092}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &356434092
 Light:
   m_ObjectHideFlags: 0
@@ -1980,6 +1985,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 432022440}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &432022440
 Light:
   m_ObjectHideFlags: 0
@@ -2118,6 +2124,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 495362846}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &495362846
 Light:
   m_ObjectHideFlags: 0
@@ -2226,6 +2233,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 503407351}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &503407351
 Light:
   m_ObjectHideFlags: 0
@@ -2698,6 +2706,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 644593747}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &644593747
 Light:
   m_ObjectHideFlags: 0
@@ -3720,6 +3729,7 @@ GameObject:
   - component: {fileID: 910191434}
   - component: {fileID: 910191433}
   - component: {fileID: 910191432}
+  - component: {fileID: 910191438}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -3739,6 +3749,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fdafc0e101a7ef446b72746717664827, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agent: {fileID: 910191433}
+  _rigidBody: {fileID: 910191438}
 --- !u!195 &910191433
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3834,10 +3846,27 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 147.79, y: 1.0008132, z: -75.27}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1727719076}
   m_Father: {fileID: 0}
   m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!54 &910191438
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 910191431}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 80
+  m_CollisionDetection: 0
 --- !u!1 &929932396
 GameObject:
   m_ObjectHideFlags: 0
@@ -3996,6 +4025,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 954563000}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &954563000
 Light:
   m_ObjectHideFlags: 0
@@ -4230,6 +4260,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1066270527}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1066270527
 Light:
   m_ObjectHideFlags: 0
@@ -4338,6 +4369,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1079855549}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1079855549
 Light:
   m_ObjectHideFlags: 0
@@ -4486,6 +4518,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1126615895}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1126615895
 Light:
   m_ObjectHideFlags: 0
@@ -4594,6 +4627,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1128458692}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1128458692
 Light:
   m_ObjectHideFlags: 0
@@ -4702,6 +4736,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1139635176}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1139635176
 Light:
   m_ObjectHideFlags: 0
@@ -4857,6 +4892,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1216429913}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1216429913
 Light:
   m_ObjectHideFlags: 0
@@ -4965,6 +5001,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1225622095}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1225622095
 Light:
   m_ObjectHideFlags: 0
@@ -5168,6 +5205,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1254819527}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1254819527
 Light:
   m_ObjectHideFlags: 0
@@ -5276,6 +5314,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1255921450}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1255921450
 Light:
   m_ObjectHideFlags: 0
@@ -5384,6 +5423,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1271327664}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1271327664
 Light:
   m_ObjectHideFlags: 0
@@ -5621,6 +5661,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1287371055}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1287371055
 Light:
   m_ObjectHideFlags: 0
@@ -6120,6 +6161,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1389091469}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1389091469
 Light:
   m_ObjectHideFlags: 0
@@ -6228,6 +6270,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1431131845}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1431131845
 Light:
   m_ObjectHideFlags: 0
@@ -6715,6 +6758,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1526835793}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1526835793
 Light:
   m_ObjectHideFlags: 0
@@ -7168,6 +7212,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1614081484}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1614081484
 Light:
   m_ObjectHideFlags: 0
@@ -7688,6 +7733,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1685675968}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1685675968
 Light:
   m_ObjectHideFlags: 0
@@ -7882,6 +7928,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1709865099}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1709865099
 Light:
   m_ObjectHideFlags: 0
@@ -7976,6 +8023,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1711296206}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1711296206
 Light:
   m_ObjectHideFlags: 0
@@ -8052,6 +8100,101 @@ Transform:
   m_Father: {fileID: 1184192603}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
+--- !u!1 &1727719075
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1727719076}
+  - component: {fileID: 1727719079}
+  - component: {fileID: 1727719078}
+  - component: {fileID: 1727719077}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1727719076
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727719075}
+  m_LocalRotation: {x: -0, y: -0.68910784, z: -0, w: 0.72465885}
+  m_LocalPosition: {x: 0, y: 0.33, z: 0.52}
+  m_LocalScale: {x: 1.1649829, y: 0.21084, z: 1}
+  m_Children: []
+  m_Father: {fileID: 910191437}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: -87.119, z: 0}
+--- !u!65 &1727719077
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727719075}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1727719078
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727719075}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 31321ba15b8f8eb4c954353edc038b1d, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1727719079
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1727719075}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!114 &1730608048 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3363965681928698967, guid: 275abcf6f1f548244b12e71be67d5600, type: 3}
@@ -8095,6 +8238,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 1755302058}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &1755302058
 Light:
   m_ObjectHideFlags: 0
@@ -9188,6 +9332,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 2057674112}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &2057674112
 Light:
   m_ObjectHideFlags: 0
@@ -9406,6 +9551,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 2064816214}
   rangeRatio: 1
+  gizmos: 0
 --- !u!108 &2064816214
 Light:
   m_ObjectHideFlags: 0
@@ -9749,6 +9895,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   light: {fileID: 2138677392}
   rangeRatio: 1
+  gizmos: 0
 --- !u!1001 &2883671787504560296
 PrefabInstance:
   m_ObjectHideFlags: 0
