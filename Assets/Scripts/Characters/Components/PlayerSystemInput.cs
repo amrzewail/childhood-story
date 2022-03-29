@@ -8,6 +8,9 @@ using UnityEngine.InputSystem;
 public class PlayerSystemInput : MonoBehaviour, IInput
 {
     [SerializeField] int inputIndex;
+
+    public int playerInputIndex { get => inputIndex; set => inputIndex = value; }
+
     public Vector2 axis { get; private set; }
 
     public Vector2 absAxis { get; private set; }
