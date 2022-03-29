@@ -41,6 +41,6 @@
 
 ### Reset your work with main branch in github
 * `git reset --hard` to reset your project with latest updated in github
-
+* `git clean -fd` to reset what you add by mistake in project
 
 
