@@ -153,12 +153,12 @@ MonoBehaviour:
     position: {x: 155, y: 1141, z: 0}
     transition: {fileID: 11400000, guid: a7cea3429f12596408eb80b581cd74e8, type: 2}
   pluggerNodes:
-  - GUID: 5b37f921-af95-4ec2-8690-86020e6cac99
-    position: {x: 302, y: -29, z: 0}
-    pluggerObj: {fileID: 11400000, guid: 8813d8ffe4f8e2049b175b692cb2456b, type: 2}
   - GUID: 5ece8c15-c564-4e97-a59b-c47a38e905b6
     position: {x: 295, y: 219, z: 0}
     pluggerObj: {fileID: 11400000, guid: 325ca41e465f826419173e8ead9ec8b9, type: 2}
+  - GUID: 5b37f921-af95-4ec2-8690-86020e6cac99
+    position: {x: 302, y: -29, z: 0}
+    pluggerObj: {fileID: 11400000, guid: 8813d8ffe4f8e2049b175b692cb2456b, type: 2}
   stateTransitionLinks:
   - outputGUID: 6f172efb-eae8-4eed-9ce3-f08ae1d1162d
     inputGUID: cb2689d7-7e03-4a40-87fe-46571059fa5e

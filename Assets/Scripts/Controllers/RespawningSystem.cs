@@ -83,9 +83,12 @@ public class RespawningSystem : MonoBehaviour
 
 
         player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
-        yield return null;
+
+        Debug.Log("RespawningSystem::RespawnPlayer");
+        yield return new WaitForSeconds(Time.deltaTime * 10);
+
         player.GetActorComponent<IActorHealth>(0).Heal(player.GetActorComponent<IActorHealth>(0).GetMaxValue());
-        yield return new WaitForSeconds(Time.deltaTime);
+
         _playerState[player] = true;
         OnPlayerRespawn.Invoke(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
     }
