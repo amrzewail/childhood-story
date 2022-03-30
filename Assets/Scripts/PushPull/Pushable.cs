@@ -41,8 +41,9 @@ public class Pushable : MonoBehaviour, IPushable
                 differenceOffset.y = 0;
                 if (differenceOffset.magnitude > 0.05f)
                 {
-                    this.gameObject.transform.position += differenceOffset;
                 }
+                this.gameObject.transform.position += differenceOffset;
+
                 actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
 
             }
@@ -53,6 +54,8 @@ public class Pushable : MonoBehaviour, IPushable
                 differenceOffset = transform_sides[minDistanceIndex].position - holdingPoint.transform.position;
                 differenceOffset.y = 0;
                 actor.transform.position += differenceOffset * Time.deltaTime * 5;
+
+                //Debug.Log(differenceOffset.magnitude);
 
                 if(differenceOffset.magnitude < 0.05f)
                 {

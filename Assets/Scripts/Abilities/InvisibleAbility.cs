@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class InvisibleAbility : MonoBehaviour, IAbility
@@ -9,7 +10,7 @@ public class InvisibleAbility : MonoBehaviour, IAbility
     //this is property isComplete
     private bool isComplete = true;
 
-    private Dictionary<Renderer, Material> _originalMaterials;
+    private Dictionary<Renderer, List<Material>> _originalMaterials;
 
     [SerializeField] [RequireInterface(typeof(ITargetable))] Object _targetable;
     [SerializeField] float abilityDuration = 5;
@@ -25,11 +26,11 @@ public class InvisibleAbility : MonoBehaviour, IAbility
         canPerform = true;
         isComplete = true;
 
-        _originalMaterials = new Dictionary<Renderer, Material>();
+        _originalMaterials = new Dictionary<Renderer, List<Material>>();
 
         foreach(var r in renderers)
         {
-            _originalMaterials.Add(r, r.material);
+            _originalMaterials.Add(r, r.materials.ToList());
         }
     }
 
@@ -63,9 +64,14 @@ public class InvisibleAbility : MonoBehaviour, IAbility
 
         targetable.isTargetable = false;
 
-        foreach(var r in renderers)
+        foreach (var r in renderers)
         {
-            r.material = transparentMaterial;
+            Material[] materials = r.materials;
+            for(int i = 0; i < r.materials.Length; i++)
+            {
+                materials[i] = transparentMaterial;
+            }
+            r.materials = materials;
         }
 
         //This is a cooldown for the ability
@@ -73,10 +79,14 @@ public class InvisibleAbility : MonoBehaviour, IAbility
 
         targetable.isTargetable = true;
 
-
         foreach (var r in renderers)
         {
-            r.material = _originalMaterials[r];
+            Material[] materials = r.materials;
+            for (int i = 0; i < r.materials.Length; i++)
+            {
+                materials[i] = _originalMaterials[r][i];
+            }
+            r.materials = materials;
         }
 
         yield return new WaitForSeconds(abilityCooldown);

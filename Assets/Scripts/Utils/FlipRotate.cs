@@ -19,7 +19,7 @@ public class FlipRotate : MonoBehaviour
     {
         Vector3 euler = transform.eulerAngles;
 
-        euler.y = Mathf.MoveTowardsAngle(euler.y, _targetRotation, rotationSpeed * Time.deltaTime);
+        euler.y = Mathf.MoveTowardsAngle(euler.y, _targetRotation, rotationSpeed * TimeManager.gameDeltaTime);
 
         transform.eulerAngles = euler;
     }
