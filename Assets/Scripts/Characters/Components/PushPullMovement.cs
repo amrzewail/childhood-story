@@ -18,7 +18,7 @@ namespace Characters
 
         private void Awake()
         {
-            _isEnabled = true;
+            _isEnabled = false;
         }
 
         private void FixedUpdate()
@@ -33,6 +33,12 @@ namespace Characters
                 v = Vector3.ClampMagnitude(v, maxPushSpeed);
                 _rigidBody.velocity = new Vector3(v.x, _rigidBody.velocity.y, v.z);
 
+            }
+            else
+            {
+                Vector3 velocity = _rigidBody.velocity;
+                velocity.x = velocity.z = 0;
+                _rigidBody.velocity = velocity;
             }
         }
 
