@@ -38,46 +38,7 @@ public class LevelController : MonoBehaviour
             }
         }
 
-        if (darkPlayer.GetActorComponent<IActorHealth>(0).IsDead())
-        {
-            if (!_isDeadDark)
-            {
-                StartCoroutine(RespawnDarkPlayer());
-                _isDeadDark = true;
-            }
-        }
-        if (lightPlayer.GetActorComponent<IActorHealth>(0).IsDead())
-        {
-            if (!_isDeadLight)
-            {
-                StartCoroutine(RespawnLightPlayer());
-                _isDeadLight = true;
-            }
-        }
     }
 
-    internal IEnumerator RespawnDarkPlayer()
-    {
-        yield return new WaitForSeconds(2);
-
-        darkPlayer.GetActorComponent<IActorHealth>(0).Heal(darkPlayer.GetActorComponent<IActorHealth>(0).GetMaxValue());
-        darkPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(0);
-
-        yield return new WaitForSeconds(Time.deltaTime);
-
-        _isDeadDark = false;
-    }
-
-    internal IEnumerator RespawnLightPlayer()
-    {
-        yield return new WaitForSeconds(2);
-
-        lightPlayer.GetActorComponent<IActorHealth>(0).Heal(lightPlayer.GetActorComponent<IActorHealth>(0).GetMaxValue());
-        lightPlayer.transform.position = CheckPoint.GetActiveCheckPointPosition(1);
-
-        yield return new WaitForSeconds(Time.deltaTime * 2);
-
-        _isDeadLight = false;
-
-    }
 }
+
