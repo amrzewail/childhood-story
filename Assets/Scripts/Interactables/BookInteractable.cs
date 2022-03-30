@@ -22,7 +22,7 @@ public class BookInteractable : MonoBehaviour, IInteractable
         IActor actor = (IActor)data["actor"];
 
 
-        if (actor.GetActorComponent<IActorIdentity>(0).characterIdentifier == 0) // is light ?
+        if (actor.GetActorComponent<IActorIdentity>(0).characterIdentifier == 1) // is light ?
         {
             return;
         }

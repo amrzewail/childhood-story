@@ -60,7 +60,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         isComplete = true;
         canInteract = true;
 
-        if (actor.GetActorComponent<IActorIdentity>(0).characterIdentifier == 0)
+        if (actor.GetActorComponent<IActorIdentity>(0).characterIdentifier == 1)
         {
             _targetMirror = targetMirror;
 
