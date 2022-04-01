@@ -14,7 +14,7 @@ namespace FiniteStateMachine.Enemy
 
         private IActor _actor;
         private IMover _mover;
-        
+        public float chaseSpeed = 5;
 
         public override bool StartState(Dictionary<string, object> data)
         {
@@ -26,7 +26,8 @@ namespace FiniteStateMachine.Enemy
 
         public override void UpdateState(Dictionary<string, object> data)
         {
-            //_mover.Move();
+
+            _mover.Move(_actor.GetActorComponent<ITargeter>(0).GetTarget().targetPosition, chaseSpeed);
         }
     }
 }

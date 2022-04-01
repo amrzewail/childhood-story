@@ -8,4 +8,6 @@ public class Targetable : MonoBehaviour, ITargetable
     public TargetType targetType => _targetType;
 
     public bool isTargetable { get; set; }
+
+    public Vector3 targetPosition => transform.position;
 }

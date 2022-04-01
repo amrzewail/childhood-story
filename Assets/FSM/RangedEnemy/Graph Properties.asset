@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 20bf880cd65400a49bed6c0f91aecd0f, type: 3}
+  m_Name: Graph Properties
+  m_EditorClassIdentifier: 
+  _startState: {fileID: 0}
+  _loadStatesConfigurations: 0
+  stateNodes:
+  - GUID: feb4b306-1360-4583-bb65-491f6a764010
+    position: {x: 300, y: 0, z: 0}
+    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
+  - GUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
+    position: {x: 0, y: 0, z: 0}
+    state: {fileID: 11400000, guid: eb1d63f5ba9ad7648ad4815f71dd24f7, type: 2}
+  shortStateNodes: []
+  transitionNodes: []
+  pluggerNodes: []
+  stateTransitionLinks: []

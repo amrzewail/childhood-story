@@ -494,7 +494,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _stateMachine:
-    _startState: {fileID: 0}
+    _startState: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
 --- !u!114 &1119003243
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -747,7 +747,7 @@ GameObject:
   - component: {fileID: 2000392492}
   - component: {fileID: 2000392491}
   m_Layer: 7
-  m_Name: Trigger
+  m_Name: Targeter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -762,7 +762,7 @@ Transform:
   m_GameObject: {fileID: 2000392489}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 3, y: 1, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1119003241}
   m_RootOrder: 1
@@ -778,8 +778,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 3, y: 2, z: 6}
+  m_Center: {x: 0, y: 0.5, z: 3}
 --- !u!114 &2000392492
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -792,3 +792,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efaa041c1645286439dc68f936d128de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _supportedTypes: 00000000

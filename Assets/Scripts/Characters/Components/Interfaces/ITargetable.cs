@@ -6,6 +6,8 @@ public interface ITargetable : IComponent
 {
     TargetType targetType { get; }
     bool isTargetable { get; set; }
+
+    Vector3 targetPosition { get;}
 }
 
 public enum TargetType
