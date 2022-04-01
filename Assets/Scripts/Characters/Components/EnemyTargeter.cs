@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnemyTrigger : MonoBehaviour
+public class EnemyTargeter : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
