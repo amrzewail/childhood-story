@@ -29,8 +29,12 @@ namespace FiniteStateMachine.Player
         {
             _actor = (IActor)data["actor"];
             _input = _actor.GetActorComponent<IInput>(0);
+            _actor.GetActorComponent<IMover>(0).Stop();
             _actor.GetActorComponent<IMover>(0).Enable(false);
             _mover = _actor.GetActorComponent<IMover>(2);
+
+            _mover.Enable(true);
+
             pusher = _actor.GetActorComponent<IPusher>(0);
             animator = _actor.GetActorComponent<IAnimator>(0);
 
@@ -66,7 +70,17 @@ namespace FiniteStateMachine.Player
                     }
                 }
 
-                _mover.Move(_input.axis, moveSpeed);
+                Debug.Log(_input.axis);
+
+                if (_input.axis.magnitude < 0.05f)
+                {
+                    _mover.Stop();
+                }
+                else
+                {
+                    _mover.Move(_input.axis, moveSpeed);
+                }
+
 
             }
         }
@@ -76,6 +90,7 @@ namespace FiniteStateMachine.Player
             animator.Unpause();
             pusher.StopPush(data);
             _mover.Stop();
+            _mover.Enable(false);
             return true;
         }
     }
