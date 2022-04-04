@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9431a51f7574de84cbd13089dd45c367, type: 3}
-  m_Name: Idle State
+  m_Script: {fileID: 11500000, guid: 6c711c107b92d864090184f34c3edfbd, type: 3}
+  m_Name: Aim State
   m_EditorClassIdentifier: 
   inherit: {fileID: 0}
   OnStartPluggers: []
@@ -18,4 +18,6 @@ MonoBehaviour:
   OnExitPluggers: []
   transitions:
   - newState: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
-    transition: {fileID: 11400000, guid: b63dbd9d93e827943b6e7446cbeb9bac, type: 2}
+    transition: {fileID: 11400000, guid: e491127900309c046b07caad4817e9fc, type: 2}
+  - newState: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
+    transition: {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}

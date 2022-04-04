@@ -7,6 +7,8 @@ namespace Characters
 {
     public interface IActor
     {
+        string identifier { get; }
+
         Transform transform { get; }
 
         public T GetActorComponent<T>(int index);

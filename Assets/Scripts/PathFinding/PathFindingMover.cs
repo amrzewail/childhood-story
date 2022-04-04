@@ -14,6 +14,7 @@ public class PathFindingMover : MonoBehaviour,IMover
 
     public void Move(Vector3 position, float speed)
     {
+        Debug.Log("Agent Move");
         agent.isStopped = false;
         agent.speed = speed;
         agent.SetDestination(position);
@@ -27,6 +28,8 @@ public class PathFindingMover : MonoBehaviour,IMover
 
     public void Stop()
     {
+        Debug.Log("Agent Stop");
+
         agent.isStopped = true;
     }
 

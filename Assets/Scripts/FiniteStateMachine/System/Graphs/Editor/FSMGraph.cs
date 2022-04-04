@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -135,6 +136,30 @@ namespace Scripts.FSM.Graphs.Editor
             _graphView.AddNode(plug, true);
         }
 
+        private void ProcessStateTransition(Transition transition, FSMTransitionNode currentNode)
+        {
+            var edge = _graphView.Edges.Where(y => y.output.node == currentNode).FirstOrDefault();
+            if (edge != null)
+            {
+                if (edge.input.node is FSMStateNode)
+                {
+                    transition.newState = ((FSMStateNode)edge.input.node).state;
+                    AddTransitionLink(currentNode.GUID, ((FSMStateNode)edge.input.node).GUID, 0);
+                }
+                else if (edge.input.node is FSMShortStateNode)
+                {
+                    transition.newState = ((FSMShortStateNode)edge.input.node).state;
+                    AddTransitionLink(currentNode.GUID, ((FSMShortStateNode)edge.input.node).GUID, 0);
+                }
+                else if (edge.input.node is FSMTransitionNode)
+                {
+                    transition.transitions.Add(((FSMTransitionNode)edge.input.node).transition);
+                    AddTransitionLink(currentNode.GUID, ((FSMTransitionNode)edge.input.node).GUID, 1);
+                    ProcessStateTransition(transition, ((FSMTransitionNode)edge.input.node));
+                }
+            }
+        }
+
         private void OnSave()
         {
             var nodes = _graphView.nodes.ToList().Cast<BasicNode>().ToList();
@@ -157,27 +182,21 @@ namespace Scripts.FSM.Graphs.Editor
 
                     _graphView.Edges.Where(x => x.output.node == state).ToList().ForEach(x =>
                     {
-                        if (x.input.node is FSMTransitionNode)
+                        Node inputNode = x.input.node;
+                        if (inputNode is FSMTransitionNode)
                         {
                             var t = new Transition();
-                            t.transition = ((FSMTransitionNode)x.input.node).transition;
-                            var transitionGUID = ((FSMTransitionNode)x.input.node).GUID;
+                            t.transitions = new List<FSMTransition>();
+                            t.transition = ((FSMTransitionNode)inputNode).transition;
+
+
+                            var transitionGUID = ((FSMTransitionNode)inputNode).GUID;
                             AddTransitionLink(state.GUID, transitionGUID, transitions.Count);
 
-                            var edge2 = _graphView.Edges.Where(y => y.output.node == x.input.node).FirstOrDefault();
-                            if (edge2 != null)
-                            {
-                                if (edge2.input.node is FSMStateNode)
-                                {
-                                    t.newState = ((FSMStateNode)edge2.input.node).state;
-                                    AddTransitionLink(transitionGUID, ((FSMStateNode)edge2.input.node).GUID, 0);
-                                }
-                                else if (edge2.input.node is FSMShortStateNode)
-                                {
-                                    t.newState = ((FSMShortStateNode)edge2.input.node).state;
-                                    AddTransitionLink(transitionGUID, ((FSMShortStateNode)edge2.input.node).GUID, 0);
-                                }
-                            }
+
+                            ProcessStateTransition(t, ((FSMTransitionNode)inputNode));
+
+
                             transitions.Add(t);
                         }
                         else if (x.input.node is FSMPluggerNode)
@@ -373,6 +392,9 @@ namespace Scripts.FSM.Graphs.Editor
                     }else if(inputNode is FSMShortStateNode)
                     {
                         _graphView.LinkNodes(((FSMTransitionNode)outputNode).outPort, ((FSMShortStateNode)inputNode).startPort);
+                    }else if (inputNode is FSMTransitionNode)
+                    {
+                        _graphView.LinkNodes(((FSMTransitionNode)outputNode).outTransitionPort, ((FSMTransitionNode)inputNode).inPort);
                     }
                 }
             }

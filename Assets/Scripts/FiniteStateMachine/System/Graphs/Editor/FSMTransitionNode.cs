@@ -19,6 +19,7 @@ namespace Scripts.FSM.Graphs.Editor
 
         public Port inPort;
         public Port outPort;
+        public Port outTransitionPort;
 
         public FSMTransitionNode(FSMTransition transition)
         {
@@ -53,8 +54,12 @@ namespace Scripts.FSM.Graphs.Editor
             inputContainer.Add(inPort);
 
             outPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(FSMState));
-            outPort.portName = "Out";
+            outPort.portName = "Out State";
             outputContainer.Add(outPort);
+
+            outTransitionPort = InstantiatePort(Orientation.Horizontal, Direction.Output, Port.Capacity.Single, typeof(FSMTransition));
+            outTransitionPort.portName = "Out Transition";
+            outputContainer.Add(outTransitionPort);
 
             RefreshPorts();
             RefreshExpandedState();

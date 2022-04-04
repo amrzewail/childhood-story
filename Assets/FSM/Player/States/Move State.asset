@@ -20,4 +20,5 @@ MonoBehaviour:
   transitions:
   - newState: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
     transition: {fileID: 11400000, guid: 61a4845dd96ec7049bc4910c64c3ae02, type: 2}
+    transitions: []
   moveSpeed: 5

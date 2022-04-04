@@ -15,13 +15,79 @@ MonoBehaviour:
   _startState: {fileID: 0}
   _loadStatesConfigurations: 0
   stateNodes:
-  - GUID: feb4b306-1360-4583-bb65-491f6a764010
-    position: {x: 300, y: 0, z: 0}
-    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
   - GUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
     position: {x: 0, y: 0, z: 0}
     state: {fileID: 11400000, guid: eb1d63f5ba9ad7648ad4815f71dd24f7, type: 2}
-  shortStateNodes: []
-  transitionNodes: []
+  - GUID: feb4b306-1360-4583-bb65-491f6a764010
+    position: {x: 27, y: 195, z: 0}
+    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
+  - GUID: cd27b87b-4595-4455-bf0d-e19204cce700
+    position: {x: 15, y: 473, z: 0}
+    state: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
+  - GUID: 4eacb174-140f-4537-9fc1-da9e9e585b4e
+    position: {x: 27, y: 734, z: 0}
+    state: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
+  shortStateNodes:
+  - GUID: 07640a5d-a5b6-4c8d-8e0a-25d9d6c45cd6
+    position: {x: 497, y: 58, z: 0}
+    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
+  - GUID: 4307b5f3-d367-4158-aa13-d8b064dbf11e
+    position: {x: 563, y: 329, z: 0}
+    state: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
+  - GUID: 85ce79c4-cdd3-4ca6-908f-393b7fb7c21e
+    position: {x: 568, y: 869, z: 0}
+    state: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
+  - GUID: 6c6c371c-fcc8-4255-aaca-a2b9cfa7a6ca
+    position: {x: 655, y: 539, z: 0}
+    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
+  - GUID: 26ce7e8c-bc9f-4645-aa43-dfc52b80af4f
+    position: {x: 630, y: 670, z: 0}
+    state: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
+  transitionNodes:
+  - GUID: d4847868-de34-4cc5-8241-8c8e6c556403
+    position: {x: 268, y: 81, z: 0}
+    transition: {fileID: 11400000, guid: b63dbd9d93e827943b6e7446cbeb9bac, type: 2}
+  - GUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    position: {x: 313, y: 277, z: 0}
+    transition: {fileID: 11400000, guid: 38cc1adc49659be48a28ed0cf6f03975, type: 2}
+  - GUID: 50cb3cf2-c95d-414c-8796-abe06b25d477
+    position: {x: 375, y: 528, z: 0}
+    transition: {fileID: 11400000, guid: e491127900309c046b07caad4817e9fc, type: 2}
+  - GUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
+    position: {x: 375, y: 657, z: 0}
+    transition: {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}
+  - GUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
+    position: {x: 355, y: 853, z: 0}
+    transition: {fileID: 11400000, guid: 48fb6dffc3c410a41920d17aa42f96e7, type: 2}
   pluggerNodes: []
-  stateTransitionLinks: []
+  stateTransitionLinks:
+  - outputGUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
+    inputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
+    index: 0
+  - outputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
+    inputGUID: 07640a5d-a5b6-4c8d-8e0a-25d9d6c45cd6
+    index: 0
+  - outputGUID: feb4b306-1360-4583-bb65-491f6a764010
+    inputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    index: 0
+  - outputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    inputGUID: 4307b5f3-d367-4158-aa13-d8b064dbf11e
+    index: 0
+  - outputGUID: cd27b87b-4595-4455-bf0d-e19204cce700
+    inputGUID: 50cb3cf2-c95d-414c-8796-abe06b25d477
+    index: 0
+  - outputGUID: 50cb3cf2-c95d-414c-8796-abe06b25d477
+    inputGUID: 6c6c371c-fcc8-4255-aaca-a2b9cfa7a6ca
+    index: 0
+  - outputGUID: cd27b87b-4595-4455-bf0d-e19204cce700
+    inputGUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
+    index: 1
+  - outputGUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
+    inputGUID: 26ce7e8c-bc9f-4645-aa43-dfc52b80af4f
+    index: 0
+  - outputGUID: 4eacb174-140f-4537-9fc1-da9e9e585b4e
+    inputGUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
+    index: 0
+  - outputGUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
+    inputGUID: 85ce79c4-cdd3-4ca6-908f-393b7fb7c21e
+    index: 0

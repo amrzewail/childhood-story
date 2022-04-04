@@ -11,6 +11,7 @@ namespace Characters
 
     public class Actor : MonoBehaviour, IActor
     {
+        public string identifier { get; private set; }
         public FSM stateMachine { get => _stateMachine;  set { _stateMachine = value; } }
 
         [SerializeField]
@@ -42,7 +43,8 @@ namespace Characters
                 }
 
             }
-            
+
+            identifier = new Guid().ToString();
 
             _stateMachine.Awake();
             _stateMachine.SetData("actor", this);

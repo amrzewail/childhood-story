@@ -21,10 +21,9 @@ public class EnemyTargeter : MonoBehaviour, ITargeter
         ITargetable t;
         if((t = other.GetComponent<ITargetable>())!= null)
         {
-            if (supportedTypes.Contains(t.targetType))
+            if (supportedTypes.Contains(t.targetType) && t.isTargetable)
             {
                 _target = t;
-                Debug.Log("in Range!!!!!!!!");
             }
         }
 
@@ -40,7 +39,6 @@ public class EnemyTargeter : MonoBehaviour, ITargeter
                 //_target = null;
             }
 
-            Debug.Log("out of range!!!! come here nega");
         }
     }
 }

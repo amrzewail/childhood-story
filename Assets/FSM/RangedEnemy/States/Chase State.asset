@@ -16,5 +16,7 @@ MonoBehaviour:
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
-  transitions: []
-  chaseSpeed: 5
+  transitions:
+  - newState: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
+    transition: {fileID: 11400000, guid: 38cc1adc49659be48a28ed0cf6f03975, type: 2}
+  chaseSpeed: 3

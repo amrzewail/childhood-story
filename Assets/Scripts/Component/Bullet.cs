@@ -1,11 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Bullet : MonoBehaviour, IBullet
 {
 
     private Vector3 _direction;
+    private bool _isDestroyed = false;
 
     [SerializeField] float speed = 1;
     [SerializeField] float destroyAfter = 5;
@@ -26,6 +28,8 @@ public class Bullet : MonoBehaviour, IBullet
 
     public void DestroyNow()
     {
+        _isDestroyed = true;
+        GetComponentsInChildren<Collider>().ToList().ForEach(x => x.enabled = false);
         Destroy(this.gameObject);
     }
 

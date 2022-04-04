@@ -54,6 +54,11 @@ namespace FiniteStateMachine
             }
         }
 
+        private bool TestTransition(FSMTransition transition, Dictionary<string,object> data)
+        {
+            return ((transition.negative ? !transition.IsTrue(data) : transition.IsTrue(data)) && transition.IsProbabilitySuccess());
+        }
+
         public virtual Transition CheckTransitions(Dictionary<string,object> data)
         {
             if (inherit)
@@ -64,11 +69,23 @@ namespace FiniteStateMachine
             }
             for (int i = 0; i < transitions.Length; i++)
             {
-                var transition = transitions[i].transition;
-                if ((transition.negative ? !transition.IsTrue(data) : transition.IsTrue(data)) && transition.IsProbabilitySuccess())
+                var t = transitions[i];
+                if (!TestTransition(t.transition, data))
                 {
-                    return transitions[i];
+                    t = null;
                 }
+                else
+                {
+                    foreach (var transition in transitions[i].transitions)
+                    {
+                        if (!TestTransition(transition, data))
+                        {
+                            t = null;
+                            break;
+                        }
+                    }
+                }
+                if(t != null) return t;
             }
             return null;
         }
@@ -80,6 +97,7 @@ namespace FiniteStateMachine
     {
         public FSMState newState;
         public FSMTransition transition;
+        public List<FSMTransition> transitions;
     }
 
 }

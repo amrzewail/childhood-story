@@ -19,15 +19,22 @@ MonoBehaviour:
   transitions:
   - newState: {fileID: 11400000, guid: e56f836a9bd2a1e4bad03fdb6ea816fe, type: 2}
     transition: {fileID: 11400000, guid: 0a3362520db33bd4ebdcd63ba253a1ba, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: b92385b3448eeaf4c8facd57cf613ba9, type: 2}
     transition: {fileID: 11400000, guid: 2b90066f7b195c642b5c85bdf2d83fc0, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: e208effe4e01ee14a827cc6f52d6d116, type: 2}
     transition: {fileID: 11400000, guid: 078511c6e7393124d8c0d25671279d60, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: 52ec077bfbba8c64892becb9f5bd77fe, type: 2}
     transition: {fileID: 11400000, guid: 62299a9c460416647ba1d190accc11ab, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: a0f2284250bd4d1499dbd802b4387c15, type: 2}
     transition: {fileID: 11400000, guid: 85793938b3d8de84184146406ecefa13, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: ab87db80c2b39d946b4883f4940162aa, type: 2}
     transition: {fileID: 11400000, guid: 6b7b73a63957f354bbc8a073beb94179, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: 5ec5ff49257bc734191b81b007dca992, type: 2}
     transition: {fileID: 11400000, guid: d147fcef28f70014bbf7ecd94bb5e852, type: 2}
+    transitions: []

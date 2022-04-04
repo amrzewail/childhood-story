@@ -7,6 +7,8 @@ namespace FiniteStateMachine
     [System.Serializable]
     public class FSM
     {
+        public const string STATE_START_TIME = "STATE_START_TIME";
+
         [SerializeField] FSMState _startState;
 
         //private List<FSMState> _currentStateStack;
@@ -67,6 +69,7 @@ namespace FiniteStateMachine
                 _currentState.ExitState(_data);
             }
             _currentState = state;
+            _data[STATE_START_TIME] = Time.time;
             currentState.OnStartPluggers.ForEach(x => (x as IFSMPlugger).Execute(_data));
             currentState.StartState(_data);
         }
