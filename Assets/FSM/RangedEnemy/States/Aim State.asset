@@ -12,12 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c711c107b92d864090184f34c3edfbd, type: 3}
   m_Name: Aim State
   m_EditorClassIdentifier: 
-  inherit: {fileID: 0}
+  inherit: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
   transitions:
   - newState: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
     transition: {fileID: 11400000, guid: e491127900309c046b07caad4817e9fc, type: 2}
+    transitions: []
   - newState: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
-    transition: {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}
+    transition: {fileID: 11400000, guid: 48fb6dffc3c410a41920d17aa42f96e7, type: 2}
+    transitions:
+    - {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}

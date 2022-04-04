@@ -485,6 +485,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f63af200ddb8ed04daf64fd77ced0953, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shooterTransform: {fileID: 6001291292255534948}
   _bullet: {fileID: -3962598819879777354, guid: 87c88e0ceba059447ad42825c9043f6a, type: 3}
 --- !u!1 &6001291291292519574
 GameObject:
@@ -1140,6 +1141,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnDamage:
+    m_PersistentCalls:
+      m_Calls: []
+  OnDamageWithData:
     m_PersistentCalls:
       m_Calls: []
   _actor: {fileID: 6001291292255534955}

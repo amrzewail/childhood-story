@@ -31,6 +31,8 @@ namespace FiniteStateMachine.Enemy
 
         public override void UpdateState(Dictionary<string, object> data)
         {
+            Debug.Log("Aim State");
+
             _mover.Stop();
 
             Vector3 direction = _targeter.GetTarget().targetPosition - _actor.transform.position;

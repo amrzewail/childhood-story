@@ -24,6 +24,7 @@ public class PathFindingMover : MonoBehaviour,IMover
     {
         float angle = -180 * Mathf.Atan2(direction.y, direction.x) / Mathf.PI + 90;
         _rigidBody.rotation = Quaternion.RotateTowards(_rigidBody.rotation, Quaternion.Euler(0, angle, 0), 700 * Time.deltaTime);
+
     }
 
     public void Stop()

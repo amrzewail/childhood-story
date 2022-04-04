@@ -9,14 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5fd89c3788646e64580ca24ec91ebb83, type: 3}
-  m_Name: Shoot State
+  m_Script: {fileID: 11500000, guid: 8d08f02d00b9ac04c8778cb9438a86bf, type: 3}
+  m_Name: Default State
   m_EditorClassIdentifier: 
-  inherit: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
+  inherit: {fileID: 0}
   OnStartPluggers: []
   OnUpdatePluggers: []
   OnExitPluggers: []
   transitions:
-  - newState: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
-    transition: {fileID: 11400000, guid: 48fb6dffc3c410a41920d17aa42f96e7, type: 2}
+  - newState: {fileID: 11400000, guid: 7f4a0a53f315c3d4b90798dd8c0ef083, type: 2}
+    transition: {fileID: 11400000, guid: 38e3a45a3d6ff5d47a9ad7d99634d566, type: 2}
     transitions: []

@@ -75,7 +75,7 @@ namespace Scripts.FSM.Graphs.Editor
 
 
 
-            startPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(FSMState));
+            startPort = InstantiatePort(Orientation.Horizontal, Direction.Input, Port.Capacity.Multi, typeof(FSMTransition));
             startPort.portName = "Start";
             inputContainer.Add(startPort);
 

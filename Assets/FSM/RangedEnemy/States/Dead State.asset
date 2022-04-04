@@ -9,10 +9,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd510938f676c43428be9e328d609ce2, type: 3}
-  m_Name: Delay Transition
+  m_Script: {fileID: 11500000, guid: 8d08f02d00b9ac04c8778cb9438a86bf, type: 3}
+  m_Name: Dead State
   m_EditorClassIdentifier: 
-  negative: 0
-  probability: 1
-  probabilityCheckCooldown: 0
-  delay: 1
+  inherit: {fileID: 0}
+  OnStartPluggers: []
+  OnUpdatePluggers: []
+  OnExitPluggers: []
+  transitions: []

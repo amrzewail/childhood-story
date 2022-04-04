@@ -10,6 +10,7 @@ public class ActorDamageable : MonoBehaviour, IDamageable
     public IActor actor => (IActor)_actor;
 
     public UnityEvent<int> OnDamage;
+    public UnityEvent<IDamage> OnDamageWithData;
 
     [SerializeField] [RequireInterface(typeof(IActor))] Object _actor;
     [SerializeField] DamageGroup _group;
@@ -22,6 +23,7 @@ public class ActorDamageable : MonoBehaviour, IDamageable
         {
             actor.GetActorComponent<IActorHealth>(0).Damage(dmg.amount);
             OnDamage?.Invoke(dmg.amount);
+            OnDamageWithData?.Invoke(dmg);
             return true;
         }
         return false;

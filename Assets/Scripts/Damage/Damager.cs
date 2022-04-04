@@ -11,6 +11,8 @@ public class Damager : MonoBehaviour, IDamager
     public bool isEnabled { get; set; } = true;
     public IDamage damage => (IDamage)_damage;
 
+    public Transform casterTransform { get; set; }
+
     internal void OnTriggerEnter(Collider other)
     {
         if (!isEnabled) return;

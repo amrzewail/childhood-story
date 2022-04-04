@@ -15,15 +15,21 @@ MonoBehaviour:
   _startState: {fileID: 0}
   _loadStatesConfigurations: 0
   stateNodes:
+  - GUID: cd27b87b-4595-4455-bf0d-e19204cce700
+    position: {x: -5, y: 449, z: 0}
+    state: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
+  - GUID: feb4b306-1360-4583-bb65-491f6a764010
+    position: {x: -47, y: 205, z: 0}
+    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
+  - GUID: 04cf2421-b80a-4342-beb2-25e34c43c326
+    position: {x: -5, y: -309, z: 0}
+    state: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
+  - GUID: dee5bf9a-2198-4a0a-b02b-d5811809697d
+    position: {x: 461, y: -211, z: 0}
+    state: {fileID: 11400000, guid: 7f4a0a53f315c3d4b90798dd8c0ef083, type: 2}
   - GUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
     position: {x: 0, y: 0, z: 0}
     state: {fileID: 11400000, guid: eb1d63f5ba9ad7648ad4815f71dd24f7, type: 2}
-  - GUID: feb4b306-1360-4583-bb65-491f6a764010
-    position: {x: 27, y: 195, z: 0}
-    state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
-  - GUID: cd27b87b-4595-4455-bf0d-e19204cce700
-    position: {x: 15, y: 473, z: 0}
-    state: {fileID: 11400000, guid: 8813d0ab605509647a1691641aaffdf0, type: 2}
   - GUID: 4eacb174-140f-4537-9fc1-da9e9e585b4e
     position: {x: 27, y: 734, z: 0}
     state: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
@@ -41,38 +47,44 @@ MonoBehaviour:
     position: {x: 655, y: 539, z: 0}
     state: {fileID: 11400000, guid: e0d11f36ad3f30c48817f9a169dd7bac, type: 2}
   - GUID: 26ce7e8c-bc9f-4645-aa43-dfc52b80af4f
-    position: {x: 630, y: 670, z: 0}
+    position: {x: 741, y: 712, z: 0}
     state: {fileID: 11400000, guid: 8b78f2c0324a91244a0189c841715f96, type: 2}
+  - GUID: 94bf96aa-dc3b-4cc8-a155-ba207977747d
+    position: {x: -155, y: -62, z: 0}
+    state: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
+  - GUID: fd687879-6c86-47d8-9891-ecd065962d65
+    position: {x: -223, y: 120, z: 0}
+    state: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
+  - GUID: b0ef6a0e-e593-45e5-95dd-b9c1e4a3cf25
+    position: {x: -180, y: 410, z: 0}
+    state: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
+  - GUID: 6fb53573-edd4-4eb4-87a4-92242f7a10e9
+    position: {x: -138, y: 662, z: 0}
+    state: {fileID: 11400000, guid: eebc8cd272c74364888138bc240e4b7b, type: 2}
   transitionNodes:
   - GUID: d4847868-de34-4cc5-8241-8c8e6c556403
     position: {x: 268, y: 81, z: 0}
     transition: {fileID: 11400000, guid: b63dbd9d93e827943b6e7446cbeb9bac, type: 2}
-  - GUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
-    position: {x: 313, y: 277, z: 0}
-    transition: {fileID: 11400000, guid: 38cc1adc49659be48a28ed0cf6f03975, type: 2}
   - GUID: 50cb3cf2-c95d-414c-8796-abe06b25d477
     position: {x: 375, y: 528, z: 0}
     transition: {fileID: 11400000, guid: e491127900309c046b07caad4817e9fc, type: 2}
-  - GUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
-    position: {x: 375, y: 657, z: 0}
-    transition: {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}
   - GUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
     position: {x: 355, y: 853, z: 0}
     transition: {fileID: 11400000, guid: 48fb6dffc3c410a41920d17aa42f96e7, type: 2}
+  - GUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    position: {x: 314, y: 291, z: 0}
+    transition: {fileID: 11400000, guid: 38cc1adc49659be48a28ed0cf6f03975, type: 2}
+  - GUID: 868e4a45-1ba9-4c16-bbc2-35c8ac40f073
+    position: {x: 527, y: 662, z: 0}
+    transition: {fileID: 11400000, guid: 9e2b2debfd56bf84ea0275aafb5798b9, type: 2}
+  - GUID: 8703c2e1-e574-4b1f-9b2a-9f5b9bdaf6cf
+    position: {x: 324, y: 660, z: 0}
+    transition: {fileID: 11400000, guid: 48fb6dffc3c410a41920d17aa42f96e7, type: 2}
+  - GUID: 1f0f1030-dc89-4d36-89e9-af0fe8c90aad
+    position: {x: 258, y: -187, z: 0}
+    transition: {fileID: 11400000, guid: 38e3a45a3d6ff5d47a9ad7d99634d566, type: 2}
   pluggerNodes: []
   stateTransitionLinks:
-  - outputGUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
-    inputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
-    index: 0
-  - outputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
-    inputGUID: 07640a5d-a5b6-4c8d-8e0a-25d9d6c45cd6
-    index: 0
-  - outputGUID: feb4b306-1360-4583-bb65-491f6a764010
-    inputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
-    index: 0
-  - outputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
-    inputGUID: 4307b5f3-d367-4158-aa13-d8b064dbf11e
-    index: 0
   - outputGUID: cd27b87b-4595-4455-bf0d-e19204cce700
     inputGUID: 50cb3cf2-c95d-414c-8796-abe06b25d477
     index: 0
@@ -80,14 +92,47 @@ MonoBehaviour:
     inputGUID: 6c6c371c-fcc8-4255-aaca-a2b9cfa7a6ca
     index: 0
   - outputGUID: cd27b87b-4595-4455-bf0d-e19204cce700
-    inputGUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
+    inputGUID: 8703c2e1-e574-4b1f-9b2a-9f5b9bdaf6cf
     index: 1
-  - outputGUID: f1c1a5e0-4ace-49dc-b125-2a74f55935c5
+  - outputGUID: 8703c2e1-e574-4b1f-9b2a-9f5b9bdaf6cf
+    inputGUID: 868e4a45-1ba9-4c16-bbc2-35c8ac40f073
+    index: 0
+  - outputGUID: 868e4a45-1ba9-4c16-bbc2-35c8ac40f073
     inputGUID: 26ce7e8c-bc9f-4645-aa43-dfc52b80af4f
+    index: 0
+  - outputGUID: b0ef6a0e-e593-45e5-95dd-b9c1e4a3cf25
+    inputGUID: cd27b87b-4595-4455-bf0d-e19204cce700
+    index: 0
+  - outputGUID: feb4b306-1360-4583-bb65-491f6a764010
+    inputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    index: 0
+  - outputGUID: 8c5902a8-1e19-44da-9f0e-23f86ae30891
+    inputGUID: 4307b5f3-d367-4158-aa13-d8b064dbf11e
+    index: 0
+  - outputGUID: fd687879-6c86-47d8-9891-ecd065962d65
+    inputGUID: feb4b306-1360-4583-bb65-491f6a764010
+    index: 0
+  - outputGUID: 04cf2421-b80a-4342-beb2-25e34c43c326
+    inputGUID: 1f0f1030-dc89-4d36-89e9-af0fe8c90aad
+    index: 0
+  - outputGUID: 1f0f1030-dc89-4d36-89e9-af0fe8c90aad
+    inputGUID: dee5bf9a-2198-4a0a-b02b-d5811809697d
+    index: 0
+  - outputGUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
+    inputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
+    index: 0
+  - outputGUID: d4847868-de34-4cc5-8241-8c8e6c556403
+    inputGUID: 07640a5d-a5b6-4c8d-8e0a-25d9d6c45cd6
+    index: 0
+  - outputGUID: 94bf96aa-dc3b-4cc8-a155-ba207977747d
+    inputGUID: a7ed61d4-2974-4be1-849f-64b23c023f2c
     index: 0
   - outputGUID: 4eacb174-140f-4537-9fc1-da9e9e585b4e
     inputGUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
     index: 0
   - outputGUID: 1aab098d-f992-4be9-b21d-fd4752d946aa
     inputGUID: 85ce79c4-cdd3-4ca6-908f-393b7fb7c21e
+    index: 0
+  - outputGUID: 6fb53573-edd4-4eb4-87a4-92242f7a10e9
+    inputGUID: 4eacb174-140f-4537-9fc1-da9e9e585b4e
     index: 0

@@ -2,8 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerShooter : MonoBehaviour, IShooter
+public class CharacterShooter : MonoBehaviour, IShooter
 {
+    [SerializeField] Transform shooterTransform;
 
     [SerializeField] [RequireInterface(typeof(IBullet))] Object _bullet;
 
@@ -17,6 +18,7 @@ public class PlayerShooter : MonoBehaviour, IShooter
     public void Shoot(Vector3 target)
     {
         IBullet b = GameObject.Instantiate(bullet.transform.gameObject).GetComponent<IBullet>();
+        b.transform.GetComponentInChildren<IDamager>().casterTransform = shooterTransform;
         b.transform.position = transform.position;
         b.transform.eulerAngles = transform.eulerAngles;
         b.Shoot(target);

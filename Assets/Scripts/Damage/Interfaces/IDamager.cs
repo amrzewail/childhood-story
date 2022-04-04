@@ -4,6 +4,6 @@ using UnityEngine;
 
 public interface IDamager
 {
-
+    Transform casterTransform { get; set; }
     Transform transform { get; }
 }

@@ -154,7 +154,7 @@ namespace Scripts.FSM.Graphs.Editor
                 else if (edge.input.node is FSMTransitionNode)
                 {
                     transition.transitions.Add(((FSMTransitionNode)edge.input.node).transition);
-                    AddTransitionLink(currentNode.GUID, ((FSMTransitionNode)edge.input.node).GUID, 1);
+                    AddTransitionLink(currentNode.GUID, ((FSMTransitionNode)edge.input.node).GUID, 0);
                     ProcessStateTransition(transition, ((FSMTransitionNode)edge.input.node));
                 }
             }
@@ -394,7 +394,7 @@ namespace Scripts.FSM.Graphs.Editor
                         _graphView.LinkNodes(((FSMTransitionNode)outputNode).outPort, ((FSMShortStateNode)inputNode).startPort);
                     }else if (inputNode is FSMTransitionNode)
                     {
-                        _graphView.LinkNodes(((FSMTransitionNode)outputNode).outTransitionPort, ((FSMTransitionNode)inputNode).inPort);
+                        _graphView.LinkNodes(((FSMTransitionNode)outputNode).outPort, ((FSMTransitionNode)inputNode).inPort);
                     }
                 }
             }

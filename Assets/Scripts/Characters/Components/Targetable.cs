@@ -7,7 +7,7 @@ public class Targetable : MonoBehaviour, ITargetable
     [SerializeField] TargetType _targetType;
     public TargetType targetType => _targetType;
 
-    public bool isTargetable { get; set; }
+    public bool isTargetable { get; set; } = true;
 
     public Vector3 targetPosition => transform.position;
 }
