@@ -725,7 +725,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6001291292549482293}
-  - component: {fileID: 6001291292549482292}
+  - component: {fileID: 5180072765688569461}
   - component: {fileID: 2839683815699729106}
   - component: {fileID: 7025224253857945612}
   m_Layer: 0
@@ -749,7 +749,7 @@ Transform:
   m_Father: {fileID: 6001291292255534948}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &6001291292549482292
+--- !u!114 &5180072765688569461
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -758,19 +758,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 6001291292549482294}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69563adabcfc6c54e950e71c6888bee2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d0bb3dc84676ca4fa53611670135c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rigidBody: {fileID: 6001291292255534954}
+  _rigidbody: {fileID: 6001291292255534954}
   _collider: {fileID: 6001291292255534951}
-  _groundLayerMask:
-    serializedVersion: 2
-    m_Bits: 64
-  _friction: 10
-  _stopFriction: 10
-  _climbableHeight: 0.5
-  _climbableDetectDistance: 0.1
-  maxSlopeAngle: 0
 --- !u!114 &2839683815699729106
 MonoBehaviour:
   m_ObjectHideFlags: 0
