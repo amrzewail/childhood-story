@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Shoot Transition
   m_EditorClassIdentifier: 
   negative: 0
-  probability: 0.526
+  probability: 0.692
   probabilityCheckCooldown: 1
