@@ -50,7 +50,7 @@ MonoBehaviour:
   cooldown: 4
   lightningObj: {fileID: 791184593}
   speedModeAura: {fileID: 1933063349}
-  _mover: {fileID: 3363965681081074696}
+  _mover: {fileID: 4180671862167379273}
   _input: {fileID: 364795077361771424}
 --- !u!1 &791184593
 GameObject:
@@ -3676,15 +3676,15 @@ PrefabInstance:
       objectReference: {fileID: 1242257919617830835}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
---- !u!114 &3363965681081074696 stripped
+--- !u!114 &4180671862167379273 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 6001291292549482292, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+  m_CorrespondingSourceObject: {fileID: 5180072765688569461, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
   m_PrefabInstance: {fileID: 9072477623669474108}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 69563adabcfc6c54e950e71c6888bee2, type: 3}
+  m_Script: {fileID: 11500000, guid: 6d0bb3dc84676ca4fa53611670135c8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &3363965680995864488 stripped

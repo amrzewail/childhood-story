@@ -9,6 +9,7 @@ public class BasicMovement : MonoBehaviour, IMover
     private bool _didDisableGravity = false;
     private Vector3 _direction;
     private Vector3 _rotateDirection;
+    private float _lastSpeed;
 
     [SerializeField] Rigidbody _rigidbody;
     [SerializeField] Collider _collider;
@@ -45,7 +46,7 @@ public class BasicMovement : MonoBehaviour, IMover
             }
         }
 
-        _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, _direction, 30 * Time.deltaTime);
+        _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, _direction, _lastSpeed * 10 * Time.deltaTime);
 
         if (_rotateDirection.magnitude > 0)
         {
@@ -69,6 +70,7 @@ public class BasicMovement : MonoBehaviour, IMover
         direction.y = 0;
         _direction = direction * speed;
 
+        _lastSpeed = speed;
         _rotateDirection = direction;
     }
 
