@@ -84,7 +84,7 @@ public class CameraController : MonoBehaviour, ICamera
         Vector3 result = Vector3.zero;
 
         Vector3 center = (targets[0].transform.position + targets[1].transform.position) / 2;
-        center.y = 0;
+        center.y = targets.Max(t => t.transform.position.y);
 
         _distanceBetweenPlayers = (targets[0].transform.position - targets[1].transform.position).magnitude;
         _distanceBetweenPlayers *= distanceMultiplier;

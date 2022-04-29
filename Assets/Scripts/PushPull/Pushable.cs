@@ -9,7 +9,7 @@ public class Pushable : MonoBehaviour, IPushable
     private Transform holdingPoint;
     IActor actor;
 
-    private Transform[] transform_sides;
+    private List<Transform> transform_sides;
     private float minDistance;
     private int minDistanceIndex;
     private IDictionary<string, object> data;
@@ -21,11 +21,15 @@ public class Pushable : MonoBehaviour, IPushable
 
     void Start()
     {
-        
-        transform_sides = new Transform[4];
+
+        transform_sides = new List<Transform>();
         for (int i = 0; i < sidescontroller.childCount; i++)
         {
-            transform_sides[i] = sidescontroller.GetChild(i);
+            var child = sidescontroller.GetChild(i);
+            if (child.gameObject.activeSelf)
+            {
+                transform_sides.Add(child);
+            }
         }
     }
 
@@ -74,7 +78,7 @@ public class Pushable : MonoBehaviour, IPushable
         holdingPoint = pusher.holdingPoint;
 
         minDistance = float.MaxValue;
-        for (int i = 0; i < transform_sides.Length; i++)
+        for (int i = 0; i < transform_sides.Count; i++)
         {
             float distance = Vector3.Distance(transform_sides[i].position, actor.transform.position);
             if(distance < minDistance)
