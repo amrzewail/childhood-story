@@ -18,9 +18,13 @@ public class Pushable : MonoBehaviour, IPushable
     private bool isPushing = false;
     private bool canMove = false;
 
+    private Collider _myCollider;
+    private BoxCollider _playerExtraCollider;
+
 
     void Start()
     {
+        _myCollider = GetComponent<Collider>();
 
         transform_sides = new List<Transform>();
         for (int i = 0; i < sidescontroller.childCount; i++)
@@ -43,9 +47,7 @@ public class Pushable : MonoBehaviour, IPushable
 
                 differenceOffset = holdingPoint.transform.position - transform_sides[minDistanceIndex].position;
                 differenceOffset.y = 0;
-                if (differenceOffset.magnitude > 0.05f)
-                {
-                }
+
                 this.gameObject.transform.position += differenceOffset;
 
                 actor.transform.eulerAngles = transform_sides[minDistanceIndex].eulerAngles;
@@ -64,6 +66,30 @@ public class Pushable : MonoBehaviour, IPushable
                 if(differenceOffset.magnitude < 0.05f)
                 {
                     canMove = true;
+
+                    if (!_playerExtraCollider)
+                    {
+                        if(_myCollider is BoxCollider)
+                        {
+                            _playerExtraCollider = actor.transform.gameObject.AddComponent<BoxCollider>();
+                            Vector3 size = Vector3.Scale(((BoxCollider)_myCollider).size, transform.localScale);
+                            size.y = 0.01f;
+                            _playerExtraCollider.size = size;
+                            _playerExtraCollider.center = (transform.position - actor.transform.position) + ((BoxCollider)_myCollider).center;
+                        }else if (_myCollider is SphereCollider)
+                        {
+                            _playerExtraCollider = actor.transform.gameObject.AddComponent<BoxCollider>();
+                            Vector3 size = Vector3.Scale(Vector3.one * ((SphereCollider)_myCollider).radius, transform.localScale);
+                            size.y = 0.01f;
+                            _playerExtraCollider.size = size;
+                            _playerExtraCollider.center = (transform.position - actor.transform.position) + ((SphereCollider)_myCollider).center;
+                        }
+
+
+
+                        _myCollider.enabled = false;
+                        GetComponent<Rigidbody>().useGravity = false;
+                    }
                 }
             }
 
@@ -99,6 +125,13 @@ public class Pushable : MonoBehaviour, IPushable
     {
         isPushing = false;
         canMove = false;
+
+        if (_playerExtraCollider)
+        {
+            Destroy(_playerExtraCollider);
+            GetComponent<Collider>().enabled = true;
+            GetComponent<Rigidbody>().useGravity = true;
+        }
     }
 
     public bool CanPush()

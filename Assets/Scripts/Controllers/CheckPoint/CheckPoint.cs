@@ -5,11 +5,37 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
 
+    public bool isDefault = false;
+
     public bool Activated => ActivatedPlayers.Count > 0;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
     public List<int> ActivatedPlayers = new List<int>();
     public int allowPlayerOnly = -1;
     private Transform[] transforms;
+
+    private void OnValidate()
+    {
+        if (!Application.isPlaying)
+        {
+            if (isDefault)
+            {
+                CheckPoint[] checks = GameObject.FindObjectsOfType<CheckPoint>();
+
+                checks.ToList().ForEach(c =>
+                {
+                    if (c != this)
+                    {
+                        c.isDefault = false;
+                        c.ActivatedPlayers.Clear();
+                    }
+                    else
+                    {
+                        c.ActivatedPlayers = new List<int>() { 0, 1 };
+                    }
+                });
+            }
+        }
+    }
 
     void Start()
     {

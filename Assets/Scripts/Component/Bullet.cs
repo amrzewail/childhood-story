@@ -8,6 +8,8 @@ public class Bullet : MonoBehaviour, IBullet
 
     private Vector3 _direction;
     private bool _isDestroyed = false;
+    private float _currentDestroyTime = 0;
+
 
     [SerializeField] float speed = 1;
     [SerializeField] float destroyAfter = 5;
@@ -18,7 +20,6 @@ public class Bullet : MonoBehaviour, IBullet
         //var eulerAngles = transform.eulerAngles;
         //eulerAngles.y = Vector3.Angle(_direction, Vector3.up);
         //transform.eulerAngles = eulerAngles;
-        Destroy(this.gameObject, destroyAfter);
     }
 
     public void Shoot(Transform target)
@@ -35,6 +36,13 @@ public class Bullet : MonoBehaviour, IBullet
 
     private void Update()
     {
-        transform.position += (_direction * speed * Time.deltaTime);
+        transform.position += (_direction * speed * TimeManager.gameDeltaTime);
+
+        _currentDestroyTime += TimeManager.gameDeltaTime;
+
+        if(_currentDestroyTime >= destroyAfter)
+        {
+            Destroy(this.gameObject);
+        }
     }
 }

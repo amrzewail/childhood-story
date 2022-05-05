@@ -57,8 +57,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bdf6902297a57145948bd1598df68f2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeStopDuration: 5
-  cooldown: 10
+  timeStopDuration: 3
+  cooldown: 5
 --- !u!1 &360883529351152695
 GameObject:
   m_ObjectHideFlags: 0

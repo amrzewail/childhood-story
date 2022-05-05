@@ -36,22 +36,38 @@ public class DarkDashAbility : MonoBehaviour, IAbility
 
     internal void FixedUpdate()
     {
-        if (Physics.OverlapSphere(actor.transform.position + Vector3.up * 1 + actor.transform.forward * distance, 0.5f, _mask, QueryTriggerInteraction.Ignore).Length > 0)
+        bool canDash = true;
+        RaycastHit hit;
+        if (Physics.SphereCast(actor.transform.position + Vector3.up - actor.transform.forward * 0.5f, 0.5f, actor.transform.forward, out hit, distance + 0.5f, ~0, QueryTriggerInteraction.Ignore))
         {
-            _obstacleAhead = true;
-            if(Physics.SphereCast(actor.transform.position + Vector3.up, 0.5f, actor.transform.forward, out RaycastHit hit, distance, _mask, QueryTriggerInteraction.Ignore))
+            if (hit.transform.CompareTag("PreventDarkDash"))
             {
-                _allowedDistance = hit.distance;
+                Debug.Log($"hit default obstacle: {hit.transform.name}");
+                _allowedDistance = hit.distance - 0.5f;
                 if (_allowedDistance > distance) _allowedDistance = 0;
-                //Debug.Log($"Dark dash hit obstacle:{hit.transform.gameObject.name}");
+                canDash = false;
             }
-        }
-        else
-        {
-            _obstacleAhead = false;
-            _allowedDistance = distance;
+            //Debug.Log($"Dark dash hit obstacle:{hit.transform.gameObject.name}");
         }
 
+        if (canDash)
+        {
+            if (Physics.OverlapSphere(actor.transform.position + Vector3.up * 1 + actor.transform.forward * distance, 0.5f, _mask, QueryTriggerInteraction.Ignore).Length > 0)
+            {
+                _obstacleAhead = true;
+                if (Physics.SphereCast(actor.transform.position + Vector3.up, 0.5f, actor.transform.forward, out hit, distance, _mask, QueryTriggerInteraction.Ignore))
+                {
+                    _allowedDistance = hit.distance;
+                    if (_allowedDistance > distance) _allowedDistance = 0;
+                    //Debug.Log($"Dark dash hit obstacle:{hit.transform.gameObject.name}");
+                }
+            }
+            else
+            {
+                _obstacleAhead = false;
+                _allowedDistance = distance;
+            }
+        }
         if (_allowedDistance > 0)
         {
             for (float i = _allowedDistance / 4f; i <= _allowedDistance; i += _allowedDistance / 4f)

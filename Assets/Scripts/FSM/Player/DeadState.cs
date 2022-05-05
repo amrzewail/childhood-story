@@ -27,6 +27,7 @@ namespace FiniteStateMachine.Player
 
         public override void UpdateState(Dictionary<string, object> data)
         {
+            _actor.GetActorComponent<IMover>(0).Stop();
         }
     }
 }

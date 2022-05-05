@@ -22,6 +22,8 @@ public class TriggerButton : MonoBehaviour
 
     private Vector3 startPosition;
 
+    public bool IsButtonDown => _isButtonDown;
+
     private void Start()
     {
         startPosition = renderer.transform.position;
@@ -34,7 +36,10 @@ public class TriggerButton : MonoBehaviour
     {
         if (col.GetComponent<IActor>() != null)
         {
-            renderer.transform.position = startPosition + Vector3.down * pressDistance;
+            Vector3 pos = renderer.transform.position;
+            pos.y = startPosition.y;
+
+            renderer.transform.position = pos + Vector3.down * pressDistance;
             OnButtonDown?.Invoke();
             OnSoundDown?.Invoke();
 
@@ -45,7 +50,10 @@ public class TriggerButton : MonoBehaviour
     {
         if (col.GetComponent<IActor>() != null)
         {
-            renderer.transform.position = startPosition;
+            Vector3 pos = renderer.transform.position;
+            pos.y = startPosition.y;
+
+            renderer.transform.position = pos;
             OnButtonUp?.Invoke();
             OnSoundUp?.Invoke();
             if (_isButtonDown)

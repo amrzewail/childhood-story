@@ -14,6 +14,7 @@ public class ActorDamageable : MonoBehaviour, IDamageable
 
     [SerializeField] [RequireInterface(typeof(IActor))] Object _actor;
     [SerializeField] DamageGroup _group;
+    [SerializeField] Collider trigger;
 
 
 
@@ -27,5 +28,10 @@ public class ActorDamageable : MonoBehaviour, IDamageable
             return true;
         }
         return false;
+    }
+
+    private void Update()
+    {
+        trigger.enabled = !actor.GetActorComponent<IActorHealth>(0).IsDead();
     }
 }

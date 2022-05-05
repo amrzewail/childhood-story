@@ -1140,6 +1140,7 @@ MonoBehaviour:
       m_Calls: []
   _actor: {fileID: 6001291292255534955}
   _group: 0
+  trigger: {fileID: 1241675974646337760}
 --- !u!136 &1241675974646337760
 CapsuleCollider:
   m_ObjectHideFlags: 0

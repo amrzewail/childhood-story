@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3d7ecef7b1ad24f49ac425b16523796f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dashSpeed: 26.666666
+  dashSpeed: 20
   dashTime: 0.3
   cooldown: 4
   lightningObj: {fileID: 791184593}
@@ -905,7 +905,7 @@ MonoBehaviour:
   cloud: {fileID: 6629801562292722955}
   DarkLightDectector: {fileID: 3363965680995864488}
   abilityTime: 5
-  cooldown: 5
+  cooldown: 3
 --- !u!1 &3339798791359390769
 GameObject:
   m_ObjectHideFlags: 0

@@ -51,49 +51,49 @@ public class MoveablePlatform : MonoBehaviour
     }
     
 
-    void Update()
-    {
-        if(Input.GetKeyDown(KeyCode.J))
-        {
-           StartMoving(new Vector3(-1,0,0));
-        }
-        else if (Input.GetKeyUp(KeyCode.J))
-        {
-            StopMoving();
-        }
+    //void Update()
+    //{
+    //    if(Input.GetKeyDown(KeyCode.J))
+    //    {
+    //       StartMoving(new Vector3(-1,0,0));
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.J))
+    //    {
+    //        StopMoving();
+    //    }
 
 
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            StartMoving(new Vector3(1, 0, 0));
-        }
-        else if (Input.GetKeyUp(KeyCode.L))
-        {
-            StopMoving();
-        }
+    //    if (Input.GetKeyDown(KeyCode.L))
+    //    {
+    //        StartMoving(new Vector3(1, 0, 0));
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.L))
+    //    {
+    //        StopMoving();
+    //    }
 
 
-        if (Input.GetKeyDown(KeyCode.I))
-        {
-            StartMoving(new Vector3(0, 0, 1));
-        }
-        else if (Input.GetKeyUp(KeyCode.I))
-        {
-            StopMoving();
-        }
+    //    if (Input.GetKeyDown(KeyCode.I))
+    //    {
+    //        StartMoving(new Vector3(0, 0, 1));
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.I))
+    //    {
+    //        StopMoving();
+    //    }
 
 
 
-        if (Input.GetKeyDown(KeyCode.K))
-        {
-            StartMoving(new Vector3(0, 0, -1));
-        }
-        else if (Input.GetKeyUp(KeyCode.K))
-        {
-            StopMoving();
-        }
+    //    if (Input.GetKeyDown(KeyCode.K))
+    //    {
+    //        StartMoving(new Vector3(0, 0, -1));
+    //    }
+    //    else if (Input.GetKeyUp(KeyCode.K))
+    //    {
+    //        StopMoving();
+    //    }
 
-    }
+    //}
 
 
     private void FixedUpdate()
