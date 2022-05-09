@@ -34,23 +34,23 @@ public class RespawningSystem : MonoBehaviour
             return;
         }
         _instance = this;
-        DontDestroyOnLoad(this.gameObject);   
-    }
-    void Start()
-    {
+        DontDestroyOnLoad(this.gameObject);
+
+
+
         _playerState = new Dictionary<IActor, bool>();
         players = new List<IActor>();
-        var actors=gameObject.FindInterfacesOfType<IActor>();
-        for(int i =0; i < actors.Length; i++)
+        var actors = gameObject.FindInterfacesOfType<IActor>();
+        for (int i = 0; i < actors.Length; i++)
         {
             if (actors[i].GetActorComponent<IActorIdentity>(0).characterIdentifier < 100)
             {
                 players.Add(actors[i]);
-                _playerState.Add(actors[i],true);
+                _playerState.Add(actors[i], true);
             }
         }
     }
-    
+
 
     // Update is called once per frame
     void Update()
@@ -93,5 +93,13 @@ public class RespawningSystem : MonoBehaviour
         OnPlayerRespawn.Invoke(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
     }
 
+    public void RespawnPlayers()
+    {
+        foreach (var player in players)
+        {
+            player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
+            player.GetActorComponent<IActorHealth>(0).Heal(player.GetActorComponent<IActorHealth>(0).GetMaxValue());
+        }
+    }
 
 }
