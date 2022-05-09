@@ -9,10 +9,11 @@ public class CheckPoint : MonoBehaviour
 
     public bool Activated => ActivatedPlayers.Count > 0;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
-    public List<int> ActivatedPlayers = new List<int>();
+    [HideInInspector] public List<int> ActivatedPlayers = new List<int>();
     public int allowPlayerOnly = -1;
     private Transform[] transforms;
 
+#if UNITY_EDITOR
     private void OnValidate()
     {
         if (!Application.isPlaying)
@@ -23,17 +24,23 @@ public class CheckPoint : MonoBehaviour
 
                 checks.ToList().ForEach(c =>
                 {
-                    if (c != this)
+                    if (c != this && c.gameObject.scene == this.gameObject.scene)
                     {
                         c.isDefault = false;
-                        c.ActivatedPlayers.Clear();
-                    }
-                    else
-                    {
-                        c.ActivatedPlayers = new List<int>() { 0, 1 };
+                        UnityEditor.EditorUtility.SetDirty(c);
                     }
                 });
             }
+        }
+    }
+#endif
+
+    private void Awake()
+    {
+        if (isDefault)
+        {
+            ActivatedPlayers.Clear();
+            ActivatedPlayers.AddRange(new int[] { 0, 1 });
         }
     }
 

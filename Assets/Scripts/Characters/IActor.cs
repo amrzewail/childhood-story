@@ -11,7 +11,7 @@ namespace Characters
 
         Transform transform { get; }
 
-        public T GetActorComponent<T>(int index);
+        public T GetActorComponent<T>(int index = 0);
 
         FSM stateMachine { get; set; }
 
