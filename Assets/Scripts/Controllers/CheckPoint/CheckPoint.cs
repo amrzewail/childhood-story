@@ -42,12 +42,6 @@ public class CheckPoint : MonoBehaviour
             ActivatedPlayers.Clear();
             ActivatedPlayers.AddRange(new int[] { 0, 1 });
         }
-    }
-
-    void Start()
-    {
-
-        // We search all the checkpoints in the current scene
         CheckPointsList.Add(this);
         transforms = new Transform[2];
         for (int i = 0; i < transform.childCount; i++)
@@ -55,6 +49,13 @@ public class CheckPoint : MonoBehaviour
             transforms[i] = transform.GetChild(i);
         }
     }
+
+
+    private void OnDestroy()
+    {
+        CheckPointsList.Remove(this);
+    }
+
     public static Vector3 GetActiveCheckPointPosition(int playerIndex)
     {
         // If player die without activate any checkpoint, we will return a default position
@@ -76,6 +77,27 @@ public class CheckPoint : MonoBehaviour
 
         //return result;
     }
+
+    public static void ResetCheckpoints()
+    {
+        if (CheckPointsList != null)
+        {
+            foreach (CheckPoint cp in CheckPointsList)
+            {
+                cp.ResetCheckpoint();
+            }
+        }
+    }
+
+    public void ResetCheckpoint()
+    {
+        ActivatedPlayers.Clear();
+        if (isDefault)
+        {
+            ActivatedPlayers.AddRange(new int[] { 0, 1 });
+        }
+    }
+
     private void ActivateCheckPoint(int playerIndex)
     {
         if (allowPlayerOnly == -1 || allowPlayerOnly == playerIndex)

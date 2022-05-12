@@ -40,6 +40,7 @@ public class RespawningSystem : MonoBehaviour
 
         _playerState = new Dictionary<IActor, bool>();
         players = new List<IActor>();
+
         var actors = gameObject.FindInterfacesOfType<IActor>();
         for (int i = 0; i < actors.Length; i++)
         {
@@ -74,6 +75,9 @@ public class RespawningSystem : MonoBehaviour
             _gameOver = true;
             StopAllCoroutines();
             OnGameOver.Invoke();
+        }else if (deadCount < players.Count)
+        {
+            _gameOver = false;
         }
         
     }
@@ -93,12 +97,19 @@ public class RespawningSystem : MonoBehaviour
         OnPlayerRespawn.Invoke(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
     }
 
+
+    public void ResetCheckpoints()
+    {
+        CheckPoint.ResetCheckpoints();
+    }
+
     public void RespawnPlayers()
     {
         foreach (var player in players)
         {
             player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
             player.GetActorComponent<IActorHealth>(0).Heal(player.GetActorComponent<IActorHealth>(0).GetMaxValue());
+            _playerState[player] = true;
         }
     }
 
