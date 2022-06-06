@@ -11,4 +11,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Staging.unity
     guid: d1c3109bdb54ad54c8a2b2838528e640
+  - enabled: 1
+    path: Assets/Scenes/School whitebox.unity
+    guid: 03e0f4e112951ef4c865eac2daa8a346
+  - enabled: 1
+    path: Assets/Scenes/Players.unity
+    guid: 4d7b7af1d3d95b943a6bf258b13821ab
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 60950fcac3ad674439d9195c605dfc11
   m_configObjects: {}
