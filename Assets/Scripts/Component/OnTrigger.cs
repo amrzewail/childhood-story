@@ -6,13 +6,13 @@ using UnityEngine.Events;
 public class OnTrigger : MonoBehaviour
 {
     [SerializeField]
-    UnityEvent<Collider> triggerEnter;
+    protected UnityEvent<Collider> triggerEnter;
     [SerializeField]
-    UnityEvent<Collider> triggerStay;
+    protected UnityEvent<Collider> triggerStay;
     [SerializeField]
-    UnityEvent<Collider> triggerExit;
+    protected UnityEvent<Collider> triggerExit;
 
-    private List<Collider> enteredColliders = new List<Collider>();
+    protected List<Collider> enteredColliders = new List<Collider>();
 
     private void OnTriggerEnter(Collider other)
     {

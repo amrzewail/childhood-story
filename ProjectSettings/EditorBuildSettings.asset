@@ -6,6 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Scenes/Main Menu UI.unity
+    guid: af00dadc1972f274f96b6e6f0d846619
+  - enabled: 1
     path: Assets/Scenes/Staging 2.unity
     guid: 855184a958236bd45950f3a6cdec372b
   - enabled: 1
@@ -17,4 +20,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Test Areas/Test Area.unity
     guid: 91bedb73ac0d178429c0fef271ea717f
+  - enabled: 1
+    path: Assets/Scenes/Loading.unity
+    guid: 60950fcac3ad674439d9195c605dfc11
+  - enabled: 1
+    path: Assets/Scenes/Levels/01 - School.unity
+    guid: 03e0f4e112951ef4c865eac2daa8a346
+  - enabled: 1
+    path: Assets/Scenes/Players.unity
+    guid: 4d7b7af1d3d95b943a6bf258b13821ab
   m_configObjects: {}

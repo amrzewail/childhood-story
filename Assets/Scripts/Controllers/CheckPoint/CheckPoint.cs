@@ -6,12 +6,18 @@ public class CheckPoint : MonoBehaviour
 {
 
     public bool isDefault = false;
+    public int activateOnCount = 1;
 
-    public bool Activated => ActivatedPlayers.Count > 0;
+    public bool Activated => ActivatedPlayers.Count >= activateOnCount;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
     [HideInInspector] public List<int> ActivatedPlayers = new List<int>();
     public int allowPlayerOnly = -1;
+
+    private List<int> _playerQueue = new List<int>();
     private Transform[] transforms;
+
+    public int priority { get; private set; } = 0;
+
 
 #if UNITY_EDITOR
     private void OnValidate()
@@ -37,12 +43,15 @@ public class CheckPoint : MonoBehaviour
 
     private void Awake()
     {
+        _playerQueue = new List<int>();
         if (isDefault)
         {
             ActivatedPlayers.Clear();
             ActivatedPlayers.AddRange(new int[] { 0, 1 });
         }
         CheckPointsList.Add(this);
+        priority = transform.GetSiblingIndex();
+
         transforms = new Transform[2];
         for (int i = 0; i < transform.childCount; i++)
         {
@@ -92,6 +101,7 @@ public class CheckPoint : MonoBehaviour
     public void ResetCheckpoint()
     {
         ActivatedPlayers.Clear();
+        _playerQueue.Clear();
         if (isDefault)
         {
             ActivatedPlayers.AddRange(new int[] { 0, 1 });
@@ -102,17 +112,40 @@ public class CheckPoint : MonoBehaviour
     {
         if (allowPlayerOnly == -1 || allowPlayerOnly == playerIndex)
         {
-            // We deactive all checkpoints in the scene
-            foreach (CheckPoint cp in CheckPointsList)
+            bool canActivate = true;
+            if (!_playerQueue.Contains(playerIndex))
             {
-                if (cp.ActivatedPlayers.Contains(playerIndex))
-                {
-                    cp.ActivatedPlayers.Remove(playerIndex);
-                }
+                _playerQueue.Add(playerIndex);
             }
 
-            // We activated the current checkpoint
-            ActivatedPlayers.Add(playerIndex);
+            if (_playerQueue.Count == activateOnCount)
+            {
+                foreach (int pIndex in _playerQueue) 
+                {
+                    // We deactive all checkpoints in the scene
+                    foreach (CheckPoint cp in CheckPointsList)
+                    {
+                        if (cp.ActivatedPlayers.Contains(pIndex))
+                        {
+                            if (cp.priority > priority)
+                            {
+                                canActivate = false;
+                            }
+                            else
+                            {
+                                cp.ActivatedPlayers.Remove(pIndex);
+                            }
+                        }
+                    }
+
+                    if (canActivate)
+                    {
+                        // We activated the current checkpoint
+                        ActivatedPlayers.Add(pIndex);
+                    }
+                }
+                _playerQueue.Clear();
+            }
         }
     }
 

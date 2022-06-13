@@ -1,5 +1,75 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!114 &-9140963435603691191
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 70afe9e12c7a7ed47911bb608a23a8ff, type: 3}
+  m_Name: SplitToning
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {r: 0.2735849, g: 0.1742168, b: 0.17694455, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  highlights:
+    m_OverrideState: 1
+    m_Value: {r: 1, g: 1, b: 1, a: 1}
+    hdr: 0
+    showAlpha: 0
+    showEyeDropper: 1
+  balance:
+    m_OverrideState: 1
+    m_Value: -3.9
+    min: -100
+    max: 100
+--- !u!114 &-4916898935651653423
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
+  m_Name: ShadowsMidtonesHighlights
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  shadows:
+    m_OverrideState: 1
+    m_Value: {x: 0.5354509, y: 0.47447312, z: 1, w: 0}
+  midtones:
+    m_OverrideState: 1
+    m_Value: {x: 1, y: 0.98749506, z: 0.92571926, w: 0}
+  highlights:
+    m_OverrideState: 1
+    m_Value: {x: 0.92504567, y: 1, z: 0.9082664, w: 0}
+  shadowsStart:
+    m_OverrideState: 1
+    m_Value: 0
+    min: 0
+  shadowsEnd:
+    m_OverrideState: 1
+    m_Value: 0.13
+    min: 0
+  highlightsStart:
+    m_OverrideState: 0
+    m_Value: 0.55
+    min: 0
+  highlightsEnd:
+    m_OverrideState: 0
+    m_Value: 0.97
+    min: 0
 --- !u!114 &-3025086835411931750
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -25,7 +95,7 @@ MonoBehaviour:
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.366
+    m_Value: 0.473
     min: 0
     max: 1
   smoothness:
@@ -36,6 +106,36 @@ MonoBehaviour:
   rounded:
     m_OverrideState: 0
     m_Value: 0
+--- !u!114 &-453494460113537052
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29fa0085f50d5e54f8144f766051a691, type: 3}
+  m_Name: FilmGrain
+  m_EditorClassIdentifier: 
+  active: 0
+  m_AdvancedMode: 0
+  type:
+    m_OverrideState: 1
+    m_Value: 7
+  intensity:
+    m_OverrideState: 1
+    m_Value: 1
+    min: 0
+    max: 1
+  response:
+    m_OverrideState: 1
+    m_Value: 0.758
+    min: 0
+    max: 1
+  texture:
+    m_OverrideState: 0
+    m_Value: {fileID: 0}
 --- !u!114 &-124968061484088792
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -60,7 +160,7 @@ MonoBehaviour:
     min: 0
   scatter:
     m_OverrideState: 1
-    m_Value: 0.557
+    m_Value: 0.631
     min: 0
     max: 1
   clamp:
@@ -104,6 +204,30 @@ MonoBehaviour:
   - {fileID: -124968061484088792}
   - {fileID: -3025086835411931750}
   - {fileID: 335762932511209031}
+  - {fileID: -453494460113537052}
+  - {fileID: 7515356652171075762}
+  - {fileID: -9140963435603691191}
+  - {fileID: -4916898935651653423}
+  - {fileID: 143663597737828919}
+--- !u!114 &143663597737828919
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
+  m_Name: ChromaticAberration
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.16
+    min: 0
+    max: 1
 --- !u!114 &335762932511209031
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -120,7 +244,7 @@ MonoBehaviour:
   m_AdvancedMode: 0
   postExposure:
     m_OverrideState: 1
-    m_Value: 0.14
+    m_Value: 0.27
   contrast:
     m_OverrideState: 1
     m_Value: 0
@@ -142,3 +266,33 @@ MonoBehaviour:
     m_Value: 54
     min: -100
     max: 100
+--- !u!114 &7515356652171075762
+MonoBehaviour:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccf1aba9553839d41ae37dd52e9ebcce, type: 3}
+  m_Name: MotionBlur
+  m_EditorClassIdentifier: 
+  active: 1
+  m_AdvancedMode: 0
+  mode:
+    m_OverrideState: 0
+    m_Value: 0
+  quality:
+    m_OverrideState: 1
+    m_Value: 2
+  intensity:
+    m_OverrideState: 1
+    m_Value: 0.359
+    min: 0
+    max: 1
+  clamp:
+    m_OverrideState: 0
+    m_Value: 0.05
+    min: 0
+    max: 0.2

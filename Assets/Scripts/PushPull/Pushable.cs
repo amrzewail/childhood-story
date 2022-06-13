@@ -2,10 +2,14 @@ using Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Pushable : MonoBehaviour, IPushable
 {
-    [SerializeField]private Transform sidescontroller;
+    [SerializeField] UnityEvent OnStartPush;
+    [SerializeField] UnityEvent OnEndPush;
+
+    [SerializeField] private Transform sidescontroller;
     private Transform holdingPoint;
     IActor actor;
 
@@ -75,7 +79,8 @@ public class Pushable : MonoBehaviour, IPushable
                             Vector3 size = Vector3.Scale(((BoxCollider)_myCollider).size, transform.localScale);
                             size.y = 0.01f;
                             _playerExtraCollider.size = size;
-                            _playerExtraCollider.center = (transform.position - actor.transform.position) + ((BoxCollider)_myCollider).center;
+                            _playerExtraCollider.center = transform.position + ((BoxCollider)_myCollider).center;
+                            _playerExtraCollider.center = actor.transform.InverseTransformPoint(_playerExtraCollider.center);
                         }else if (_myCollider is SphereCollider)
                         {
                             _playerExtraCollider = actor.transform.gameObject.AddComponent<BoxCollider>();
@@ -118,6 +123,8 @@ public class Pushable : MonoBehaviour, IPushable
 
         isPushing = true;
         canMove = false;
+
+        OnStartPush?.Invoke();
     }
 
 
@@ -132,6 +139,8 @@ public class Pushable : MonoBehaviour, IPushable
             GetComponent<Collider>().enabled = true;
             GetComponent<Rigidbody>().useGravity = true;
         }
+
+        OnEndPush?.Invoke();
     }
 
     public bool CanPush()

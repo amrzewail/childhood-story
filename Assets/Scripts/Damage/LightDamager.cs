@@ -19,6 +19,8 @@ public class LightDamager : MonoBehaviour
 
     private void LateUpdate()
     {
+        //return;
+
         if(!health.IsDead())
         {
             bool isOnLight = lightDetector.isOnLight;

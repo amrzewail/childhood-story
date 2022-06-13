@@ -22,22 +22,23 @@ public class MainMenuUI : MonoBehaviour
 
     }
 
+    private IEnumerator LoadScene(string name, LoadSceneMode mode = LoadSceneMode.Single)
+    {
+        AsyncOperation load = SceneManager.LoadSceneAsync(name, LoadSceneMode.Additive);
+        while (load.isDone == false)
+        {
+            yield return null;
+            Debug.Log($"{name} Loaded");
+        }
+    }
+
     private IEnumerator LoadNewGame()
     {
-        SceneManager.LoadScene("Loading",LoadSceneMode.Additive);
-        AsyncOperation load = SceneManager.LoadSceneAsync("School whitebox", LoadSceneMode.Additive);
-        while(load.isDone == false)
-        {
-            yield return null;
-            Debug.Log("Players Loaded");
-        }
 
-        AsyncOperation load2 = SceneManager.LoadSceneAsync("Players", LoadSceneMode.Additive);
-        while (load2.isDone == false)
-        {
-            yield return null;
-            Debug.Log("Players Loaded");
-        }
+        yield return StartCoroutine(LoadScene("Loading", LoadSceneMode.Additive));
+        yield return StartCoroutine(LoadScene("01 - School", LoadSceneMode.Additive));
+        yield return StartCoroutine(LoadScene("Players", LoadSceneMode.Additive));
+
         SceneManager.UnloadSceneAsync("Loading");
         SceneManager.UnloadSceneAsync("Main Menu UI");
     }

@@ -8,7 +8,7 @@ public class CameraFixer : MonoBehaviour
 
     [SerializeField] Transform targetCameraTransform;
 
-    private List<int> _enteredPlayers;
+    private int _enteredPlayers = 0;
 
     private ICamera _camera;
     private Vector3 _cameraInitialPosition;
@@ -21,8 +21,6 @@ public class CameraFixer : MonoBehaviour
 
     void Start()
     {
-        _enteredPlayers = new List<int>();
-
         _camera = this.FindInterfaceOfType<ICamera>();
     }
 
@@ -42,7 +40,7 @@ public class CameraFixer : MonoBehaviour
     {
         if (_camera == null) return;
 
-        if(_enteredPlayers.Count >= 2)
+        if(_enteredPlayers >= 2)
         {
             _lerpValue += Time.deltaTime * 2;
             _lerpValue = Mathf.Clamp01(_lerpValue);
@@ -53,56 +51,33 @@ public class CameraFixer : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    public void OnPlayerEnter()
     {
-        IActor actor;
-        if((actor = other.GetComponent<IActor>()) != null)
+        _enteredPlayers++;
+        if (_camera != null && _enteredPlayers >= 2)
         {
-            var id = actor.GetActorComponent<IActorIdentity>(0);
+            _currentActiveFixers++;
+            _isActive = true;
+            _camera.Enable(false);
+            _cameraInitialPosition = _camera.transform.position;
+            _cameraInitialEuler = _camera.transform.eulerAngles;
+            _lerpValue = 0;
+        }
+    }
 
-            if(id != null && id.characterIdentifier <= 1)
+    public void OnPlayerExit()
+    {
+        _enteredPlayers--;
+        if (_enteredPlayers < 2 && _camera != null)
+        {
+            _currentActiveFixers--;
+            _isActive = false;
+            if (_currentActiveFixers <= 0)
             {
-                if (!_enteredPlayers.Contains(id.characterIdentifier))
-                {
-                    _enteredPlayers.Add(id.characterIdentifier);
-                    if(_camera != null && _enteredPlayers.Count >= 2)
-                    {
-                        _currentActiveFixers++;
-                        _isActive = true;
-                        _camera.Enable(false);
-                        _cameraInitialPosition = _camera.transform.position;
-                        _cameraInitialEuler = _camera.transform.eulerAngles;
-                        _lerpValue = 0;
-                    }
-                }
+                _camera.Enable(true);
             }
         }
     }
 
-    private void OnTriggerExit(Collider other)
-    {
-        IActor actor;
-        if ((actor = other.GetComponent<IActor>()) != null)
-        {
-            var id = actor.GetActorComponent<IActorIdentity>(0);
-
-            if (id != null && id.characterIdentifier <= 1)
-            {
-                if (_enteredPlayers.Contains(id.characterIdentifier))
-                {
-                    _enteredPlayers.Remove(id.characterIdentifier);
-                    if (_enteredPlayers.Count < 2 && _camera != null)
-                    {
-                        _currentActiveFixers--;
-                        _isActive = false;
-                        if (_currentActiveFixers <= 0)
-                        {
-                            _camera.Enable(true);
-                        }
-                    }
-                }
-            }
-        }
-    }
 
 }

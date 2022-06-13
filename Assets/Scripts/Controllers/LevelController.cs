@@ -13,6 +13,8 @@ public class LevelController : MonoBehaviour
 
     internal void Start()
     {
+        SceneManager.SetActiveScene(gameObject.scene);
+
         RespawningSystem.GetInstance().RespawnPlayers();
 
         RespawningSystem.GetInstance().OnGameOver.AddListener(GameOverCallback);

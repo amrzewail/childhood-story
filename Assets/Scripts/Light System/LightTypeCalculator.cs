@@ -51,6 +51,14 @@ public class LightTypeCalculator : MonoBehaviour
             {
                 return false;
             }
+        }else if (light.type == LightType.Point)
+        {
+            direction = light.transform.position - position;
+            if (direction.magnitude > light.range * lightEffector.rangeRatio) return false;
+            if (Physics.Raycast(position, direction, out hit, direction.magnitude, layerMask: layer.value, QueryTriggerInteraction.Ignore))
+            {
+                return false;
+            }
         }
         return true;
     }
