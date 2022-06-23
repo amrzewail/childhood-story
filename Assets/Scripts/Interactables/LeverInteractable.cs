@@ -50,7 +50,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     private IEnumerator TimeDelay()
     {
 
-        yield return new WaitForSeconds(timedelay);
+        yield return new WaitForGameSeconds(timedelay);
         ResetLever();
         
     }
@@ -58,7 +58,6 @@ public class LeverInteractable : MonoBehaviour, IInteractable
     private IEnumerator DelayCanInteract()
     {
         yield return new WaitForSeconds(1);
-        canInteract = true;
     }
     //private IEnumerator TimeDelay(IDictionary<string, object> data)
     //{
@@ -71,6 +70,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
             this.anim.SetTrigger("Up");
             OnLeverReturn?.Invoke();
             StopAllCoroutines();
+            canInteract = true;
 
             StartCoroutine(DelayCanInteract());
         }

@@ -47,7 +47,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
         if (_targetMirror)
         {
             particleTrail.gameObject.SetActive(true);
-            particleTrail.position = Vector3.Lerp(center.position, _targetMirror.center.position, Mathf.Pow(Mathf.Sin(Time.time * 2), 2));
+            particleTrail.position = Vector3.Lerp(center.position, _targetMirror.center.position, Time.time * 1 % 1f);
         }
         else
         {
@@ -92,7 +92,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
             {
                 if ((m = hit.transform.GetComponent<MirrorInteractable>()))
                 {
-                    if (Vector3.Dot(hit.transform.forward, transform.forward) < 0)
+                    if (Vector3.Dot(hit.transform.forward, transform.forward) < -0.1f)
                     {
                         return true;
                     }
