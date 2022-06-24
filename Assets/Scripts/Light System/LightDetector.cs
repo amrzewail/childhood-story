@@ -5,7 +5,7 @@ using UnityEngine.Events;
 
 public class LightDetector : MonoBehaviour, ILightDetector
 {
-    public bool isActive { get; set; }
+    public bool isActive { get; set; } = true;
     public bool isOnLight { get; private set; }
     [SerializeField] private bool startingValue;
     private int _lastLight = -1;

@@ -27,11 +27,13 @@ public class LightTypeCalculator : MonoBehaviour
         LayerMask layer = LayerMask.GetMask(new string[] { "Obstacle", "Ground" });
         Light light = lightEffector.light;
         RaycastHit hit;
-        Vector3 direction;
+        Vector3 direction = Vector3.up;
+        float distance = 0;
         if (light.type == LightType.Spot)
         {
-            direction = light.transform.position - position;
-            if (Physics.Raycast(position, direction, out hit, direction.magnitude, layerMask: layer.value, QueryTriggerInteraction.Ignore))
+            direction = -(light.transform.position - position);
+            distance = direction.magnitude - 0.25f;
+            if (Physics.Raycast(light.transform.position, direction, out hit, distance, layerMask: layer.value, QueryTriggerInteraction.Ignore))
             {
                 return false;
             }
@@ -47,19 +49,25 @@ public class LightTypeCalculator : MonoBehaviour
         }else if(light.type == LightType.Directional)
         {
             direction = -light.transform.forward;
-            if (Physics.Raycast(position, direction, out hit, 10000, layerMask: layer.value, QueryTriggerInteraction.Ignore))
+            distance = 10000;
+            if (Physics.Raycast(position, direction, out hit, distance, layerMask: layer.value, QueryTriggerInteraction.Ignore))
             {
                 return false;
             }
-        }else if (light.type == LightType.Point)
+
+        }
+        else if (light.type == LightType.Point)
         {
-            direction = light.transform.position - position;
+            direction = -(light.transform.position - position);
+            distance = direction.magnitude - 0.25f;
+
             if (direction.magnitude > light.range * lightEffector.rangeRatio) return false;
-            if (Physics.Raycast(position, direction, out hit, direction.magnitude, layerMask: layer.value, QueryTriggerInteraction.Ignore))
+            if (Physics.Raycast(light.transform.position, direction, out hit, distance, layerMask: layer.value, QueryTriggerInteraction.Ignore))
             {
                 return false;
             }
         }
+
         return true;
     }
 }
