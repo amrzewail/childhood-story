@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class OnPlayerTrigger : OnTrigger
 {
+    [SerializeField] string targetName = "";
+
     private void OnTriggerEnter(Collider other)
     {
         if (!IsPlayer(other)) return;
@@ -29,13 +31,9 @@ public class OnPlayerTrigger : OnTrigger
 
     private bool IsPlayer(Collider other)
     {
-        IActor actor = null;
-        if ((actor = other.GetComponent<IActor>()) != null) 
+        if (other.name == targetName)
         {
-            if(actor.GetActorComponent<IActorIdentity>().characterIdentifier < 2)
-            {
-                return true;
-            }
+            return true;
         }
         return false;
     }

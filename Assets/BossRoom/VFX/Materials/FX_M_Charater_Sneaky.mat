@@ -78,6 +78,8 @@ Material:
     - _Fresnel_Power: 0.94
     - _NoiseIntencity: 0.467
     - _Noise_Intensity: 0.467
+    - _QueueControl: 0
+    - _QueueOffset: 0
     - _Sneak: 1
     - _TileNormalTexture: 0.05
     - _TileNormalTexture1: 0.01
