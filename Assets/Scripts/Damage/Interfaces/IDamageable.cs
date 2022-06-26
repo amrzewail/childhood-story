@@ -7,4 +7,6 @@ public interface IDamageable
     DamageGroup group { get; }
     bool Damage(IDamage dmg);
 
+    bool isActive { get; set; }
+
 }

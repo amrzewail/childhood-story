@@ -6,6 +6,9 @@ using UnityEngine.Events;
 
 public class ActorDamageable : MonoBehaviour, IDamageable
 {
+    public bool isActive { get; set; } = true;
+
+
     public DamageGroup group { get => _group; }
     public IActor actor => (IActor)_actor;
 
@@ -20,6 +23,8 @@ public class ActorDamageable : MonoBehaviour, IDamageable
 
     public bool Damage(IDamage dmg)
     {
+        if (!isActive) return false;
+
         if (dmg.groups.Contains(group))
         {
             actor.GetActorComponent<IActorHealth>(0).Damage(dmg.amount);

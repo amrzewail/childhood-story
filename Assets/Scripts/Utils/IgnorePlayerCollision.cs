@@ -10,22 +10,29 @@ public class IgnorePlayerCollision : MonoBehaviour
     IEnumerator Start()
     {
         
-        while(players == null)
+        //while(players == null)
+        //{
+        //    GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
+
+        //    if(gameObjects != null)
+        //    {
+        //        players = new List<Collider>();
+        //        gameObjects.ToList().ForEach(x => players.Add(x.GetComponent<Collider>()));
+        //    }
+
+        //    yield return null;
+        //}
+
+        for(int i = 0; i < 32; i++)
         {
-            GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Player");
-
-            if(gameObjects != null)
-            {
-                players = new List<Collider>();
-                gameObjects.ToList().ForEach(x => players.Add(x.GetComponent<Collider>()));
-            }
-
-            yield return null;
+            Physics.IgnoreLayerCollision(12, i);
         }
 
 
-        Collider col = GetComponent<Collider>();
+        yield return null;
 
-        players.ForEach(x => Physics.IgnoreCollision(x, col, true));
+        //Collider col = GetComponent<Collider>();
+
+        //players.ForEach(x => Physics.IgnoreCollision(x, col, true));
     }
 }

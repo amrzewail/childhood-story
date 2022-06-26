@@ -13,12 +13,15 @@ public class InvisibleAbility : MonoBehaviour, IAbility
     private Dictionary<Renderer, List<Material>> _originalMaterials;
 
     [SerializeField] [RequireInterface(typeof(ITargetable))] Object _targetable;
+    [SerializeField][RequireInterface(typeof(IDamageable))] Object _damageable;
     [SerializeField] float abilityDuration = 5;
     [SerializeField] float abilityCooldown = 3;
     [SerializeField] List<Renderer> renderers;
     [SerializeField] Material transparentMaterial;
 
     public ITargetable targetable => (ITargetable)_targetable;
+
+    public IDamageable damageable => (IDamageable)_damageable;
 
     //Start happens at the start of the game
     private void Start()
@@ -63,6 +66,7 @@ public class InvisibleAbility : MonoBehaviour, IAbility
         Debug.Log("Perform invisible ability!!");
 
         targetable.isTargetable = false;
+        damageable.isActive = false;
 
         foreach (var r in renderers)
         {
@@ -78,6 +82,7 @@ public class InvisibleAbility : MonoBehaviour, IAbility
         yield return new WaitForSeconds(abilityDuration);
 
         targetable.isTargetable = true;
+        damageable.isActive = true;
 
         foreach (var r in renderers)
         {

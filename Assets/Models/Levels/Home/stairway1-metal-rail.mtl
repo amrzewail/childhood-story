@@ -1,0 +1,7 @@
+newmtl Swamp_Ground
+map_Kd D:/Programming/Projects/Project G/Assets/PBR Texture Pack Vol 1/Textures/Swamp Ground/Swamp Ground_baseColor.png
+bump D:/Programming/Projects/Project G/Assets/PBR Texture Pack Vol 1/Textures/Swamp Ground/Swamp Ground_normal.png
+map_Pm D:/Programming/Projects/Project G/Assets/PBR Texture Pack Vol 1/Textures/Swamp Ground/Swamp Ground_metallic.png
+Kd 1 1 1
+d 1
+

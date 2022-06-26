@@ -24,7 +24,7 @@ public class LightTypeCalculator : MonoBehaviour
 
     public static bool IsLightHit(Vector3 position, LightEffector lightEffector)
     {
-        LayerMask layer = LayerMask.GetMask(new string[] { "Obstacle", "Ground" });
+        LayerMask layer = LayerMask.GetMask(new string[] { "Obstacle", "Ground", "TransparentShadow" });
         Light light = lightEffector.light;
         RaycastHit hit;
         Vector3 direction = Vector3.up;
@@ -39,7 +39,7 @@ public class LightTypeCalculator : MonoBehaviour
             }
             else
             {
-                float angle = Vector3.Angle(light.transform.forward, -direction);
+                float angle = Vector3.Angle(light.transform.forward, direction);
 
                 if (angle > light.spotAngle / 2 || direction.magnitude > light.range * lightEffector.rangeRatio)
                 {

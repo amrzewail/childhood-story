@@ -40,7 +40,7 @@ public class DarkDashAbility : MonoBehaviour, IAbility
         RaycastHit hit;
         if (Physics.SphereCast(actor.transform.position + Vector3.up - actor.transform.forward * 0.5f, 0.5f, actor.transform.forward, out hit, distance + 0.5f, ~0, QueryTriggerInteraction.Ignore))
         {
-            if (hit.transform.CompareTag("PreventDarkDash"))
+            if (!hit.transform.CompareTag("DarkDashable"))
             {
                 Debug.Log($"hit default obstacle: {hit.transform.name}");
                 _allowedDistance = hit.distance - 0.5f;

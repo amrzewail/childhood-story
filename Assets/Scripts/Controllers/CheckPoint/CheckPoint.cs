@@ -12,9 +12,9 @@ public class CheckPoint : MonoBehaviour
 
     public int activateOnCount = 1;
 
-    public bool Activated => ActivatedPlayers.Count >= activateOnCount;
+    public bool Activated => ActivatedPlayers.Count >= 1;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
-    [HideInInspector] public List<int> ActivatedPlayers = new List<int>();
+    public List<int> ActivatedPlayers = new List<int>();
     public int allowPlayerOnly = -1;
 
     private Dictionary<int, IActor> _activatedActors = new Dictionary<int, IActor>();

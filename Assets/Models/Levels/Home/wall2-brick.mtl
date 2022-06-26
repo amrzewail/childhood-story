@@ -1,0 +1,7 @@
+newmtl Brick_1
+map_Kd D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Brick 1/Brick 1-diffuse.png
+bump D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Brick 1/Brick 1-normal.png
+map_Pm D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Brick 1/Brick 1-specular.png
+Kd 1 1 1
+d 1
+

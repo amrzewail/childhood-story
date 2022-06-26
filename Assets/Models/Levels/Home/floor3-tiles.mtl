@@ -1,0 +1,7 @@
+newmtl Tiles_1
+map_Kd D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Tiles 1/Tiles 1-diffuse.png
+bump D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Tiles 1/Tiles 1-normal.png
+map_Pm D:/Programming/Projects/Project G/Assets/9t5 PBR Textures Pack Freebies/Textures/Tiles 1/Tiles 1-specular.png
+Kd 1 1 1
+d 1
+

@@ -739,6 +739,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _targetable: {fileID: 6465417866462774763}
+  _damageable: {fileID: 3650615570758359551}
   abilityDuration: 5
   abilityCooldown: 3
   renderers:
@@ -28141,6 +28142,17 @@ CapsuleCollider:
   m_CorrespondingSourceObject: {fileID: 6001291292255534951, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
   m_PrefabInstance: {fileID: 9072477623669474108}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &3650615570758359551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5714643316833786563, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+  m_PrefabInstance: {fileID: 9072477623669474108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a7c43c0706b4b49a7c0457078b4c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &3761201707119813373 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 5320320518527115713, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}

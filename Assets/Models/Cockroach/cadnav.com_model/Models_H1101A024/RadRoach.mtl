@@ -1,0 +1,27 @@
+
+newmtl Material.000001
+Ka 1 1 1
+Kd 1 1 1
+Ks 0 0 0
+d 1
+Ns 100
+map_Kd radroach.dds
+
+
+newmtl Material.0009e9
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+d 1
+Ns 60
+map_Kd meatcapinsect.dds
+
+
+newmtl Material.000a8d
+Ka 1 1 1
+Kd 1 1 1
+Ks 1 1 1
+d 1
+Ns 60
+map_Kd meatcapinsect.dds
+

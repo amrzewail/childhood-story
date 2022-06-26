@@ -82,7 +82,7 @@ public class Footprint : MonoBehaviour
             if(footprint._lastPlayerIndex == index)
             {
 
-                if(_lastPlayer != null)
+                if(footprint._lastPlayer != null)
                 {
                     footprint._lastPlayer.GetActorComponent<IActorHealth>().Damage(1000);
                 }
@@ -90,7 +90,7 @@ public class Footprint : MonoBehaviour
                 footprint.darkEffect.Stop();
                 footprint.lightEffect.Stop();
                 footprint._lastPlayer = null;
-
+                footprint._lastPlayerIndex = -1;
             }
         }
     }

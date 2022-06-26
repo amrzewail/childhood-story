@@ -1,0 +1,7 @@
+newmtl P4_Material
+map_Kd D:/Programming/Projects/Project G/Assets/Definitely Not A Hero/PBR Stylized Textures/P4/P4_BaseColor.png
+bump D:/Programming/Projects/Project G/Assets/Definitely Not A Hero/PBR Stylized Textures/P4/P4_Normal.png
+map_Pm D:/Programming/Projects/Project G/Assets/Definitely Not A Hero/PBR Stylized Textures/P4/P4_Metallic_roughness.tga
+Kd 1 1 1
+d 1
+
