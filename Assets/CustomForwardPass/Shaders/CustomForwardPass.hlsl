@@ -170,7 +170,7 @@ half4 UniversalFragmentCustom(InputData inputData, SurfaceData surfaceData, Vary
     return half4(color, surfaceData.alpha);
 }
 
-void BuildInputData(Varyings input, SurfaceDescription surfaceDescription, out InputData inputData)
+void BuildInputData(Varyings input, SurfaceDescription surfaceDescription, InputData inputData)
 {
     inputData.positionWS = input.positionWS;
 

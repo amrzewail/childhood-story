@@ -71,6 +71,8 @@ public class Pushable : MonoBehaviour, IPushable
                 {
                     canMove = true;
 
+                    actor.transform.position += differenceOffset;
+
                     if (!_playerExtraCollider)
                     {
                         if(_myCollider is BoxCollider)

@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class LightDetector : MonoBehaviour, ILightDetector
 {
+    public bool isActive { get; set; } = true;
     public bool isOnLight { get; private set; }
     [SerializeField] private bool startingValue;
     private int _lastLight = -1;
@@ -17,6 +18,8 @@ public class LightDetector : MonoBehaviour, ILightDetector
     }
     private void FixedUpdate()
     {
+        if (isActive == false) return;
+
         bool isLight = LightTypeCalculator.IsPositionLighted(transform.position);
 
         if (isLight)

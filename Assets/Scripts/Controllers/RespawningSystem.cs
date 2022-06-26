@@ -69,16 +69,16 @@ public class RespawningSystem : MonoBehaviour
                 }
             }
         }
-        if (deadCount == players.Count && _gameOver == false)
-        {
-            Debug.Log("GameOver");
-            _gameOver = true;
-            StopAllCoroutines();
-            OnGameOver.Invoke();
-        }else if (deadCount < players.Count)
-        {
-            _gameOver = false;
-        }
+        //if (deadCount == players.Count && _gameOver == false)
+        //{
+        //    Debug.Log("GameOver");
+        //    _gameOver = true;
+        //    StopAllCoroutines();
+        //    OnGameOver.Invoke();
+        //}else if (deadCount < players.Count)
+        //{
+        //    _gameOver = false;
+        //}
         
     }
     internal IEnumerator RespawnPlayer(IActor player)

@@ -1,3 +1,5 @@
+using Characters;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,12 +8,17 @@ public class CheckPoint : MonoBehaviour
 {
 
     public bool isDefault = false;
+    [SerializeField] bool isContinuous = false;
+
     public int activateOnCount = 1;
 
     public bool Activated => ActivatedPlayers.Count >= activateOnCount;
     public static List<CheckPoint> CheckPointsList = new List<CheckPoint>();
     [HideInInspector] public List<int> ActivatedPlayers = new List<int>();
     public int allowPlayerOnly = -1;
+
+    private Dictionary<int, IActor> _activatedActors = new Dictionary<int, IActor>();
+    private Dictionary<int, Vector3> _lastPositions = new Dictionary<int, Vector3>();
 
     private List<int> _playerQueue = new List<int>();
     private Transform[] transforms;
@@ -47,7 +54,8 @@ public class CheckPoint : MonoBehaviour
         if (isDefault)
         {
             ActivatedPlayers.Clear();
-            ActivatedPlayers.AddRange(new int[] { 0, 1 });
+            AddToActivated(0);
+            AddToActivated(1);
         }
         CheckPointsList.Add(this);
         priority = transform.GetSiblingIndex();
@@ -57,6 +65,12 @@ public class CheckPoint : MonoBehaviour
         {
             transforms[i] = transform.GetChild(i);
         }
+    }
+
+    private void OnEnable()
+    {
+        StopAllCoroutines();
+        StartCoroutine(RunContinuousUpdate());
     }
 
 
@@ -77,7 +91,7 @@ public class CheckPoint : MonoBehaviour
                 // We search the activated checkpoint to get its position
                 if (cp.Activated && cp.ActivatedPlayers.Contains(playerIndex))
                 {
-                    result = cp.transforms[playerIndex].position;
+                    result = cp.GetPlayerSpawnPosition(playerIndex);
                     break;
                 }
             }
@@ -85,6 +99,45 @@ public class CheckPoint : MonoBehaviour
         return result;
 
         //return result;
+    }
+
+    private IEnumerator RunContinuousUpdate()
+    {
+        while (true)
+        {
+            if (!isContinuous) break;
+
+            for(int i = 0; i < ActivatedPlayers.Count; i++)
+            {
+                if (!_activatedActors.ContainsKey(ActivatedPlayers[i]))
+                {
+                    CheckpointActor checkpointActor = FindObjectsOfType<CheckpointActor>().SingleOrDefault(x => x.playerIndex == ActivatedPlayers[i]);
+                    if (!checkpointActor)
+                    {
+                        continue;
+                    }
+                    _activatedActors[checkpointActor.playerIndex] = checkpointActor.GetComponentInChildren<IActor>();
+                }
+                IActor actor = _activatedActors[ActivatedPlayers[i]];
+                var identity = actor.GetActorComponent<IActorIdentity>();
+                var light = actor.GetActorComponent<ILightDetector>();
+                if((identity.characterIdentifier == 0 && !light.isOnLight) || (identity.characterIdentifier == 1 && light.isOnLight))
+                {
+                    _lastPositions[ActivatedPlayers[i]] = actor.transform.position;
+                }
+            }
+
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    private Vector3 GetPlayerSpawnPosition(int playerIndex)
+    {
+        if(isContinuous && _lastPositions.ContainsKey(playerIndex))
+        {
+            return _lastPositions[playerIndex];
+        }
+        return transforms[playerIndex].position;
     }
 
     public static void ResetCheckpoints()
@@ -106,6 +159,13 @@ public class CheckPoint : MonoBehaviour
         {
             ActivatedPlayers.AddRange(new int[] { 0, 1 });
         }
+    }
+
+    private void AddToActivated(int playerIndex)
+    {
+        ActivatedPlayers.Add(playerIndex);
+
+        
     }
 
     private void ActivateCheckPoint(int playerIndex)
@@ -141,7 +201,7 @@ public class CheckPoint : MonoBehaviour
                     if (canActivate)
                     {
                         // We activated the current checkpoint
-                        ActivatedPlayers.Add(pIndex);
+                        AddToActivated(pIndex);
                     }
                 }
                 _playerQueue.Clear();

@@ -98,8 +98,9 @@ public class ShaderGraphConversionTool : Editor
         var graphData = getGraphDataMethod.Invoke(null, new object[] {assetImporter});
         var generatorType = shaderGraphImporterAssembly.GetType("UnityEditor.ShaderGraph.Generator");
         var generatorConstructor = generatorType.GetConstructors().First();
+        var param = generatorConstructor.GetParameters();
         var generator = generatorConstructor.Invoke(new object[]
-            {graphData, null, 1, $"Converted/{shaderGraphName}", null});
+            {graphData, null, 1, $"Converted/{shaderGraphName}", null, false});
 
         var generatedShaderMethod = generator.GetType().GetMethod("get_generatedShader",
             BindingFlags.Public | BindingFlags.NonPublic | BindingFlags.Instance);

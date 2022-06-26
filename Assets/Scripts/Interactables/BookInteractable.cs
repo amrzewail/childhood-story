@@ -7,6 +7,8 @@ public class BookInteractable : MonoBehaviour, IInteractable
 {
     [SerializeField] float timeStopDuration = 5;
     [SerializeField] float cooldown = 10;
+    [SerializeField] ParticleSystem effect;
+    [SerializeField] ParticleSystem cooldownEffect;
 
     private bool canInteract = false;
     private bool isComplete = false;
@@ -15,6 +17,9 @@ public class BookInteractable : MonoBehaviour, IInteractable
     {
         canInteract = true;
         isComplete = true;
+
+        effect.Stop();
+        cooldownEffect.Stop();
     }
 
     public void Interact(IDictionary<string, object> data) 
@@ -47,13 +52,20 @@ public class BookInteractable : MonoBehaviour, IInteractable
         canInteract = false;
         isComplete = true;
 
+        effect.Play();
+        cooldownEffect.Play();
+
         TimeManager.gameSpeed = 0.05f;
 
         yield return new WaitForSeconds(timeStopDuration);
 
+        effect.Stop();
+
         TimeManager.gameSpeed = 1;
 
         yield return new WaitForSeconds(cooldown);
+
+        cooldownEffect.Stop();
 
         isComplete = true;
         canInteract = true;
