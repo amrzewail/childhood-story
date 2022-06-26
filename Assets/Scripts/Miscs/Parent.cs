@@ -1,0 +1,62 @@
+using Characters;
+using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
+
+public class Parent : MonoBehaviour
+{
+    private Coroutine _bulletShootingCoroutine;
+    private Coroutine _ghostShootingCoroutine;
+
+    [SerializeField] CharacterShooter _shooter;
+    [SerializeField] CharacterShooter _ghostShooter;
+    [SerializeField] int _targetPlayer = 0;
+
+    [SerializeField] float _bulletInterval;
+    [SerializeField] float _ghostInterval;
+
+    private IActor _targetActor = null;
+
+    private void Start()
+    {
+        _targetActor = this.FindInterfacesOfType<IActor>().SingleOrDefault(x => x.GetActorComponent<IActorIdentity>().characterIdentifier == _targetPlayer);
+    }
+
+    public void ShootBullet()
+    {
+        _bulletShootingCoroutine = StartCoroutine(StartShootingBullets());
+    }
+
+    public void ShootGhost()
+    {
+        _ghostShootingCoroutine = StartCoroutine(StartShootingGhosts());
+    }
+
+    public void StopShootBullet()
+    {
+        StopCoroutine(_bulletShootingCoroutine);
+    }
+
+    public void StopShootGhost()
+    {
+        StopCoroutine(_ghostShootingCoroutine);
+    }
+
+    private IEnumerator StartShootingBullets()
+    {
+        while (true)
+        {
+            _shooter.Shoot(_targetActor.transform);
+            yield return new WaitForGameSeconds(_bulletInterval);
+        }
+    }
+    private IEnumerator StartShootingGhosts()
+    {
+        while (true)
+        {
+            _ghostShooter.Shoot(_targetActor.transform);
+            yield return new WaitForGameSeconds(_ghostInterval);
+        }
+    }
+}

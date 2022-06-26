@@ -17,16 +17,23 @@ public class CharacterShooter : MonoBehaviour, IShooter
 
     public void Shoot(Vector3 target)
     {
-        IBullet b = GameObject.Instantiate(bullet.transform.gameObject).GetComponent<IBullet>();
-        b.transform.GetComponentInChildren<IDamager>().casterTransform = shooterTransform;
-        b.transform.position = transform.position;
-        b.transform.eulerAngles = transform.eulerAngles;
+        IBullet b = CreateBullet();
         b.Shoot(target);
     }
 
     public void Shoot(Transform target)
     {
-        Shoot(target);
+        IBullet b = CreateBullet();
+        b.Shoot(target);
+    }
+
+    private IBullet CreateBullet()
+    {
+        IBullet b = GameObject.Instantiate(bullet.transform.gameObject).GetComponent<IBullet>();
+        b.transform.GetComponentInChildren<IDamager>().casterTransform = shooterTransform;
+        b.transform.position = transform.position;
+        b.transform.eulerAngles = transform.eulerAngles;
+        return b;
     }
 
     public Vector3 GetOrigin()

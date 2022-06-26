@@ -22,7 +22,10 @@ public class LightDashAbility : MonoBehaviour, IAbility
     [SerializeField] [RequireInterface(typeof(IMover))] Object _mover;
     public IMover mover => (IMover)_mover;
     [SerializeField] [RequireInterface(typeof(IInput))] Object _input;
-    public IInput input => (IInput)_input;
+    public IInput input => (IInput)_input; 
+    
+    [SerializeField][RequireInterface(typeof(IDamageable))] Object _damageable;
+    public IDamageable damageable => (IDamageable)_damageable;
 
     private void Start()
     {
@@ -58,6 +61,9 @@ public class LightDashAbility : MonoBehaviour, IAbility
         isComplete = false;
 
         Debug.Log("Perform new ability!!");
+
+        damageable.isActive = false;
+
         speedModeAura.SetActive(true);
         lightningObj.SetActive(true);
         float startTime = Time.time;
@@ -69,6 +75,9 @@ public class LightDashAbility : MonoBehaviour, IAbility
         }
         isComplete = true;
         yield return new WaitForSeconds(0.24f);
+
+        damageable.isActive = true;
+
         lightningObj.SetActive(false);
         //This is a cooldown for the ability
         yield return new WaitForSeconds(cooldown-0.24f);

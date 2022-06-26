@@ -53,6 +53,7 @@ MonoBehaviour:
   speedModeAura: {fileID: 1933063349}
   _mover: {fileID: 4180671862167379273}
   _input: {fileID: 364795077361771424}
+  _damageable: {fileID: 3650615570758359551}
 --- !u!1 &791184593
 GameObject:
   m_ObjectHideFlags: 0
@@ -3821,6 +3822,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 51cc8f5fe5098af4c93ab968e4dd9fcb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &3650615570758359551 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 5714643316833786563, guid: cac75d57e6d662e499b771d9d82b54ec, type: 3}
+  m_PrefabInstance: {fileID: 9072477623669474108}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c9a7c43c0706b4b49a7c0457078b4c15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &4180671862167379273 stripped
