@@ -2,11 +2,15 @@ using Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace Scripts.Areas
 { 
     public class AreaUnloaderCollider : AreaLoaderBase
     {
+
+        public UnityEvent OnUnload;
+
         private List<int> _entered = new List<int>();
 
         private void OnTriggerEnter(Collider other)
@@ -20,10 +24,16 @@ namespace Scripts.Areas
                     _entered.Add(identifier.Value);
                     if (_entered.Count > 1)
                     {
-                        Unload();
+                        UnloadArea();
                     }
                 }
             }
+        }
+
+        public void UnloadArea()
+        {
+            Unload();
+            OnUnload?.Invoke();
         }
     }
 }

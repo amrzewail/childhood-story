@@ -15,6 +15,10 @@ public class Parent : MonoBehaviour
 
     [SerializeField] float _bulletInterval;
     [SerializeField] float _ghostInterval;
+    [SerializeField] int _maxGhostCount = 10;
+
+    private int _ghostCount = 0;
+
 
     private IActor _targetActor = null;
 
@@ -30,7 +34,10 @@ public class Parent : MonoBehaviour
 
     public void ShootGhost()
     {
-        _ghostShootingCoroutine = StartCoroutine(StartShootingGhosts());
+        if (_ghostCount < _maxGhostCount)
+        {
+            _ghostShootingCoroutine = StartCoroutine(StartShootingGhosts());
+        }
     }
 
     public void StopShootBullet()
@@ -55,7 +62,11 @@ public class Parent : MonoBehaviour
     {
         while (true)
         {
-            _ghostShooter.Shoot(_targetActor.transform);
+            if (_ghostCount < _maxGhostCount)
+            {
+                _ghostShooter.Shoot(_targetActor.transform);
+                _ghostCount++;
+            }
             yield return new WaitForGameSeconds(_ghostInterval);
         }
     }

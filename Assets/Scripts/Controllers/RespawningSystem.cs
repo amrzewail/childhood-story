@@ -41,15 +41,24 @@ public class RespawningSystem : MonoBehaviour
         _playerState = new Dictionary<IActor, bool>();
         players = new List<IActor>();
 
+
+    }
+
+    private void Start()
+    {
         var actors = gameObject.FindInterfacesOfType<IActor>();
         for (int i = 0; i < actors.Length; i++)
         {
-            if (actors[i].GetActorComponent<IActorIdentity>(0).characterIdentifier < 100)
+            if (actors[i].GetActorComponent<IActorIdentity>(0).characterIdentifier < 10)
             {
-                players.Add(actors[i]);
-                _playerState.Add(actors[i], true);
+                var player = actors[i];
+                player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
+
+                players.Add(player);
+                _playerState.Add(player, true);
             }
         }
+
     }
 
 

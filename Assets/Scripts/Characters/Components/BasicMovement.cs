@@ -32,7 +32,7 @@ public class BasicMovement : MonoBehaviour, IMover
         if (!_isEnabled) return;
 
         RaycastHit hit;
-        Physics.Raycast(_collider.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 1f);
+        Physics.Raycast(_collider.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 0.6f);
 
         if (hit.transform)
         {

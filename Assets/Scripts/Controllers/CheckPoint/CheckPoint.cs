@@ -23,6 +23,7 @@ public class CheckPoint : MonoBehaviour
     private List<int> _playerQueue = new List<int>();
     private Transform[] transforms;
 
+    public int parentInstanceId { get; private set; }
     public int priority { get; private set; } = 0;
 
 
@@ -58,6 +59,7 @@ public class CheckPoint : MonoBehaviour
             AddToActivated(1);
         }
         CheckPointsList.Add(this);
+        parentInstanceId = transform.parent.GetInstanceID();
         priority = transform.GetSiblingIndex();
 
         transforms = new Transform[2];
@@ -103,6 +105,7 @@ public class CheckPoint : MonoBehaviour
 
     private IEnumerator RunContinuousUpdate()
     {
+        yield return null;
         while (true)
         {
             if (!isContinuous) break;
@@ -168,7 +171,12 @@ public class CheckPoint : MonoBehaviour
         
     }
 
-    private void ActivateCheckPoint(int playerIndex)
+    public void Activate(int playerIndex, bool ignorePriority = false)
+    {
+        ActivateCheckPoint(playerIndex, ignorePriority);
+    }
+
+    private void ActivateCheckPoint(int playerIndex, bool ignorePriority = false)
     {
         if (allowPlayerOnly == -1 || allowPlayerOnly == playerIndex)
         {
@@ -187,7 +195,7 @@ public class CheckPoint : MonoBehaviour
                     {
                         if (cp.ActivatedPlayers.Contains(pIndex))
                         {
-                            if (cp.priority > priority)
+                            if (!ignorePriority && (cp.parentInstanceId == parentInstanceId && cp.priority > priority))
                             {
                                 canActivate = false;
                             }

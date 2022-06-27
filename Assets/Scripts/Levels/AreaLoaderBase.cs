@@ -11,14 +11,28 @@ namespace Scripts.Areas
 
         [SerializeField] Object scene;
 
+        [ReadOnly, SerializeField] private string _sceneName;
+
+#if UNITY_EDITOR
+
+        private void OnValidate()
+        {
+            if (scene)
+            {
+                _sceneName = scene.name;
+            }    
+        }
+
+#endif
+
         protected virtual void Load()
         {
-            StartCoroutine(LoadScene(scene.name));
+            StartCoroutine(LoadScene(_sceneName));
         }
 
         protected virtual void Unload()
         {
-            StartCoroutine(UnloadScene(scene.name));
+            StartCoroutine(UnloadScene(_sceneName));
         }
 
         private IEnumerator LoadScene(string sceneName)

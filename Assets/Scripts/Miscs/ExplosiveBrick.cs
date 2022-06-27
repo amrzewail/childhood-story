@@ -8,6 +8,7 @@ public class ExplosiveBrick : MonoBehaviour
 
 
     [SerializeField] float radius = 3;
+    [SerializeField] Transform targetsParent;
     [SerializeField] Rigidbody[] _targets;
 
     [SerializeField] float force = 1000;
@@ -17,6 +18,11 @@ public class ExplosiveBrick : MonoBehaviour
     {
 
         if (_isExploded) return;
+
+        if (targetsParent)
+        {
+            _targets = targetsParent.GetComponentsInChildren<Rigidbody>();
+        }
 
         foreach(var target in _targets)
         {

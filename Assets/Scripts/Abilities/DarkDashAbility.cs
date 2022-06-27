@@ -77,7 +77,7 @@ public class DarkDashAbility : MonoBehaviour, IAbility
                 bool isEmpty = !Physics.Raycast(checkPosition + Vector3.up * 0.5f, Vector3.down, 1.1f, _mask, QueryTriggerInteraction.Ignore);
                 if (isEmpty)
                 {
-                    _allowedDistance = 0;
+                    _allowedDistance = i - _allowedDistance / 4f;
                     break;
                 }
                 else if (isLight)

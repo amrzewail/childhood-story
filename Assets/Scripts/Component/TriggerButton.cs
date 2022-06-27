@@ -24,12 +24,23 @@ public class TriggerButton : MonoBehaviour
 
     public bool IsButtonDown => _isButtonDown;
 
-    private void Start()
+    private void Awake()
     {
         startPosition = renderer.transform.position;
 
         OnButtonUp?.Invoke();
         OnButtonUpOnce?.Invoke();
+    }
+
+    private void OnEnable()
+    {
+        if (_isButtonDown)
+        {
+            Vector3 pos = renderer.transform.position;
+            pos.y = startPosition.y;
+            renderer.transform.position = pos;
+            _isButtonDown = false;
+        }
     }
 
     public void ButtonDown(Collider col)

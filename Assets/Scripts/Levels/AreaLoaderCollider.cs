@@ -7,6 +7,8 @@ namespace Scripts.Areas
 { 
     public class AreaLoaderCollider : AreaLoaderBase
     {
+        [SerializeField] int _activateOnCount = 2;
+
         private List<int> _entered = new List<int>();
 
         private void OnTriggerEnter(Collider other)
@@ -18,12 +20,18 @@ namespace Scripts.Areas
                 if (identifier != null && !_entered.Contains(identifier.Value))
                 {
                     _entered.Add(identifier.Value);
-                    if (_entered.Count > 1)
+                    if (_entered.Count >= _activateOnCount)
                     {
-                        Load();
+                        LoadArea();
                     }
                 }
+
             }
+        }
+
+        public void LoadArea()
+        {
+            Load();
         }
     }
 }

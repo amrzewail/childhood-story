@@ -36,6 +36,7 @@ public class MainMenuUI : MonoBehaviour
     {
 
         yield return StartCoroutine(LoadScene("Loading", LoadSceneMode.Additive));
+
         yield return StartCoroutine(LoadScene("01 - School", LoadSceneMode.Additive));
         yield return StartCoroutine(LoadScene("Players", LoadSceneMode.Additive));
 

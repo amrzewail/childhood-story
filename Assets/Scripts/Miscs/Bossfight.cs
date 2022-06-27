@@ -5,6 +5,10 @@ using UnityEngine.Events;
 
 public class Bossfight : MonoBehaviour
 {
+    public UnityEvent OnExplosionComplete;
+
+    public UnityEvent OnBossComplete;
+
     public static Bossfight Instance { get; private set; }
 
     private int _explosionCount = 0;
@@ -14,15 +18,11 @@ public class Bossfight : MonoBehaviour
 
     [Space]
 
-    [SerializeField] MultiButtonTrigger _firstButtons;
-    [SerializeField] List<ExplosiveBrick> _firstExplosives;
-    [SerializeField] List<Transform> _firstBrokenFloors;
+    [SerializeField] int _numbersOfIterations = 6;
 
-    [Space]
-
-    [SerializeField] MultiButtonTrigger _secondButtons;
-    [SerializeField] List<ExplosiveBrick> _secondExplosives;
-    [SerializeField] List<Transform> _secondBrokenFloors;
+    [SerializeField] List<MultiButtonTrigger> _triggers;
+    [SerializeField] List<ExplosiveBrick> _explosives;
+    [SerializeField] List<CheckPoint> _checkpoints;
 
     public Parent mother => _mother;
     public Parent father => _father;
@@ -32,49 +32,56 @@ public class Bossfight : MonoBehaviour
     {
         Instance = this;
 
-        _secondButtons.gameObject.SetActive(false);
+        _triggers.ForEach(x => x.OnButtonsDown.AddListener(Explode));
+        _triggers.ForEach(x => x.gameObject.SetActive(false));
 
-        _firstButtons.OnButtonsDown.AddListener(() => Explode());
-        _secondButtons.OnButtonsDown.AddListener(() => Explode());
+    }
 
+    private void Start()
+    {
+        Begin();
+    }
+
+    private void Begin()
+    {
+        _triggers[0].gameObject.SetActive(true);
     }
 
 
     public void Explode()
     {
-        switch (_explosionCount)
-        {
-            case 0:
-                _firstExplosives.ForEach(x => x.Explode());
-                _firstBrokenFloors.ForEach(x => x.gameObject.SetActive(false));
+        int currentButtons = (_explosionCount + 1) % _triggers.Count;
+
+        _triggers.ForEach(x => x.OnButtonsDown.RemoveAllListeners());
+
+        _triggers[_explosionCount % _triggers.Count].gameObject.SetActive(false);
+
+        _triggers[currentButtons].gameObject.SetActive(true);
+
+        _triggers[currentButtons].OnButtonsDown.AddListener(Explode);
 
 
-                mother.ShootBullet();
-                father.ShootBullet();
-
-                _firstButtons.gameObject.SetActive(false);
-
-                _secondButtons.gameObject.SetActive(true);
-
-                break;
-
-            case 1:
-                _secondExplosives.ForEach(x => x.Explode());
-                _secondBrokenFloors.ForEach(x => x.gameObject.SetActive(false));
+        _explosives[_explosionCount].Explode();
+        _explosives[_explosives.Count - _explosionCount - 1].Explode();
 
 
-                mother.StopShootBullet();
-                father.StopShootBullet();
+        _checkpoints[(_explosionCount + 1) % _checkpoints.Count].Activate(0, true);
+        _checkpoints[(_explosionCount + 1) % _checkpoints.Count].Activate(1, true);
 
-                mother.ShootGhost();
-                father.ShootGhost();
 
-                _secondButtons.gameObject.SetActive(false);
+        OnExplosionComplete?.Invoke();
 
-                break;
-        }
+        //mother.ShootGhost();
+        //father.ShootGhost();
+
 
         _explosionCount++;
+
+        if(_explosionCount >= _numbersOfIterations)
+        {
+            TimeManager.gameSpeed = 0;
+            OnBossComplete?.Invoke();
+        }
     }
 
 }
