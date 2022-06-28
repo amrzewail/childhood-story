@@ -12,8 +12,6 @@ public class SystemInput : MonoBehaviour
 
     internal void Start()
     {
-        Cursor.lockState = CursorLockMode.Locked;
-
         _inputIndex = GetComponent<PlayerInput>().playerIndex;
         DontDestroyOnLoad(this.gameObject);
 

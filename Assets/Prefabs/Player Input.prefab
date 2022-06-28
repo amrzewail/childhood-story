@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 2851491359880741191}
   - component: {fileID: 187568678059115010}
   - component: {fileID: 4167830578657850896}
+  - component: {fileID: -4961533907410919585}
   m_Layer: 0
   m_Name: Player Input
   m_TagString: Untagged
@@ -28,6 +29,7 @@ Transform:
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 2.814497, y: 0, z: 1.4840198}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -165,8 +167,132 @@ MonoBehaviour:
         m_CallState: 2
     m_ActionId: f4429168-db3e-447c-80ac-e33623ee32df
     m_ActionName: Player/Aim[/Mouse/position]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: StartCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 760ca581-92ae-492f-81f0-26e7ed5747dd
+    m_ActionName: Player/Start[/Keyboard/escape,/XInputControllerWindows/start]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: BackCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 88cc7920-72f1-4f8a-9d28-a94afaea116d
+    m_ActionName: Player/Back[/Keyboard/escape,/XInputControllerWindows/buttonEast]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: EnterCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: c048c82e-8b54-453b-a3fa-efbc672a56fb
+    m_ActionName: Player/Enter[/Keyboard/space,/Keyboard/enter,/XInputControllerWindows/buttonSouth]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: LeftCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9acab2eb-6fb3-47fb-91d1-ec6b2446015c
+    m_ActionName: Player/Left[/Keyboard/a,/Keyboard/leftArrow,/XInputControllerWindows/dpad/left,/XInputControllerWindows/leftStick/left]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: RightCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 346ced8d-bba0-4cf2-9795-411e79f81a26
+    m_ActionName: Player/Right[/Keyboard/d,/Keyboard/rightArrow,/XInputControllerWindows/dpad/right,/XInputControllerWindows/leftStick/right]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: DownCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 5d1c3521-9cc4-4a3e-93d8-e8d3ce5abcf2
+    m_ActionName: Player/Down[/Keyboard/downArrow,/Keyboard/s,/XInputControllerWindows/dpad/down,/XInputControllerWindows/leftStick/down]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: -4961533907410919585}
+        m_TargetAssemblyTypeName: InputUI, Assembly-CSharp
+        m_MethodName: UpCallback
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: dadcd8de-7444-46cc-8d16-0ed33be0fb32
+    m_ActionName: Player/Up[/Keyboard/upArrow,/Keyboard/w,/XInputControllerWindows/dpad/up,/XInputControllerWindows/leftStick/up]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: Keyboard
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-4961533907410919585
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5124709146280799405}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7eb27947eeb71124381b5a750c2df60b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

@@ -46,6 +46,12 @@ namespace Scripts.Areas
                 {
                     yield return null;
                 }
+
+                if (!SaveManager.GetInstance().Current.scenes.Contains(sceneName))
+                {
+                    SaveManager.GetInstance().Current.scenes.Add(sceneName);
+                }
+                
             }
         }
 
@@ -60,6 +66,10 @@ namespace Scripts.Areas
                     yield return null;
                 }
 
+                if (SaveManager.GetInstance().Current.scenes.Contains(sceneName))
+                {
+                    SaveManager.GetInstance().Current.scenes.Remove(sceneName);
+                }
             }
         }
     }

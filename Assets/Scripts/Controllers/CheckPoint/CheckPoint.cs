@@ -7,7 +7,10 @@ using UnityEngine;
 public class CheckPoint : MonoBehaviour
 {
 
-    public bool isDefault = false;
+    [HideInInspector] public bool isDefault = false;
+
+
+    [SerializeField] bool isSave = false;
     [SerializeField] bool isContinuous = false;
 
     public int activateOnCount = 1;
@@ -52,7 +55,7 @@ public class CheckPoint : MonoBehaviour
     private void Awake()
     {
         _playerQueue = new List<int>();
-        if (isDefault)
+        if (SaveManager.GetInstance().Current.checkpoint.Equals(this.name))
         {
             ActivatedPlayers.Clear();
             AddToActivated(0);
@@ -210,7 +213,16 @@ public class CheckPoint : MonoBehaviour
                     {
                         // We activated the current checkpoint
                         AddToActivated(pIndex);
+
+                        if (isSave)
+                        {
+                            SaveManager.GetInstance().Current.checkpoint = this.name;
+
+
+                            SaveManager.GetInstance().Save();
+                        }
                     }
+
                 }
                 _playerQueue.Clear();
             }

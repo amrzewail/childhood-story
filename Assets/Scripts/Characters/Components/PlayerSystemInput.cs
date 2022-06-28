@@ -17,6 +17,8 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     public Vector2 aimAxis { get; private set; }
 
+    private bool _isActive = false;
+
     private bool _isInteract = false;
     private bool _isAbility = false;
     private bool _isDash = false;
@@ -35,7 +37,62 @@ public class PlayerSystemInput : MonoBehaviour, IInput
         InputEvents.instance.OnAbility += AbilityCallback;
         InputEvents.instance.OnDash += DashCallback;
         InputEvents.instance.OnShoot += ShootCallback;
+
+        InputEvents.instance.OnInputActivate += InputActivateCallback;
+        InputEvents.instance.OnInputSwitch += InputSwitchCallback;
     }
+
+    internal void OnDestroy()
+    {
+        InputEvents.instance.OnMove -= MoveCallback;
+        InputEvents.instance.OnAim -= AimCallback;
+        InputEvents.instance.OnInteract -= InteractCallback;
+        InputEvents.instance.OnInteractUp -= InteractUpCallback;
+        InputEvents.instance.OnAbility -= AbilityCallback;
+        InputEvents.instance.OnDash -= DashCallback;
+        InputEvents.instance.OnShoot -= ShootCallback;
+
+        InputEvents.instance.OnInputActivate -= InputActivateCallback;
+        InputEvents.instance.OnInputSwitch -= InputSwitchCallback;
+    }
+
+    //internal void Update()
+    //{
+    //    if (!_isActive) return;
+
+    //    Vector2 ax = Vector2.zero;
+
+    //    if(playerInputIndex == 0)
+    //    {
+    //        if (Input.GetKey(KeyCode.D)) ax.x += 1;
+    //        if (Input.GetKey(KeyCode.A)) ax.x -= 1;
+
+    //        if (Input.GetKey(KeyCode.W)) ax.y += 1;
+    //        if (Input.GetKey(KeyCode.S)) ax.y -= 1;
+    //    }
+    //    else if (playerInputIndex == 1)
+    //    {
+    //        if (Input.GetKey(KeyCode.RightArrow)) ax.x += 1;
+    //        if (Input.GetKey(KeyCode.LeftArrow)) ax.x -= 1;
+
+    //        if (Input.GetKey(KeyCode.UpArrow)) ax.y += 1;
+    //        if (Input.GetKey(KeyCode.DownArrow)) ax.y -= 1;
+    //    }
+
+    //    axis = TransformAxis(ax);
+    //    if (axis.magnitude != 0)
+    //    {
+    //        absAxis = axis;
+    //    }
+
+    //    _isInteract = playerInputIndex == 0 ? Input.GetKeyDown(KeyCode.E) : Input.GetKeyDown(KeyCode.Keypad7);
+    //    _isAbility = playerInputIndex == 0 ? Input.GetKeyDown(KeyCode.F) : Input.GetKeyDown(KeyCode.Keypad8);
+    //    _isDash = playerInputIndex == 0 ? Input.GetKeyDown(KeyCode.Space) : Input.GetKeyDown(KeyCode.Keypad5);
+
+    //    _isInteractUp = playerInputIndex == 0 ? Input.GetKeyUp(KeyCode.E) : Input.GetKeyUp(KeyCode.Keypad7);
+
+    //}
+
     internal void LateUpdate()
     {
         _isInteractUp = false;
@@ -47,6 +104,21 @@ public class PlayerSystemInput : MonoBehaviour, IInput
         _isDash = false;
         _isShoot = false;
 
+    }
+
+    private void InputActivateCallback(bool isActive)
+    {
+        _isActive = isActive;
+
+        if (!_isActive)
+        {
+            axis = Vector2.zero;
+        }
+    }
+
+    private void InputSwitchCallback()
+    {
+        playerInputIndex = (playerInputIndex == 0 ? 1 : 0);
     }
 
     private Vector2 TransformAxis(Vector2 a)
@@ -61,7 +133,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private void MoveCallback(int index, Vector2 a)
     {
-        if(index == inputIndex)
+        if (!_isActive) return;
+
+        if (index >= 2) index -= 2;
+
+        if (index == inputIndex)
         {
             axis = TransformAxis(a);
             if (axis.magnitude != 0)
@@ -73,7 +149,10 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private void AimCallback(int index, Vector2 a)
     {
-        if(index == inputIndex)
+        if (!_isActive) return;
+
+
+        if (index == inputIndex)
         {
             a = TransformAxis(a);
             if(a.magnitude != 0)
@@ -85,6 +164,10 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private void InteractCallback(int index)
     {
+        if (!_isActive) return;
+        if (index >= 2) index -= 2;
+
+
         if (index == inputIndex)
         {
             _isInteract = true;
@@ -92,6 +175,10 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     }
     private void InteractUpCallback(int index)
     {
+        if (!_isActive) return;
+        if (index >= 2) index -= 2;
+
+
         if (index == inputIndex)
         {
             _isInteractUp = true;
@@ -100,7 +187,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private void DashCallback(int index)
     {
-        if(index == inputIndex)
+        if (!_isActive) return;
+        if (index >= 2) index -= 2;
+
+
+        if (index == inputIndex)
         {
             _isDash = true;
         }
@@ -108,6 +199,10 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     private void AbilityCallback(int index)
     {
+        if (!_isActive) return;
+
+        if (index >= 2) index -= 2;
+
         if (index == inputIndex)
         {
             _isAbility = true;
@@ -115,6 +210,10 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     }
     private void ShootCallback(int index)
     {
+        if (!_isActive) return;
+        if (index >= 2) index -= 2;
+
+
         if (index == inputIndex)
         {
             _isShoot = true;

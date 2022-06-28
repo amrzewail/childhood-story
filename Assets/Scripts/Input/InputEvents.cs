@@ -5,6 +5,9 @@ using UnityEngine;
 
 public class InputEvents : Singleton<InputEvents>
 {
+    public Action<bool> OnInputActivate;
+
+    public Action OnInputSwitch;
 
     public Action<int, Vector2> OnMove;
 
