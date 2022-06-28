@@ -13,6 +13,7 @@ namespace UI
 
         private int _currentIndex = 0;
 
+
         private void Start()
         {
             _selections = GetComponentsInChildren<Selection>().ToList();
@@ -86,6 +87,11 @@ namespace UI
         {
             _currentIndex = index;
             Highlight(_currentIndex);
+        }
+
+        public void RemoveSelection(int index)
+        {
+            _selections.RemoveAt(index);
         }
     }
 }

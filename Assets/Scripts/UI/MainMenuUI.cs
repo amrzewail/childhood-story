@@ -10,7 +10,7 @@ using static UnityEngine.InputSystem.InputAction;
 public class MainMenuUI : MonoBehaviour
 {
     [SerializeField] Selections selections;
-
+    [SerializeField] CanvasGroup _continueGroup;
 
     public TextMeshProUGUI changingText;
 
@@ -32,6 +32,15 @@ public class MainMenuUI : MonoBehaviour
         InputUIEvents.GetInstance().Down -= DownCallback;
         InputUIEvents.GetInstance().Enter -= SelectCallback;
         InputUIEvents.GetInstance().Back -= BackCallback;
+    }
+
+    private void Start()
+    {
+        if(SaveManager.GetInstance().Current == null)
+        {
+            _continueGroup.alpha = 0.5f;
+            selections.RemoveSelection(1);
+        }
     }
 
     public void changeHintText(string hint)

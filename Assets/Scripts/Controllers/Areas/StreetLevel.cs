@@ -6,6 +6,10 @@ using UnityEngine.Events;
 public class StreetLevel : MonoBehaviour
 {
 
+    [SerializeField] AudioClip _cutsceneClip;
+
+    private bool _didStartCutsceneClip = false;
+
     public UnityEvent OnCompleteInteractions;
 
 
@@ -37,6 +41,12 @@ public class StreetLevel : MonoBehaviour
         if (_isInteractedCat && _isInteractedPaper)
         {
             OnCompleteInteractions?.Invoke();
+
+            if (!_didStartCutsceneClip)
+            {
+                BGMPlayer.GetInstance().Play(_cutsceneClip);
+            }
+            _didStartCutsceneClip = true;
         }
     }
 
@@ -47,6 +57,12 @@ public class StreetLevel : MonoBehaviour
         if(_isInteractedCat && _isInteractedPaper)
         {
             OnCompleteInteractions?.Invoke();
+
+            if (!_didStartCutsceneClip)
+            {
+                BGMPlayer.GetInstance().Play(_cutsceneClip);
+            }
+            _didStartCutsceneClip = true;
         }
     }
 }

@@ -3662,6 +3662,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0868d2d2668bc8749aa0d876416c57d1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _cutsceneClip: {fileID: 8300000, guid: 4adc31e5af1b046448f4cd30b6c5fe03, type: 3}
   OnCompleteInteractions:
     m_PersistentCalls:
       m_Calls:
