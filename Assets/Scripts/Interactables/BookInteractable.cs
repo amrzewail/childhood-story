@@ -2,6 +2,7 @@ using Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class BookInteractable : MonoBehaviour, IInteractable
 {
@@ -12,6 +13,10 @@ public class BookInteractable : MonoBehaviour, IInteractable
 
     private bool canInteract = false;
     private bool isComplete = false;
+
+    [SerializeField] UnityEvent OnBookStart;
+    [SerializeField] UnityEvent OnBookEnd;
+
 
     internal void Start()
     {
@@ -49,6 +54,8 @@ public class BookInteractable : MonoBehaviour, IInteractable
 
     private IEnumerator Interaction(IActor actor)
     {
+        OnBookStart?.Invoke();
+
         canInteract = false;
         isComplete = true;
 
@@ -62,6 +69,8 @@ public class BookInteractable : MonoBehaviour, IInteractable
         effect.Stop();
 
         TimeManager.gameSpeed = 1;
+
+        OnBookEnd?.Invoke();
 
         yield return new WaitForSeconds(cooldown);
 

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Parent : MonoBehaviour
 {
@@ -16,6 +17,8 @@ public class Parent : MonoBehaviour
     [SerializeField] float _bulletInterval;
     [SerializeField] float _ghostInterval;
     [SerializeField] int _maxGhostCount = 10;
+
+    [SerializeField] UnityEvent OnShootBullet;
 
     private int _ghostCount = 0;
 

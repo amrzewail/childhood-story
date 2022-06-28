@@ -23,6 +23,8 @@ public class CheckPoint : MonoBehaviour
     private Dictionary<int, IActor> _activatedActors = new Dictionary<int, IActor>();
     private Dictionary<int, Vector3> _lastPositions = new Dictionary<int, Vector3>();
 
+    private Dictionary<int, bool> _isContinuousCheckEnabled = new Dictionary<int, bool>();
+
     private List<int> _playerQueue = new List<int>();
     private Transform[] transforms;
 
@@ -106,6 +108,22 @@ public class CheckPoint : MonoBehaviour
         //return result;
     }
 
+    public static void EnableContinuousChecks(int playerIndex, bool enable)
+    {
+        if (CheckPointsList != null)
+        {
+            foreach (CheckPoint cp in CheckPointsList)
+            {
+                cp.EnableChecks(playerIndex, enable);
+            }
+        }
+    }
+
+    public void EnableChecks(int playerIndex, bool enable)
+    {
+        _isContinuousCheckEnabled[playerIndex] = enable;
+    }
+
     private IEnumerator RunContinuousUpdate()
     {
         yield return null;
@@ -115,6 +133,11 @@ public class CheckPoint : MonoBehaviour
 
             for(int i = 0; i < ActivatedPlayers.Count; i++)
             {
+                if(_isContinuousCheckEnabled.ContainsKey(ActivatedPlayers[i]) && !_isContinuousCheckEnabled[ActivatedPlayers[i]])
+                {
+                    continue;
+                }
+
                 if (!_activatedActors.ContainsKey(ActivatedPlayers[i]))
                 {
                     CheckpointActor checkpointActor = FindObjectsOfType<CheckpointActor>().SingleOrDefault(x => x.playerIndex == ActivatedPlayers[i]);

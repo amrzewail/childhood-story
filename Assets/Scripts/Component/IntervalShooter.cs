@@ -32,9 +32,10 @@ public class IntervalShooter : MonoBehaviour
         yield return new WaitForSeconds(delay);
         while (true)
         {
-
-            shooter.Shoot(transform.position + transform.forward);
-
+            if (shooter != null)
+            {
+                shooter.Shoot(transform.position + transform.forward);
+            }
             yield return new WaitForGameSeconds(interval);
 
         }

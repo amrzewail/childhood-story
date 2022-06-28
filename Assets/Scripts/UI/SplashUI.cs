@@ -10,6 +10,8 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class SplashUI : MonoBehaviour
 {
+    [SerializeField] AudioClip BGM;
+
     [SerializeField] Image overlay;
     [SerializeField] TextMeshProUGUI text;
 
@@ -29,6 +31,8 @@ public class SplashUI : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
+
+        BGMPlayer.GetInstance().Play(BGM);
 
         overlay.DOFade(0, 1);
     }

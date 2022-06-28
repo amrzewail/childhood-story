@@ -135,8 +135,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     {
         if (!_isActive) return;
 
-        if (index >= 2) index -= 2;
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
         if (index == inputIndex)
         {
             axis = TransformAxis(a);
@@ -165,9 +168,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     private void InteractCallback(int index)
     {
         if (!_isActive) return;
-        if (index >= 2) index -= 2;
-
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
         if (index == inputIndex)
         {
             _isInteract = true;
@@ -176,9 +181,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     private void InteractUpCallback(int index)
     {
         if (!_isActive) return;
-        if (index >= 2) index -= 2;
-
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
         if (index == inputIndex)
         {
             _isInteractUp = true;
@@ -188,8 +195,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     private void DashCallback(int index)
     {
         if (!_isActive) return;
-        if (index >= 2) index -= 2;
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
 
         if (index == inputIndex)
         {
@@ -201,8 +211,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     {
         if (!_isActive) return;
 
-        if (index >= 2) index -= 2;
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
         if (index == inputIndex)
         {
             _isAbility = true;
@@ -211,9 +224,11 @@ public class PlayerSystemInput : MonoBehaviour, IInput
     private void ShootCallback(int index)
     {
         if (!_isActive) return;
-        if (index >= 2) index -= 2;
-
-
+        if (index >= 2)
+        {
+            index -= 2;
+            index = index == 0 ? 1 : 0;
+        }
         if (index == inputIndex)
         {
             _isShoot = true;

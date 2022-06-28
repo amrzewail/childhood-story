@@ -38,6 +38,12 @@ public class CameraController : MonoBehaviour, ICamera
         targets = new List<ICameraTarget>();
     }
 
+    void Start()
+    {
+        CameraEffects.FadeInstant(1);
+
+        CameraEffects.Fade(0, 1);
+    }
     void FixedUpdate()
     {
         if (targets.Count == 0 || !_isEnabled)

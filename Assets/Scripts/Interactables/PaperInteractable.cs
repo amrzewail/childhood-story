@@ -2,6 +2,7 @@ using Characters;
 using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class PaperInteractable : MonoBehaviour, IInteractable
@@ -48,7 +49,11 @@ public class PaperInteractable : MonoBehaviour, IInteractable
 
         actor.GetActorComponent<IAnimator>().Play(0, "Grab Paper");
 
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(1.7f);
+
+        GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
+
+        yield return new WaitForSeconds(5f - 1.7f);
 
         StreetLevel.Instance.SetPaperInteractionStarted();
 

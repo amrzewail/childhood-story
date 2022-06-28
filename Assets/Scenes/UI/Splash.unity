@@ -2685,6 +2685,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3e8c8ea9b56a584896e91e55d77d6b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  BGM: {fileID: 8300000, guid: c58ea433ab91e2f498560de4250f78fa, type: 3}
   overlay: {fileID: 1063341017}
   text: {fileID: 364861959}
 --- !u!1 &1934916776

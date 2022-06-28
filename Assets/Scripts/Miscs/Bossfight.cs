@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 public class Bossfight : MonoBehaviour
 {
@@ -30,6 +31,9 @@ public class Bossfight : MonoBehaviour
     [SerializeField] List<ExplosiveBrick> _explosives;
     [SerializeField] List<CheckPoint> _checkpoints;
 
+    [Space]
+    [SerializeField] AudioClip _clip;
+
     public Parent mother => _mother;
     public Parent father => _father;
     
@@ -50,10 +54,20 @@ public class Bossfight : MonoBehaviour
         _brickStacksParent.gameObject.SetActive(false);
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown("u"))
+        {
+            Explode();
+        }
+    }
+
     public void Begin()
     {
 
         StartCoroutine(BeginCoroutine());
+
+        BGMPlayer.GetInstance().Play(_clip);
 
     }
 
@@ -140,10 +154,17 @@ public class Bossfight : MonoBehaviour
 
         if(_explosionCount >= _numbersOfIterations)
         {
-            TimeManager.gameTimeScale = 0.1f;
+            //TimeManager.gameTimeScale = 0.1f;
             OnBossComplete?.Invoke();
 
             _triggers[currentButtons].gameObject.SetActive(false);
+
+            CameraEffects.FadeInstant(1);
+
+            BGMPlayer.GetInstance().Stop();
+
+            SceneManager.LoadScene("Credits");
+
 
         }
 

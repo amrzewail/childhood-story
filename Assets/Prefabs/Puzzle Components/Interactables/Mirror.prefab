@@ -295,7 +295,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 1
+      value: 0.271
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -350,6 +350,8 @@ MonoBehaviour:
   _clips:
   - name: teleport
     clip: {fileID: 8300000, guid: 5baa97555416bf14b9539c8bd25d21e0, type: 3}
+  - name: rotate
+    clip: {fileID: 8300000, guid: 0b1f1431ff789c344b65893d950d2745, type: 3}
 --- !u!1 &5385494259159239153
 GameObject:
   m_ObjectHideFlags: 0

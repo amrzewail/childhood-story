@@ -44,6 +44,8 @@ public class DarkCloudAbility : MonoBehaviour, IAbility
 
     IEnumerator StartAbility()
     {
+        CheckPoint.EnableContinuousChecks(1, false);
+
         cloud.SetActive(true);
         canPerform = false;
         isComplete = true;
@@ -58,6 +60,9 @@ public class DarkCloudAbility : MonoBehaviour, IAbility
         yield return new WaitForSeconds(abilityTime);
         DarkLightDectector.enabled = true;
         cloud.SetActive(false);
+
+        CheckPoint.EnableContinuousChecks(1, true);
+
 
         yield return new WaitForSeconds(cooldown);
         Debug.Log("Ability is available");

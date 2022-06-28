@@ -10,4 +10,9 @@ public class PlayParticles : MonoBehaviour
     {
         _targets.ForEach(x => x.Play());
     }
+
+    public void Stop()
+    {
+        _targets.ForEach(x => x.Stop());
+    }
 }

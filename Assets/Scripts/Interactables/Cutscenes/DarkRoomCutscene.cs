@@ -107,6 +107,8 @@ public class DarkRoomCutscene : MonoBehaviour, IInteractable
 
         yield return new WaitForSeconds(3);
 
+        actor.GetActorComponent<IAnimator>().Play(0, "Idle");
+
         // parent gestures out
 
         _parent.GetComponentInChildren<Animator>().CrossFadeInFixedTime("Angry Point", 0.2f);

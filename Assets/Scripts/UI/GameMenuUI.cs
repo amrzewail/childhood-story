@@ -25,24 +25,29 @@ public class GameMenuUI : MonoBehaviour
         InputUIEvents.GetInstance().Up += UpCallback;
         InputUIEvents.GetInstance().Down += DownCallback;
         InputUIEvents.GetInstance().Enter += SelectCallback;
+        InputUIEvents.GetInstance().Back += BackCallback;
 
         SetState(State.Closed);
     }
 
     private void OnDestroy()
     {
+        TimeManager.uiTimeScale = 1;
+
         InputUIEvents.GetInstance().Start -= StartCallback;
         InputUIEvents.GetInstance().Up -= UpCallback;
         InputUIEvents.GetInstance().Down -= DownCallback;
         InputUIEvents.GetInstance().Enter -= SelectCallback;
+        InputUIEvents.GetInstance().Back -= BackCallback;
+
     }
 
 
     private void SetState(State state)
     {
         _state = state;
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
 
         switch (_state)
         {
@@ -135,6 +140,15 @@ public class GameMenuUI : MonoBehaviour
     public void OptionsCallback()
     {
 
+    }
+    public void BackCallback()
+    {
+        switch (_state)
+        {
+            case State.Pause:
+                SetState(State.Closed);
+                break;
+        }
     }
 
     public void MainMenuCallback()

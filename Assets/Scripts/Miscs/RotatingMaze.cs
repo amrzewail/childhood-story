@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
+using UnityEngine.Events;
 
 public class RotatingMaze : MonoBehaviour
 {
     [SerializeField] Transform rotator;
+
+    [SerializeField] UnityEvent OnRotation;
 
     private bool _isRotating = false;
 
@@ -31,6 +34,7 @@ public class RotatingMaze : MonoBehaviour
     {
         if (!_isRotating)
         {
+            OnRotation?.Invoke();
             _isRotating = true;
 
             float displacementDuration = 0.35f;

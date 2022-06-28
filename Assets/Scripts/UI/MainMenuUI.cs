@@ -17,6 +17,9 @@ public class MainMenuUI : MonoBehaviour
 
     private void Awake()
     {
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
+
         InputUIEvents.GetInstance().Up += UpCallback;
         InputUIEvents.GetInstance().Down += DownCallback;
         InputUIEvents.GetInstance().Enter += SelectCallback;
@@ -46,6 +49,11 @@ public class MainMenuUI : MonoBehaviour
         SaveManager.GetInstance().New();
 
         StartCoroutine(LoadGame());
+    }
+
+    public void onClickCredits()
+    {
+        SceneManager.LoadScene("Credits");
     }
 
     private IEnumerator LoadScene(string name, LoadSceneMode mode = LoadSceneMode.Single)

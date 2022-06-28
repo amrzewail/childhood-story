@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class InvisibleAbility : MonoBehaviour, IAbility
 {
@@ -18,6 +19,10 @@ public class InvisibleAbility : MonoBehaviour, IAbility
     [SerializeField] float abilityCooldown = 3;
     [SerializeField] List<Renderer> renderers;
     [SerializeField] Material transparentMaterial;
+
+    [SerializeField] UnityEvent OnInvisibleStart;
+    [SerializeField] UnityEvent OnInvisibleEnd;
+    [SerializeField] UnityEvent OnCooldownEnd;
 
     public ITargetable targetable => (ITargetable)_targetable;
 
@@ -60,6 +65,8 @@ public class InvisibleAbility : MonoBehaviour, IAbility
 
     IEnumerator StartAbility()
     {
+        OnInvisibleStart?.Invoke();
+
         canPerform = false;
         isComplete = true;
 
@@ -77,6 +84,8 @@ public class InvisibleAbility : MonoBehaviour, IAbility
             }
             r.materials = materials;
         }
+
+        OnInvisibleEnd?.Invoke();
 
         //This is a cooldown for the ability
         yield return new WaitForSeconds(abilityDuration);
@@ -96,6 +105,7 @@ public class InvisibleAbility : MonoBehaviour, IAbility
 
         yield return new WaitForSeconds(abilityCooldown);
 
+        OnCooldownEnd?.Invoke();
         canPerform = true;
         Debug.Log("Invisible ability is available");
     }

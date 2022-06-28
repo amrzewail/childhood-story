@@ -19,9 +19,14 @@ public class CameraFixer : MonoBehaviour
     private bool _isActive = false;
     private static int _currentActiveFixers = 0;
 
-    void Start()
+    IEnumerator Start()
     {
-        _camera = this.FindInterfaceOfType<ICamera>();
+        while (_camera == null)
+        {
+            _camera = this.FindInterfaceOfType<ICamera>();
+
+            yield return null;
+        }
     }
 
     private void OnDestroy()

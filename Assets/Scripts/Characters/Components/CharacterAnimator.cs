@@ -15,6 +15,8 @@ namespace Characters
 
         public string[] noBlendTimeAnimations;
 
+        public AnimatorLayer[] layers => _layers;
+
         private void Awake()
         {
             if(!_animator) _animator = GetComponent<Animator>();
@@ -131,7 +133,7 @@ namespace Characters
 
             public void Play(Animator animator, int layer, string[] noBlendTimeAnimations, string stateName, float speed, bool mirror)
             {
-                if (!IsPlaying(stateName) || isAnimationFinished || !animator.GetCurrentAnimatorStateInfo(layer).IsName(currentAnimation))
+                if (!IsPlaying(stateName) || isAnimationFinished)
                 {
                     animator.CrossFadeInFixedTime(stateName, noBlendTimeAnimations.Contains(stateName) ? 0 : BLEND_TIME);
                     animator.SetFloat("Speed", speed);

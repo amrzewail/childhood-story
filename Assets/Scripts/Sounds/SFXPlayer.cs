@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using DG.Tweening;
 
 [RequireComponent(typeof(AudioSource))]
 public class SFXPlayer : MonoBehaviour
@@ -27,5 +28,15 @@ public class SFXPlayer : MonoBehaviour
         AudioClip clip = _clips.Single(x => x.name.Equals(clipName)).clip;
 
         _source.PlayOneShot(clip);
+    }
+
+    public void Fade()
+    {
+        _source.DOKill();
+        _source.DOFade(0, 0.5f).onComplete += () => {
+            _source.Stop();
+            _source.volume = 1;
+        };
+
     }
 }
