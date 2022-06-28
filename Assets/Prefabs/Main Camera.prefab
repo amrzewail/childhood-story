@@ -434,6 +434,7 @@ MonoBehaviour:
   distanceMultiplier: 1
   minDistance: 10
   maxDistance: 16
+  zoomMultiplier: 1
   centerOffset: {x: 0, y: 0, z: 0}
   heightDiffFactor: 0.03
   zDiffFactor: 0.04

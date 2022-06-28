@@ -42,7 +42,7 @@ public class DarkDashAbility : MonoBehaviour, IAbility
         {
             if (!hit.transform.CompareTag("DarkDashable"))
             {
-                Debug.Log($"hit default obstacle: {hit.transform.name}");
+                //Debug.Log($"hit default obstacle: {hit.transform.name}");
                 _allowedDistance = hit.distance - 0.5f;
                 if (_allowedDistance > distance) _allowedDistance = 0;
                 canDash = false;

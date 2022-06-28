@@ -1,3 +1,4 @@
+using Characters;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -18,7 +19,11 @@ public interface IAnimator : IComponent
 
     public string GetCurrentAnimation(int layer);
 
+    public void SetRootMotion(bool value);
+
     public void Pause();
 
     public void Unpause();
+
+    public void ResetRootMotion(IActor actor);
 }

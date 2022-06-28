@@ -10,4 +10,6 @@ public interface ICamera
     public void AddTarget(ICameraTarget target);
     public void RemoveTarget(ICameraTarget target);
     public void Enable(bool enable);
+
+    public void Zoom(float value);
 }

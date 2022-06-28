@@ -7,11 +7,15 @@ public class HomeLevel : Singleton<HomeLevel>
 {
 
     public UnityEvent OnStartOpenDoors;
-
+    public UnityEvent OnRoomCutsceneCompleted;
+    public UnityEvent OnUniteCutsceneCompleted;
 
 
     private bool _isInteractedDarkDoor;
     private bool _isInteractedLightDoor;
+
+    private bool _isDarkCutsceneComplete;
+    private bool _isLightCutsceneComplete;
 
     public void SetDarkDoorInteracted()
     {
@@ -31,5 +35,28 @@ public class HomeLevel : Singleton<HomeLevel>
         {
             OnStartOpenDoors?.Invoke();
         }
+    }
+
+    public void SetDarkRoomCutsceneComplete()
+    {
+        _isDarkCutsceneComplete = true; 
+        if (_isLightCutsceneComplete)
+        {
+            OnRoomCutsceneCompleted?.Invoke();
+        }
+    }
+
+    public void SetLightRoomCutsceneComplete()
+    {
+        _isLightCutsceneComplete = true;
+        if (_isDarkCutsceneComplete)
+        {
+            OnRoomCutsceneCompleted?.Invoke();
+        }
+    }
+
+    public void SetUniteCutsceneComplete()
+    {
+        OnUniteCutsceneCompleted?.Invoke();
     }
 }

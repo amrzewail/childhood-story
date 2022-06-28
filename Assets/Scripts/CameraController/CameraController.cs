@@ -19,6 +19,7 @@ public class CameraController : MonoBehaviour, ICamera
     public float distanceMultiplier = 10;
     public float minDistance = 5;
     public float maxDistance = 30;
+    public float zoomMultiplier = 1;
     public Vector3 centerOffset;
     public float heightDiffFactor = 1;
     public float zDiffFactor = 1;
@@ -56,11 +57,10 @@ public class CameraController : MonoBehaviour, ICamera
         SetAngle(angle);
 
         Move();
-        Zoom();
     }
-    void Zoom()
+    public void Zoom(float value)
     {
-            
+        zoomMultiplier = 1f / value;
     }
 
 
@@ -89,7 +89,7 @@ public class CameraController : MonoBehaviour, ICamera
         _distanceBetweenPlayers = (targets[0].transform.position - targets[1].transform.position).magnitude;
         _distanceBetweenPlayers *= distanceMultiplier;
         _distanceBetweenPlayers = Mathf.Clamp(_distanceBetweenPlayers, minDistance, maxDistance);
-        center += -transform.forward * _distanceBetweenPlayers;
+        center += -transform.forward * _distanceBetweenPlayers * zoomMultiplier;
 
 
 

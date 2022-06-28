@@ -10,6 +10,7 @@ public class FallingFloor : MonoBehaviour
 
     private int _fallenByPlayer = -1;
 
+    [SerializeField] bool _isPermanent=false;
     private void Start()
     {
         _startPosition = transform.localPosition;
@@ -44,6 +45,8 @@ public class FallingFloor : MonoBehaviour
 
     private void OnTriggerExit(Collider collision)
     {
+        if (Bossfight.Instance.isFloorFalling == false) return;
+
         if (collision.gameObject.CompareTag("Player"))
         {
             if (_fallenByPlayer == -1)
@@ -57,6 +60,8 @@ public class FallingFloor : MonoBehaviour
     private void Fall()
     {
         transform.DOLocalMove(_startPosition + Vector3.down * 10, 4);
+
+        if (_isPermanent) return;
 
         StartCoroutine(RepositionDelayed());
     }

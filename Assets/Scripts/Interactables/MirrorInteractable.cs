@@ -99,7 +99,7 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
                 }
                 else
                 {
-                    Debug.Log($"Mirror raycast hit: {hit.transform.name}");
+                    //Debug.Log($"Mirror raycast hit: {hit.transform.name}");
                 }
             }
         }

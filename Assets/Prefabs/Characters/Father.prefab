@@ -991,7 +991,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shooterTransform: {fileID: 4647968396331495037}
-  _bullet: {fileID: 2650976361120350333, guid: c939735838db1934a86ace29a51156c9, type: 3}
+  _bullet: {fileID: 4233079626872223944, guid: c8f4da812cf9c544f9dd5ef2f66cedcc, type: 3}
 --- !u!114 &7723876300432959593
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1121,6 +1121,7 @@ MonoBehaviour:
   _targetPlayer: 1
   _bulletInterval: 5
   _ghostInterval: 3
+  _maxGhostCount: 10
 --- !u!1 &3934918923787374611
 GameObject:
   m_ObjectHideFlags: 0

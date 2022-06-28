@@ -55,7 +55,7 @@ public class Parent : MonoBehaviour
         while (true)
         {
             _shooter.Shoot(_targetActor.transform);
-            yield return new WaitForGameSeconds(_bulletInterval);
+            yield return new WaitForGameSeconds(_bulletInterval * UnityEngine.Random.Range(0.5f, 1.2f));
         }
     }
     private IEnumerator StartShootingGhosts()

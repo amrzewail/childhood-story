@@ -35,6 +35,23 @@ namespace Characters
             }
         }
 
+        public void ResetRootMotion(IActor actor)
+        {
+            //SetRootMotion(false);
+
+            actor.transform.eulerAngles = _animator.transform.eulerAngles;
+            actor.transform.position = _animator.transform.position;
+
+            _animator.transform.localPosition = Vector3.zero;
+            _animator.transform.localEulerAngles = Vector3.zero;
+
+        }
+
+        public void SetRootMotion(bool value)
+        {
+            _animator.applyRootMotion = value;
+        }
+
         public void Play(int layer, string stateName)
         {
             Play(layer, stateName, 1, false);
@@ -44,7 +61,7 @@ namespace Characters
         {
             if (layer >= _layers.Length) return;
             var animLayer = _layers[layer];
-            animLayer.Play(_animator, noBlendTimeAnimations, stateName, speed, mirror);
+            animLayer.Play(_animator, layer, noBlendTimeAnimations, stateName, speed, mirror);
         }
 
         public bool IsPlaying(int layer, string stateName)
@@ -112,9 +129,9 @@ namespace Characters
 
             }
 
-            public void Play(Animator animator, string[] noBlendTimeAnimations, string stateName, float speed, bool mirror)
+            public void Play(Animator animator, int layer, string[] noBlendTimeAnimations, string stateName, float speed, bool mirror)
             {
-                if (!IsPlaying(stateName) || isAnimationFinished)
+                if (!IsPlaying(stateName) || isAnimationFinished || !animator.GetCurrentAnimatorStateInfo(layer).IsName(currentAnimation))
                 {
                     animator.CrossFadeInFixedTime(stateName, noBlendTimeAnimations.Contains(stateName) ? 0 : BLEND_TIME);
                     animator.SetFloat("Speed", speed);
@@ -144,7 +161,7 @@ namespace Characters
 
             public bool IsPlaying(string stateName)
             {
-                return stateName == currentAnimation;
+                return currentAnimation == stateName;
             }
 
         }

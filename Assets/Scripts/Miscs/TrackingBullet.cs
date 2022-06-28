@@ -18,6 +18,9 @@ public class TrackingBullet : MonoBehaviour, IBullet
     [SerializeField] Vector3 _targetOffset = new Vector3(0, 1, 0);
     [SerializeField] Rigidbody _rigidbody;
 
+    [SerializeField] ParticleSystem _mainEffect;
+    [SerializeField] ParticleSystem _destroyEffect;
+
     [Header("Random target")]
     [SerializeField] float _alternateTargetInterval = 10;
     [SerializeField] Rect _randomTargetRect;
@@ -27,7 +30,7 @@ public class TrackingBullet : MonoBehaviour, IBullet
         _bullets.Add(this);
         _alternateTimer = 0;
         _alternateTargetInterval = _alternateTargetInterval * UnityEngine.Random.Range(0.5f, 1.5f);
-        Destroy(this.gameObject, _destroyAfter);
+        Invoke(nameof(InstantDestroy), _destroyAfter);
     }
 
     void OnDestroy()
@@ -37,7 +40,13 @@ public class TrackingBullet : MonoBehaviour, IBullet
 
     public void InstantDestroy()
     {
-        Destroy(this.gameObject);
+        GetComponentInChildren<Collider>().enabled = false;
+        _rigidbody.isKinematic = true;
+
+        _mainEffect.gameObject.SetActive(false);
+        _destroyEffect.Play();
+
+        Destroy(this, 1);
     }
 
     public void Shoot(Vector3 target)
@@ -78,16 +87,16 @@ public class TrackingBullet : MonoBehaviour, IBullet
         Vector3 euler = transform.eulerAngles;
         euler.x = euler.z = 0;
 
-        _alternateTimer += Time.deltaTime;
+        //_alternateTimer += Time.deltaTime;
 
-        if(_alternateTimer > _alternateTargetInterval)
-        {
-            _isChasingTarget = !_isChasingTarget;
-            _alternateTimer = 0;
+        //if(_alternateTimer > _alternateTargetInterval)
+        //{
+        //    _isChasingTarget = !_isChasingTarget;
+        //    _alternateTimer = 0;
             
-            _randomTarget = new Vector3(_randomTargetRect.x, transform.position.y, _randomTargetRect.y) + 
-                new Vector3(Random.Range(-_randomTargetRect.width, _randomTargetRect.width), 0, Random.Range(-_randomTargetRect.height, _randomTargetRect.height));
-        }
+        //    _randomTarget = new Vector3(_randomTargetRect.x, transform.position.y, _randomTargetRect.y) + 
+        //        new Vector3(Random.Range(-_randomTargetRect.width, _randomTargetRect.width), 0, Random.Range(-_randomTargetRect.height, _randomTargetRect.height));
+        //}
 
     }
 

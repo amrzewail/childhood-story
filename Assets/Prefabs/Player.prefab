@@ -599,12 +599,15 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6001291292255534948}
+  - component: {fileID: 7711199485876500398}
   - component: {fileID: 6001291292255534954}
   - component: {fileID: 6001291292255534951}
   - component: {fileID: 8820624023147593933}
   - component: {fileID: 6001291292255534955}
   - component: {fileID: 3404862794574342921}
   - component: {fileID: 4822503937632809087}
+  - component: {fileID: 818726880014372792}
+  - component: {fileID: 387113812356604020}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -643,6 +646,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &7711199485876500398
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001291292255534944}
+  m_Enabled: 1
+  m_Avatar: {fileID: 9000000, guid: fa02e467a52d9c04da2a8e5f009b5778, type: 3}
+  m_Controller: {fileID: 9100000, guid: b3fb09ed7c8912c4782b9ba5b781fdf7, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!54 &6001291292255534954
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -727,6 +750,64 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerIndex: 0
+--- !u!114 &818726880014372792
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001291292255534944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a069c4928cbc8ab449b5f5e413e4a1b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  noBlendTimeAnimations: []
+--- !u!114 &387113812356604020
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6001291292255534944}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c82f8017c18bdb84d9190eaea06ec76d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _events:
+  - eventName: SFX_Footstep1
+    OnEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5320320518527115713}
+          m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventName: SFX_Footstep2
+    OnEvent:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 5320320518527115713}
+          m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
+          m_MethodName: Play
+          m_Mode: 0
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &6001291292549482294
 GameObject:
   m_ObjectHideFlags: 0
@@ -812,9 +893,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5847837944714713843}
-  - component: {fileID: 1624064964925540546}
-  - component: {fileID: 8413413700153544374}
-  - component: {fileID: 2306151535586311697}
   m_Layer: 0
   m_Name: Animator
   m_TagString: Untagged
@@ -837,84 +915,6 @@ Transform:
   m_Father: {fileID: 6001291292255534948}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!95 &1624064964925540546
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835835540848076542}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &8413413700153544374
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835835540848076542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a069c4928cbc8ab449b5f5e413e4a1b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  noBlendTimeAnimations: []
---- !u!114 &2306151535586311697
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6835835540848076542}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c82f8017c18bdb84d9190eaea06ec76d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _events:
-  - eventName: SFX_Footstep1
-    OnEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5320320518527115713}
-          m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
-          m_MethodName: Play
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-  - eventName: SFX_Footstep2
-    OnEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 5320320518527115713}
-          m_TargetAssemblyTypeName: SFXPlayer, Assembly-CSharp
-          m_MethodName: Play
-          m_Mode: 0
-          m_Arguments:
-            m_ObjectArgument: {fileID: 0}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
 --- !u!1 &6843827252034113180
 GameObject:
   m_ObjectHideFlags: 0
