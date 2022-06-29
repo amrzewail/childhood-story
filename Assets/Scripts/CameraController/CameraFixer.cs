@@ -45,7 +45,7 @@ public class CameraFixer : MonoBehaviour
     {
         if (_camera == null) return;
 
-        if(_enteredPlayers >= 2)
+        if(_isActive)
         {
             _lerpValue += Time.deltaTime * 2;
             _lerpValue = Mathf.Clamp01(_lerpValue);
@@ -59,30 +59,46 @@ public class CameraFixer : MonoBehaviour
     public void OnPlayerEnter()
     {
         _enteredPlayers++;
-        if (_camera != null && _enteredPlayers >= 2)
+        if (_enteredPlayers >= 2)
         {
             _currentActiveFixers++;
-            _isActive = true;
-            _camera.Enable(false);
-            _cameraInitialPosition = _camera.transform.position;
-            _cameraInitialEuler = _camera.transform.eulerAngles;
-            _lerpValue = 0;
+
+            StartCoroutine(PlayerEnterCoroutine());
         }
     }
 
     public void OnPlayerExit()
     {
         _enteredPlayers--;
-        if (_enteredPlayers < 2 && _camera != null)
+        if (_enteredPlayers < 2)
         {
             _currentActiveFixers--;
             _isActive = false;
+
             if (_currentActiveFixers <= 0)
             {
-                _camera.Enable(true);
+                _currentActiveFixers = 0;
+                StartCoroutine(PlayerExitCoroutine());
             }
         }
     }
 
+    private IEnumerator PlayerEnterCoroutine()
+    {
+        yield return new WaitUntil(() => _camera != null);
 
+        _isActive = true;
+        _camera.Enable(false);
+        _cameraInitialPosition = _camera.transform.position;
+        _cameraInitialEuler = _camera.transform.eulerAngles;
+        _lerpValue = 0;
+    }
+
+    private IEnumerator PlayerExitCoroutine()
+    {
+        yield return new WaitUntil(() => _camera != null);
+
+        _camera.Enable(true);
+        
+    }
 }

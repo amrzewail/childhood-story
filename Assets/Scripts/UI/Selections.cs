@@ -11,6 +11,8 @@ namespace UI
 
         private List<Selection> _selections;
 
+        private List<int> _disabledIndecies = new List<int>();
+
         private int _currentIndex = 0;
 
 
@@ -26,7 +28,8 @@ namespace UI
         {
             for (int i = 0; i < _selections.Count; i++)
             {
-                if (i == index)
+
+                if (i == index && !_disabledIndecies.Contains(index))
                 {
                     _selections[i].Highlight();
                 }
@@ -41,6 +44,13 @@ namespace UI
         {
             _currentIndex--;
             if (_currentIndex < 0) _currentIndex = _selections.Count - 1;
+
+            if (_disabledIndecies.Contains(_currentIndex))
+            {
+                Up();
+                return;
+            }
+
             Highlight(_currentIndex);
         }
 
@@ -48,6 +58,13 @@ namespace UI
         {
             _currentIndex++;
             _currentIndex %= _selections.Count;
+
+            if (_disabledIndecies.Contains(_currentIndex))
+            {
+                Down();
+                return;
+            }
+
             Highlight(_currentIndex);
         }
 
@@ -67,6 +84,8 @@ namespace UI
 
         public void Select()
         {
+            if (_disabledIndecies.Contains(_currentIndex)) return;
+
             _selections[_currentIndex].Select();
         }
 
@@ -74,6 +93,7 @@ namespace UI
         {
             for (int i = 0; i < _selections.Count; i++)
             {
+                if (_disabledIndecies.Contains(i)) continue;
                 _selections[i].UnHighlight();
             }
         }
@@ -89,9 +109,9 @@ namespace UI
             Highlight(_currentIndex);
         }
 
-        public void RemoveSelection(int index)
+        public void DisableSelection(int index)
         {
-            _selections.RemoveAt(index);
+            _disabledIndecies.Add(index);
         }
     }
 }

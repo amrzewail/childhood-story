@@ -55,7 +55,7 @@ public class RespawningSystem : MonoBehaviour
                 player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
 
                 players.Add(player);
-                _playerState.Add(player, true);
+                _playerState[player] = true;
             }
         }
 
@@ -114,6 +114,16 @@ public class RespawningSystem : MonoBehaviour
 
     public void RespawnPlayers()
     {
+        players.Clear();
+        var actors = gameObject.FindInterfacesOfType<IActor>();
+        for (int i = 0; i < actors.Length; i++)
+        {
+            if (actors[i].GetActorComponent<IActorIdentity>(0).characterIdentifier < 10)
+            {
+                var player = actors[i];
+                players.Add(player);
+            }
+        }
         foreach (var player in players)
         {
             player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);

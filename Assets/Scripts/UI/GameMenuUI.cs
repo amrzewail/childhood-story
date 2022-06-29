@@ -19,6 +19,8 @@ public class GameMenuUI : MonoBehaviour
 
     private State _state = State.Closed;
 
+    private bool _didChangeState = false;
+
     private void Start()
     {
         InputUIEvents.GetInstance().Start += StartCallback;
@@ -42,9 +44,16 @@ public class GameMenuUI : MonoBehaviour
 
     }
 
+    private void LateUpdate()
+    {
+        _didChangeState = false;
+    }
+
 
     private void SetState(State state)
     {
+        if (_didChangeState) return;
+
         _state = state;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
@@ -67,6 +76,8 @@ public class GameMenuUI : MonoBehaviour
                 TimeManager.uiTimeScale = 0.0001f;
                 break;
         }
+
+        _didChangeState = true;
     }
 
 

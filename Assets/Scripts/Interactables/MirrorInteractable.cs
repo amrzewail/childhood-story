@@ -109,23 +109,25 @@ public class MirrorInteractable : MonoBehaviour, IInteractable
 
     private IEnumerator TimeDelay(IDictionary<string, object> data)
     {
+        MirrorInteractable target = _targetMirror;
+
         IActor actor = (IActor)data["actor"];
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
         particle.gameObject.SetActive(true);
 
-        distance = Vector3.Distance(center.position, _targetMirror.center.position);
+        distance = Vector3.Distance(center.position, target.center.position);
 
         OnBegin?.Invoke();
 
         yield return new WaitForSeconds(timedelay);
 
-        Vector3 targetMirrorPivotRotation = _targetMirror.pivot.eulerAngles;
+        Vector3 targetMirrorPivotRotation = target.pivot.eulerAngles;
         actor.transform.eulerAngles = new Vector3(0, targetMirrorPivotRotation.y, 0);
         isComplete = true;
         canInteract = true;
         particle.transform.position = center.position;
         particle.gameObject.SetActive(false);
-        actor.transform.position = _targetMirror.pivot.position;
+        actor.transform.position = target.pivot.position;
         actor.transform.gameObject.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
 
         OnEnd?.Invoke();

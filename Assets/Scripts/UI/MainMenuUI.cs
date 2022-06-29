@@ -14,7 +14,6 @@ public class MainMenuUI : MonoBehaviour
 
     public TextMeshProUGUI changingText;
 
-
     private void Awake()
     {
         Cursor.visible = true;
@@ -38,8 +37,9 @@ public class MainMenuUI : MonoBehaviour
     {
         if(SaveManager.GetInstance().Current == null)
         {
+            _continueGroup.interactable = false;
             _continueGroup.alpha = 0.5f;
-            selections.RemoveSelection(1);
+            selections.DisableSelection(1);
         }
     }
 
@@ -51,6 +51,10 @@ public class MainMenuUI : MonoBehaviour
     public void onClickContinue()
     {
         StartCoroutine(LoadGame());
+    }
+    public void onClickOptions()
+    {
+        SceneManager.LoadScene("Options");
     }
 
     public void onClickNewGame()

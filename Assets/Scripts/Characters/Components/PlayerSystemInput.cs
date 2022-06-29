@@ -17,7 +17,7 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     public Vector2 aimAxis { get; private set; }
 
-    private bool _isActive = false;
+    private bool _isActive = true;
 
     private bool _isInteract = false;
     private bool _isAbility = false;
@@ -30,6 +30,8 @@ public class PlayerSystemInput : MonoBehaviour, IInput
 
     internal void Start()
     {
+        _isActive = true;
+
         InputEvents.instance.OnMove += MoveCallback;
         InputEvents.instance.OnAim += AimCallback;
         InputEvents.instance.OnInteract += InteractCallback;
