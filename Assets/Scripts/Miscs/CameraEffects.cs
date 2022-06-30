@@ -15,15 +15,19 @@ public class CameraEffects : MonoBehaviour
         _instance = this;
     }
 
-    public static void Fade(float endValue, float duration = 1)
+    public static void Fade(float endValue, float duration = 1, float delay=0)
     {
         _instance._fadeImage.DOKill();
 
-        var tweener = _instance._fadeImage.DOFade(endValue, duration);
+        var tweener = _instance._fadeImage.DOFade(endValue, duration).SetDelay(delay);
 
         if(endValue <= 0.001f)
         {
             tweener.onComplete += () => _instance._fadeImage.gameObject.SetActive(false);
+        }
+        else {
+
+            _instance._fadeImage.gameObject.SetActive(true);
         }
     }
     public static void FadeInstant(float endValue)

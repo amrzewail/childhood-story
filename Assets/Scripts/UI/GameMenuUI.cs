@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UI;
@@ -7,7 +8,6 @@ using static UnityEngine.InputSystem.InputAction;
 
 public class GameMenuUI : MonoBehaviour
 {
-
     enum State
     {
         Closed,
@@ -16,10 +16,13 @@ public class GameMenuUI : MonoBehaviour
 
     public GameObject pause;
     public Selections pauseSelections;
+    public GameObject intro;
 
     private State _state = State.Closed;
 
     private bool _didChangeState = false;
+    private bool _isShowingIntro = false;
+
 
     private void Start()
     {
@@ -30,6 +33,15 @@ public class GameMenuUI : MonoBehaviour
         InputUIEvents.GetInstance().Back += BackCallback;
 
         SetState(State.Closed);
+
+        if (SaveManager.GetInstance().isNewGame)
+        {
+            StartCoroutine(ShowIntro());
+        }
+        else
+        {
+            intro.gameObject.SetActive(false);
+        }
     }
 
     private void OnDestroy()
@@ -53,6 +65,7 @@ public class GameMenuUI : MonoBehaviour
     private void SetState(State state)
     {
         if (_didChangeState) return;
+        if (_isShowingIntro) return;
 
         _state = state;
         Cursor.visible = false;
@@ -130,6 +143,31 @@ public class GameMenuUI : MonoBehaviour
                 pauseSelections.Select();
                 break;
         }
+    }
+
+    public IEnumerator ShowIntro()
+    {
+        _isShowingIntro = true;
+        InputEvents.GetInstance().OnInputActivate?.Invoke(false);
+
+        CameraEffects.FadeInstant(1);
+
+        intro.gameObject.SetActive(true);
+
+        CameraEffects.Fade(0, 1, 1);
+
+        yield return new WaitForSeconds(7);
+
+        CameraEffects.Fade(1, 1, 0);
+
+        yield return new WaitForSeconds(1);
+
+        intro.gameObject.SetActive(false);
+
+        CameraEffects.Fade(0, 2, 0);
+
+        InputEvents.GetInstance().OnInputActivate?.Invoke(true);
+        _isShowingIntro = false;
     }
 
 

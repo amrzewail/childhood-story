@@ -40,9 +40,12 @@ public class CameraController : MonoBehaviour, ICamera
 
     void Start()
     {
-        CameraEffects.FadeInstant(1);
+        if (!SaveManager.GetInstance().isNewGame)
+        {
+            CameraEffects.FadeInstant(1);
 
-        CameraEffects.Fade(0, 1);
+            CameraEffects.Fade(0, 2, delay: 1);
+        }
     }
     void FixedUpdate()
     {

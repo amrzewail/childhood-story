@@ -50,6 +50,7 @@ public class MainMenuUI : MonoBehaviour
 
     public void onClickContinue()
     {
+        SaveManager.GetInstance().isNewGame = false;
         StartCoroutine(LoadGame());
     }
     public void onClickOptions()
@@ -59,6 +60,8 @@ public class MainMenuUI : MonoBehaviour
 
     public void onClickNewGame()
     {
+        SaveManager.GetInstance().isNewGame = true;
+
         SaveManager.GetInstance().New();
 
         StartCoroutine(LoadGame());

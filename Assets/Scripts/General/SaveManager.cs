@@ -13,6 +13,8 @@ public class SaveManager : Singleton<SaveManager>
 
     public Save Current { get; private set; } = null;
 
+    public bool isNewGame = false;
+
     public override void Awake()
     {
         base.Awake();

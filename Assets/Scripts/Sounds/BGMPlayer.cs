@@ -31,6 +31,7 @@ public class BGMPlayer : Singleton<BGMPlayer>
 
         if(_queueCount <= 0)
         {
+            _clip = null;
             _source.CrossFade(null, 1, 1, 0);
         }
     }
