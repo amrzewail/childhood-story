@@ -9,6 +9,8 @@ public interface IAnimator : IComponent
 
     public void Play(int layer, string stateName, float speed, bool mirror);
 
+    public void Play(int layer, string stateName, float speed, bool mirror, float blendTime);
+
     public bool IsPlaying(int layer, string stateName);
 
     public bool IsAnimationFinished(int layer);

@@ -21,6 +21,8 @@ public class LightDamager : MonoBehaviour
     {
         //return;
 
+        if (lightDetector.isActive == false) return;
+
         if(!health.IsDead())
         {
             bool isOnLight = lightDetector.isOnLight;

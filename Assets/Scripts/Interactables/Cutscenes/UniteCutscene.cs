@@ -7,6 +7,8 @@ using UnityEngine;
 
 public class UniteCutscene : MonoBehaviour
 {
+    [SerializeField] AudioClip BGM;
+
     [SerializeField] Transform _walls;
     [SerializeField] Transform _floors;
     [SerializeField] Transform _moreFloors;
@@ -24,10 +26,15 @@ public class UniteCutscene : MonoBehaviour
     {
         HomeLevel.GetInstance().OnStartOpenDoors.AddListener(OpenDoorsCallback);
         HomeLevel.GetInstance().OnRoomCutsceneCompleted.AddListener(Begin);
+
+        _floors.gameObject.SetActive(false);
+        _moreFloors.gameObject.SetActive(false);
     }
 
     private void OpenDoorsCallback()
     {
+        StartCoroutine(RunRoomsCutscene());
+
         ICamera camera = this.FindInterfaceOfType<ICamera>();
 
         float zoomValue = 1;
@@ -37,7 +44,9 @@ public class UniteCutscene : MonoBehaviour
     private IEnumerator RunRoomsCutscene()
     {
 
-        yield return null;
+        yield return new WaitForSeconds(2);
+
+        BGMPlayer.GetInstance().Play(BGM);
     }
 
 
@@ -78,27 +87,27 @@ public class UniteCutscene : MonoBehaviour
 
         yield return new WaitForSeconds(4);
 
-        float LENGTH = 5;
+        float LENGTH = 4;
 
         lightActor.transform.DOMove(_lightDestination1.position, LENGTH).SetEase(Ease.Linear);
         lightActor.transform.DORotate(_lightDestination1.eulerAngles, 0.6f);
-        lightActor.GetActorComponent<IAnimator>().Play(0, "Walk", 0.35f, false);
+        lightActor.GetActorComponent<IAnimator>().Play(0, "Walk", 0.45f, false);
 
         darkActor.transform.DOMove(_darkDestination1.position, LENGTH).SetEase(Ease.Linear);
         darkActor.transform.DORotate(_darkDestination1.eulerAngles, 0.6f);
-        darkActor.GetActorComponent<IAnimator>().Play(0, "Walk", 0.35f, false);
+        darkActor.GetActorComponent<IAnimator>().Play(0, "Walk", 0.45f, false);
 
         float zoomValue = 1.25f;
-        DOTween.To(() => zoomValue, x => camera.Zoom(zoomValue = x), 2, LENGTH);
+        DOTween.To(() => zoomValue, x => camera.Zoom(zoomValue = x), 1.75f, LENGTH);
 
 
-        yield return new WaitForSeconds(LENGTH);
+        yield return new WaitForSeconds(LENGTH - 0.2f);
 
-        lightActor.GetActorComponent<IAnimator>().Play(0, "Handshake");
+        lightActor.GetActorComponent<IAnimator>().Play(0, "Handshake", 1, false, 0.5f);
 
-        darkActor.GetActorComponent<IAnimator>().Play(0, "Handshake");
+        darkActor.GetActorComponent<IAnimator>().Play(0, "Handshake", 1, false, 0.5f);
 
-        yield return new WaitForSeconds(4 / 0.25f);
+        yield return new WaitForSeconds(4f / 0.25f);
 
         darkActor.GetActorComponent<IAnimator>().Play(0, "Left Turn");
         lightActor.GetActorComponent<IAnimator>().Play(0, "Right Turn");
@@ -112,8 +121,8 @@ public class UniteCutscene : MonoBehaviour
         darkActor.transform.GetComponentInChildren<Rigidbody>().isKinematic = false;
 
 
-        lightActor.GetActorComponent<ILightDetector>().isActive = true;
-        darkActor.GetActorComponent<ILightDetector>().isActive = true;
+        //lightActor.GetActorComponent<ILightDetector>().isActive = true;
+        //darkActor.GetActorComponent<ILightDetector>().isActive = true;
 
         camera.Zoom(1);
 

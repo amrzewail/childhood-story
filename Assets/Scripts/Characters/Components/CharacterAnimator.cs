@@ -56,14 +56,21 @@ namespace Characters
 
         public void Play(int layer, string stateName)
         {
-            Play(layer, stateName, 1, false);
+            Play(layer, stateName, 1, false, BLEND_TIME);
         }
 
         public void Play(int layer, string stateName, float speed, bool mirror)
         {
             if (layer >= _layers.Length) return;
             var animLayer = _layers[layer];
-            animLayer.Play(_animator, layer, noBlendTimeAnimations, stateName, speed, mirror);
+            animLayer.Play(_animator, layer, noBlendTimeAnimations, stateName, speed, mirror, BLEND_TIME);
+        }
+
+        public void Play(int layer, string stateName, float speed, bool mirror, float blendTime)
+        {
+            if (layer >= _layers.Length) return;
+            var animLayer = _layers[layer];
+            animLayer.Play(_animator, layer, noBlendTimeAnimations, stateName, speed, mirror, blendTime);
         }
 
         public bool IsPlaying(int layer, string stateName)
@@ -131,11 +138,11 @@ namespace Characters
 
             }
 
-            public void Play(Animator animator, int layer, string[] noBlendTimeAnimations, string stateName, float speed, bool mirror)
+            public void Play(Animator animator, int layer, string[] noBlendTimeAnimations, string stateName, float speed, bool mirror, float blendTime)
             {
                 if (!IsPlaying(stateName) || isAnimationFinished)
                 {
-                    animator.CrossFadeInFixedTime(stateName, noBlendTimeAnimations.Contains(stateName) ? 0 : BLEND_TIME);
+                    animator.CrossFadeInFixedTime(stateName, noBlendTimeAnimations.Contains(stateName) ? 0 : blendTime);
                     animator.SetFloat("Speed", speed);
                     _currentSpeed = speed;
                     animator.SetBool("Mirror", mirror);
