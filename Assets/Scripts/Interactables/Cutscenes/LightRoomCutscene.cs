@@ -130,6 +130,7 @@ public class LightRoomCutscene : MonoBehaviour, IInteractable
         yield return new WaitForSeconds(0.5f);
 
         // the girl turns to her mother
+        actor.GetActorComponent<IAnimator>().Play(0, "Turn Backward");
 
 
         yield return new WaitForSeconds(1);
@@ -137,10 +138,11 @@ public class LightRoomCutscene : MonoBehaviour, IInteractable
 
         //girl reaching out
 
-        actor.GetActorComponent<IAnimator>().Play(0, "Turn Backward");
-
-
         yield return new WaitForSeconds(3);
+
+        actor.GetActorComponent<IAnimator>().Play(1, "Cry", 1, false);
+
+        yield return new WaitForSeconds(0);
 
         // the mother disappears
 

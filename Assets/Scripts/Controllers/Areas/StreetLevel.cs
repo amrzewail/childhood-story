@@ -1,3 +1,4 @@
+using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -42,6 +43,14 @@ public class StreetLevel : MonoBehaviour
         {
             OnCompleteInteractions?.Invoke();
 
+            ICamera camera = this.FindInterfaceOfType<ICamera>();
+            float value = 1f;
+            DOTween.To(() => value, x =>
+            {
+                value = x;
+                camera.Zoom(value);
+            }, 1.25f, 5);
+
             if (!_didStartCutsceneClip)
             {
                 BGMPlayer.GetInstance().Play(_cutsceneClip);
@@ -57,6 +66,14 @@ public class StreetLevel : MonoBehaviour
         if(_isInteractedCat && _isInteractedPaper)
         {
             OnCompleteInteractions?.Invoke();
+
+            ICamera camera = this.FindInterfaceOfType<ICamera>();
+            float value = 1f;
+            DOTween.To(() => value, x =>
+            {
+                value = x;
+                camera.Zoom(value);
+            }, 1.25f, 5);
 
             if (!_didStartCutsceneClip)
             {

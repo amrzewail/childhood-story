@@ -11,53 +11,64 @@ public class BasicMovement : MonoBehaviour, IMover
     private Vector3 _rotateDirection;
     private float _lastSpeed;
 
+    private Transform _directioner;
+
     [SerializeField] Rigidbody _rigidbody;
     [SerializeField] Collider _collider;
-
+    [SerializeField] LayerMask _groundLayers;
 
 
 
     void Start()
     {
-
+        _directioner = new GameObject("Directioner").transform;
+        _directioner.SetParent(this.transform);
+        _directioner.localPosition = Vector3.zero;
     }
 
     void FixedUpdate()
     {
-        if (_didDisableGravity)
-        {
-            _rigidbody.useGravity = true;
-            _didDisableGravity = false;
-        }
+        _rigidbody.useGravity = true;
         if (!_isEnabled) return;
 
         RaycastHit hit;
-        Physics.Raycast(_collider.transform.position + Vector3.up * 0.5f, Vector3.down, out hit, 0.6f);
+        Ray downRay = new Ray(transform.position + Vector3.up * 0.1f, Vector3.down);
 
-        if (hit.transform)
+        if (Physics.Raycast(downRay, out hit, 0.5f, ~LayerMask.GetMask(new string[] {"TransparentShadow"}), queryTriggerInteraction: QueryTriggerInteraction.Ignore))
         {
-            var slopeRotation = Quaternion.FromToRotation(Vector3.up, hit.normal);
-            _direction = slopeRotation * _direction;
-
-            if(slopeRotation.eulerAngles.magnitude > 0.01f)
+            if (hit.transform.gameObject.layer == Layers.GROUND)
             {
-                _rigidbody.useGravity = false;
-                _didDisableGravity = true;
-            }
-        }
+                _directioner.up = hit.normal;
 
-        _rigidbody.velocity = Vector3.MoveTowards(_rigidbody.velocity, _direction, _lastSpeed * 10 * Time.deltaTime);
+                if(Vector3.Dot(_directioner.up, Vector3.up) < 0.9f && _direction.magnitude <= 0.01f)
+                {
+                    _rigidbody.useGravity = false;
+                }
 
-        if (_rotateDirection.magnitude > 0)
-        {
-            float angle = -180 * Mathf.Atan2(_rotateDirection.z, _rotateDirection.x) / Mathf.PI + 90;
-            if (angle < 0) angle += 360;
-            if (!(_rigidbody.transform.eulerAngles.y > angle - 1 && _rigidbody.transform.eulerAngles.y < angle + 1))
-            {
-                _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, angle, 0), 700 * Time.deltaTime);
+                Vector3 dir = _directioner.forward * _direction.z;
+                dir += _directioner.right * _direction.x;
+                dir += Vector3.up * _direction.y;
+
+                Vector3 velocity = _rigidbody.velocity;
+                velocity.x = Mathf.MoveTowards(velocity.x, dir.x, _lastSpeed * 10 * Time.deltaTime);
+                velocity.z = Mathf.MoveTowards(velocity.z, dir.z, _lastSpeed * 10 * Time.deltaTime);
+                velocity.y = dir.y;
+                _rigidbody.velocity = velocity;
+
+
+                if (_rotateDirection.magnitude > 0)
+                {
+                    float angle = -180 * Mathf.Atan2(_rotateDirection.z, _rotateDirection.x) / Mathf.PI + 90;
+                    if (angle < 0) angle += 360;
+                    if (!(_rigidbody.transform.eulerAngles.y > angle - 1 && _rigidbody.transform.eulerAngles.y < angle + 1))
+                    {
+                        _rigidbody.rotation = Quaternion.RotateTowards(_rigidbody.rotation, Quaternion.Euler(0, angle, 0), 700 * Time.deltaTime);
+                    }
+                }
             }
         }
     }
+
 
     public void Enable(bool value)
     {
@@ -72,6 +83,11 @@ public class BasicMovement : MonoBehaviour, IMover
 
         _lastSpeed = speed;
         _rotateDirection = direction;
+    }
+
+    public void Up(float speed)
+    {
+        _direction.y = speed;
     }
 
     public void Rotate(Vector3 direction)

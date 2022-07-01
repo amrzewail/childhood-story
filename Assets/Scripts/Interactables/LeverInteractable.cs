@@ -7,6 +7,7 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 {
     //[SerializeField]private Transform pivot_rotation_angle;
     [SerializeField]private float timedelay;
+    [SerializeField] float canInteractDelay = 0;
     //[SerializeField]private float maximumrotation = 50f;
     [SerializeField]private bool oneTimeOnly;
     private bool canInteract, isComplete;
@@ -57,7 +58,9 @@ public class LeverInteractable : MonoBehaviour, IInteractable
 
     private IEnumerator DelayCanInteract()
     {
-        yield return new WaitForSeconds(1);
+        yield return new WaitForSeconds(canInteractDelay);
+
+        canInteract = true;
     }
     //private IEnumerator TimeDelay(IDictionary<string, object> data)
     //{
@@ -70,8 +73,6 @@ public class LeverInteractable : MonoBehaviour, IInteractable
             this.anim.SetTrigger("Up");
             OnLeverReturn?.Invoke();
             StopAllCoroutines();
-            canInteract = true;
-
             StartCoroutine(DelayCanInteract());
         }
     }

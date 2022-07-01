@@ -66,6 +66,11 @@ namespace Characters
             
         }
 
+        public void Up(float speed)
+        {
+
+        }
+
         public void Stop()
         {
             _isMoving = false;

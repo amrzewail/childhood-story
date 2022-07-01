@@ -34,6 +34,11 @@ public class PathFindingMover : MonoBehaviour,IMover
         agent.isStopped = true;
     }
 
+    public void Up(float speed)
+    {
+
+    }
+
     // Update is called once per frame
     void Update()
     {

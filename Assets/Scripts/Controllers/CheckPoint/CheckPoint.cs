@@ -150,7 +150,8 @@ public class CheckPoint : MonoBehaviour
                 IActor actor = _activatedActors[ActivatedPlayers[i]];
                 var identity = actor.GetActorComponent<IActorIdentity>();
                 var light = actor.GetActorComponent<ILightDetector>();
-                if((identity.characterIdentifier == 0 && !light.isOnLight) || (identity.characterIdentifier == 1 && light.isOnLight))
+                var grounder = actor.GetActorComponent<IGroundDetector>();
+                if(((identity.characterIdentifier == 0 && !light.isOnLight) || (identity.characterIdentifier == 1 && light.isOnLight)) && grounder.isGrounded)
                 {
                     _lastPositions[ActivatedPlayers[i]] = actor.transform.position;
                 }

@@ -94,16 +94,24 @@ public class RespawningSystem : MonoBehaviour
     {
         yield return new WaitForSeconds(_respawnTime);
 
+        bool lightDetectorActive = player.GetActorComponent<ILightDetector>().isActive;
+
+        player.GetActorComponent<ILightDetector>().isActive = false;
 
         player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
 
         Debug.Log("RespawningSystem::RespawnPlayer");
-        yield return new WaitForSeconds(Time.deltaTime * 10);
+        yield return null;
 
         player.GetActorComponent<IActorHealth>(0).Heal(player.GetActorComponent<IActorHealth>(0).GetMaxValue());
 
+
         _playerState[player] = true;
         OnPlayerRespawn.Invoke(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
+
+        yield return new WaitForSeconds(0.5f);
+
+        player.GetActorComponent<ILightDetector>().isActive = lightDetectorActive;
     }
 
 

@@ -20,6 +20,13 @@ public class RotateBy : MonoBehaviour
             {
                 if (rotatable.isRotatable == false) continue;
             }
+
+            if (DOTween.IsTweening(t))
+            {
+                t.DOComplete();
+            }
+
+
             Vector3 targetAngle = t.transform.eulerAngles + _angle;
 
             t.DORotate(targetAngle, _duration, RotateMode.FastBeyond360);

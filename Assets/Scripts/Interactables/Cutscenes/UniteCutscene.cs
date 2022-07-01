@@ -44,7 +44,7 @@ public class UniteCutscene : MonoBehaviour
     private IEnumerator RunRoomsCutscene()
     {
 
-        yield return new WaitForSeconds(2);
+        yield return new WaitForSeconds(3);
 
         BGMPlayer.GetInstance().Play(BGM);
     }

@@ -10,5 +10,7 @@ namespace Characters
         public void Stop();
         public void Rotate(Vector3 direction);
         public void Enable(bool value);
+
+        public void Up(float speed);
     }
 }

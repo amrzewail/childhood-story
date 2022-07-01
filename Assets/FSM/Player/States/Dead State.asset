@@ -21,3 +21,7 @@ MonoBehaviour:
     transition: {fileID: 11400000, guid: a7cea3429f12596408eb80b581cd74e8, type: 2}
     transitions: []
   animationName: Dead
+  darkDeathVFX: {fileID: 2968882417978563408, guid: 273991f9b60565e4288badbaac8616d9, type: 3}
+  lightDeathVFX: {fileID: 7819171992043747585, guid: d0ba871fad830b047bb8c11576c8a137, type: 3}
+  darkSpawnVFX: {fileID: 2968882417978563408, guid: 91a2512d423b8e84b88d01de3da98d61, type: 3}
+  lightSpawnVFX: {fileID: 7819171992043747585, guid: 971f3d9744e14bf42944a30020e99ad6, type: 3}

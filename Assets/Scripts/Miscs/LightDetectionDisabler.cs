@@ -5,6 +5,25 @@ using UnityEngine;
 
 public class LightDetectionDisabler : MonoBehaviour
 {
+    private List<IActor> _actors = new List<IActor>();
+
+    private void Update()
+    {
+        foreach(var actor in _actors)
+        {
+            if (actor.GetActorComponent<IActorHealth>().IsDead())
+            {
+                actor.GetActorComponent<ILightDetector>().isActive = true;
+
+                if (_actors.Contains(actor))
+                {
+                    _actors.Remove(actor);
+                }
+                break;
+            }
+        }
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -16,6 +35,11 @@ public class LightDetectionDisabler : MonoBehaviour
             if(id < 2)
             {
                 actor.GetActorComponent<ILightDetector>().isActive = false;
+
+                if (!_actors.Contains(actor))
+                {
+                    _actors.Add(actor);
+                }
             }
         }
     }
@@ -30,6 +54,11 @@ public class LightDetectionDisabler : MonoBehaviour
             if (id < 2)
             {
                 actor.GetActorComponent<ILightDetector>().isActive = true;
+
+                if (_actors.Contains(actor))
+                {
+                    _actors.Remove(actor);
+                }
             }
         }
     }

@@ -203,6 +203,10 @@ namespace Characters
 
         }
 
+        public void Up(float speed)
+        {
+
+        }
         private void OnGUI()
         {
             

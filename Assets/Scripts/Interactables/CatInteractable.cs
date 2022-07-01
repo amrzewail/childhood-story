@@ -58,6 +58,8 @@ public class CatInteractable : MonoBehaviour, IInteractable
 
         yield return new WaitUntil(() => _shouldCompleteInteraction);
 
+        yield return new WaitForSeconds(5);
+
         actor.GetActorComponent<IAnimator>().Play(0, "Petting Cat End");
 
         yield return new WaitForSeconds(3.33f);
@@ -65,6 +67,8 @@ public class CatInteractable : MonoBehaviour, IInteractable
         actor.transform.GetComponentInChildren<Rigidbody>().isKinematic = false;
         _isComplete = true;
         _canInteract = false;
+
+        this.FindInterfaceOfType<ICamera>().Zoom(1);
     }
 
     public bool IsComplete()

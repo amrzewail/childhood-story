@@ -12,7 +12,7 @@ public class CameraFixer : MonoBehaviour
 
     private ICamera _camera;
     private Vector3 _cameraInitialPosition;
-    private Vector3 _cameraInitialEuler;
+    private Quaternion _cameraInitialEuler;
 
     private float _lerpValue;
 
@@ -50,8 +50,13 @@ public class CameraFixer : MonoBehaviour
             _lerpValue += Time.deltaTime * 2;
             _lerpValue = Mathf.Clamp01(_lerpValue);
 
+
+            Quaternion targetEuler = targetCameraTransform.rotation;
+
+            Debug.Log($"Init:{_cameraInitialEuler} target:{targetEuler}");
+
             _camera.transform.position = Vector3.Lerp(_cameraInitialPosition, targetCameraTransform.position, _lerpValue);
-            _camera.transform.eulerAngles = Vector3.Lerp(_cameraInitialEuler, targetCameraTransform.eulerAngles, _lerpValue);
+            _camera.transform.rotation = Quaternion.Lerp(_cameraInitialEuler, targetEuler, _lerpValue);
 
         }
     }
@@ -90,7 +95,10 @@ public class CameraFixer : MonoBehaviour
         _isActive = true;
         _camera.Enable(false);
         _cameraInitialPosition = _camera.transform.position;
-        _cameraInitialEuler = _camera.transform.eulerAngles;
+
+
+        _cameraInitialEuler = _camera.transform.rotation;
+
         _lerpValue = 0;
     }
 

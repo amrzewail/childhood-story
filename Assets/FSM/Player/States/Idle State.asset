@@ -22,3 +22,5 @@ MonoBehaviour:
     transition: {fileID: 11400000, guid: 891e6714adfb6724ebe563bae0f4f1e6, type: 2}
     transitions: []
   moveSpeed: 5
+  idleAnimation: Idle
+  actionAnimation: Idle Action 1

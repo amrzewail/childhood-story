@@ -132,6 +132,8 @@ public class DarkRoomCutscene : MonoBehaviour, IInteractable
         // the girl turns to her mother
         actor.GetActorComponent<IAnimator>().Play(0, "Left Turn");
 
+        actor.transform.DORotate(new Vector3(0, 90, 0), 1, RotateMode.Fast);
+
 
         yield return new WaitForSeconds(1);
 

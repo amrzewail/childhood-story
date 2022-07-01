@@ -59,6 +59,9 @@ public class PaperInteractable : MonoBehaviour, IInteractable
 
         yield return new WaitUntil(() => _shouldCompleteInteraction);
 
+
+        yield return new WaitForSeconds(5);
+
         actor.GetActorComponent<IAnimator>().Play(0, "Throw Paper");
 
         yield return new WaitForSeconds(2.05f);

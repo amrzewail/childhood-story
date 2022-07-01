@@ -42,11 +42,11 @@ public class Pusher : MonoBehaviour,IPusher
     {
         var pushable = other.GetComponent<IPushable>();
 
-        if (pushable == null) { return; }
+        if(pushable != null && pushable == availablepushable)
+        {
+            availablepushable = null;
 
-        if (pushable != availablepushable) { return; }
-
-        availablepushable = null;
+        }
     }
 
 }
