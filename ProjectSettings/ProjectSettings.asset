@@ -134,7 +134,7 @@ PlayerSettings:
     16:10: 1
     16:9: 1
     Others: 1
-  bundleVersion: 1.0.2
+  bundleVersion: 1.0.3
   preloadedAssets:
   - {fileID: 0}
   metroInputSource: 0
@@ -156,7 +156,7 @@ PlayerSettings:
   applicationIdentifier:
     Standalone: com.Science.Childhood-Story
   buildNumber:
-    Standalone: 2
+    Standalone: 3
     iPhone: 0
     tvOS: 0
   overrideDefaultApplicationIdentifier: 0

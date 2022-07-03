@@ -92,11 +92,10 @@ public class RespawningSystem : MonoBehaviour
     }
     internal IEnumerator RespawnPlayer(IActor player)
     {
+        player.transform.GetComponentInChildren<LightDamager>().enabled = false;
+
         yield return new WaitForSeconds(_respawnTime);
 
-        bool lightDetectorActive = player.GetActorComponent<ILightDetector>().isActive;
-
-        player.GetActorComponent<ILightDetector>().isActive = false;
 
         player.transform.position = CheckPoint.GetActiveCheckPointPosition(player.GetActorComponent<IActorIdentity>(0).characterIdentifier);
 
@@ -111,7 +110,7 @@ public class RespawningSystem : MonoBehaviour
 
         yield return new WaitForSeconds(0.5f);
 
-        player.GetActorComponent<ILightDetector>().isActive = lightDetectorActive;
+        player.transform.GetComponentInChildren<LightDamager>().enabled = true;
     }
 
 
