@@ -11,6 +11,8 @@ namespace FiniteStateMachine.Player
     {
         public const string NAME = "Move State";
 
+        [SerializeField] string animation = "Run";
+
         private IActor _actor;
         private IInput _input;
         private IMover _mover;
@@ -29,6 +31,8 @@ namespace FiniteStateMachine.Player
         public override void UpdateState(Dictionary<string, object> data)
         {
             _mover.Move(_input.axis, moveSpeed);
+
+            _actor.GetActorComponent<IAnimator>().Play(0, animation, _input.axis.magnitude, false);
         }
     }
 }

@@ -11,10 +11,19 @@ public class GameMenuUI : MonoBehaviour
     enum State
     {
         Closed,
-        Pause
+        Pause,
+        Controls
     }
 
+    [Header("Pause")]
     public GameObject pause;
+
+
+    [Header("Controls")]
+    public GameObject controls;
+    public Transform controlLayouts;
+
+    [Space]
     public Selections pauseSelections;
     public GameObject intro;
 
@@ -22,6 +31,7 @@ public class GameMenuUI : MonoBehaviour
 
     private bool _didChangeState = false;
     private bool _isShowingIntro = false;
+    private int _currentControlLayout = 0;
 
 
     private void Start()
@@ -29,6 +39,8 @@ public class GameMenuUI : MonoBehaviour
         InputUIEvents.GetInstance().Start += StartCallback;
         InputUIEvents.GetInstance().Up += UpCallback;
         InputUIEvents.GetInstance().Down += DownCallback;
+        InputUIEvents.GetInstance().Right += RightCallback;
+        InputUIEvents.GetInstance().Left += LeftCallback;
         InputUIEvents.GetInstance().Enter += SelectCallback;
         InputUIEvents.GetInstance().Back += BackCallback;
 
@@ -51,6 +63,8 @@ public class GameMenuUI : MonoBehaviour
         InputUIEvents.GetInstance().Start -= StartCallback;
         InputUIEvents.GetInstance().Up -= UpCallback;
         InputUIEvents.GetInstance().Down -= DownCallback;
+        InputUIEvents.GetInstance().Right -= RightCallback;
+        InputUIEvents.GetInstance().Left -= LeftCallback;
         InputUIEvents.GetInstance().Enter -= SelectCallback;
         InputUIEvents.GetInstance().Back -= BackCallback;
 
@@ -76,6 +90,7 @@ public class GameMenuUI : MonoBehaviour
             case State.Closed:
                 Cursor.visible = false;
                 pause.SetActive(false);
+                controls.SetActive(false);
                 InputEvents.GetInstance().OnInputActivate?.Invoke(true);
 
                 TimeManager.uiTimeScale = 1f;
@@ -84,9 +99,24 @@ public class GameMenuUI : MonoBehaviour
 
             case State.Pause:
                 pause.SetActive(true);
+                controls.SetActive(false);
                 InputEvents.GetInstance().OnInputActivate?.Invoke(false);
 
                 TimeManager.uiTimeScale = 0.0001f;
+                break;
+
+            case State.Controls:
+                pause.SetActive(false);
+                controls.SetActive(true);
+                InputEvents.GetInstance().OnInputActivate?.Invoke(false);
+
+                TimeManager.uiTimeScale = 0.0001f;
+
+                _currentControlLayout = 0;
+                for (int i = 0; i < controlLayouts.childCount; i++)
+                {
+                    controlLayouts.GetChild(i).gameObject.SetActive(i == _currentControlLayout);
+                }
                 break;
         }
 
@@ -103,6 +133,10 @@ public class GameMenuUI : MonoBehaviour
                 break;
 
             case State.Pause:
+                SetState(State.Closed);
+                break;
+
+            case State.Controls:
                 SetState(State.Closed);
                 break;
         }
@@ -132,6 +166,39 @@ public class GameMenuUI : MonoBehaviour
                 break;
         }
     }
+    public void RightCallback()
+    {
+        if (_state == State.Closed) return;
+
+        switch (_state)
+        {
+            case State.Controls:
+                _currentControlLayout++;
+                _currentControlLayout = _currentControlLayout % controlLayouts.childCount;
+                for (int i = 0; i < controlLayouts.childCount; i++)
+                {
+                    controlLayouts.GetChild(i).gameObject.SetActive(i == _currentControlLayout);
+                }
+                break;
+        }
+    }
+
+    public void LeftCallback()
+    {
+        if (_state == State.Closed) return;
+
+        switch (_state)
+        {
+            case State.Controls:
+                _currentControlLayout--;
+                _currentControlLayout = _currentControlLayout < 0 ? controlLayouts.childCount - 1 : _currentControlLayout;
+                for (int i = 0; i < controlLayouts.childCount; i++)
+                {
+                    controlLayouts.GetChild(i).gameObject.SetActive(i == _currentControlLayout);
+                }
+                break;
+        }
+    }
 
     public void SelectCallback()
     {
@@ -141,6 +208,23 @@ public class GameMenuUI : MonoBehaviour
         {
             case State.Pause:
                 pauseSelections.Select();
+                break;
+
+            case State.Controls:
+                SetState(State.Pause);
+                break;
+        }
+    }
+    public void BackCallback()
+    {
+        switch (_state)
+        {
+            case State.Pause:
+                SetState(State.Closed);
+                break;
+
+            case State.Controls:
+                SetState(State.Pause);
                 break;
         }
     }
@@ -186,19 +270,16 @@ public class GameMenuUI : MonoBehaviour
         SetState(State.Closed);
     }
 
+    public void ControlsCallback()
+    {
+        SetState(State.Controls);
+    }
+
     public void OptionsCallback()
     {
 
     }
-    public void BackCallback()
-    {
-        switch (_state)
-        {
-            case State.Pause:
-                SetState(State.Closed);
-                break;
-        }
-    }
+
 
     public void MainMenuCallback()
     {

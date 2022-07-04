@@ -1,7 +1,7 @@
 fileFormatVersion: 2
 guid: fa02e467a52d9c04da2a8e5f009b5778
 ModelImporter:
-  serializedVersion: 20200
+  serializedVersion: 21202
   internalIDToNameTable: []
   externalObjects:
   - first:
@@ -54,9 +54,15 @@ ModelImporter:
     bakeSimulation: 0
     resampleCurves: 1
     optimizeGameObjects: 0
+    removeConstantScaleCurves: 0
     motionNodeName: 
     rigImportErrors: 
-    rigImportWarnings: 
+    rigImportWarnings: "Avatar Rig Configuration mis-match. Bone length in configuration
+      does not match position in animation file:\n\t'thigh.L' : position error =
+      93.313293 mm\n\t'shin.L' : position error = 375.560089 mm\n\t'foot.L' : position
+      error = 497.030457 mm\n\t'toe.L' : position error = 99.803978 mm\n\t'thigh.R'
+      : position error = 93.313332 mm\n\t'shin.R' : position error = 375.560120 mm\n\t'foot.R'
+      : position error = 497.030457 mm\n\t'toe.R' : position error = 99.803963 mm\n"
     animationImportErrors: 
     animationImportWarnings: 
     animationRetargetingWarnings: 
@@ -83,6 +89,7 @@ ModelImporter:
     importBlendShapes: 1
     importCameras: 1
     importLights: 1
+    nodeNameCollisionStrategy: 0
     fileIdsGeneration: 2
     swapUVChannels: 0
     generateSecondaryUV: 0
@@ -94,6 +101,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
+    optimizeBones: 1
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8

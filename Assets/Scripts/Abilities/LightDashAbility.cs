@@ -12,6 +12,7 @@ public class LightDashAbility : MonoBehaviour, IAbility
     [SerializeField] private float dashSpeed;
     [SerializeField] private float dashTime;
     [SerializeField] private float cooldown;
+    [SerializeField] private Rigidbody _rigidbody;
     public GameObject lightningObj;
     public GameObject speedModeAura;
 
@@ -55,6 +56,11 @@ public class LightDashAbility : MonoBehaviour, IAbility
         StartCoroutine(StartAbility());
     }
 
+    private void FixedUpdate()
+    {
+        
+    }
+
     IEnumerator StartAbility()
     {
         canPerform = false;
@@ -67,12 +73,20 @@ public class LightDashAbility : MonoBehaviour, IAbility
         speedModeAura.SetActive(true);
         lightningObj.SetActive(true);
         float startTime = Time.time;
-        while(Time.time < startTime + dashTime)
-        {
+        //while(Time.time < startTime + dashTime)
+        //{
 
-            mover.Move(input.absAxis,dashSpeed);
-            yield return null;
-        }
+        //    mover.Move(input.absAxis,dashSpeed);
+        //    _rigidbody.useGravity = false;
+
+        //    yield return null;
+        //}
+
+        _rigidbody.AddForce(new Vector3(input.absAxis.x, 0, input.absAxis.y).normalized * 20 - Physics.gravity, ForceMode.Impulse);
+
+
+        yield return new WaitForSeconds(dashTime);
+
         isComplete = true;
         yield return new WaitForSeconds(0.24f);
 

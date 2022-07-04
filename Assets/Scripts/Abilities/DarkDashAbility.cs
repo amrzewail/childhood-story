@@ -113,7 +113,7 @@ public class DarkDashAbility : MonoBehaviour, IAbility
 
         rigidBody.isKinematic = true;
         colliders.ForEach(x => x.enabled = false);
-        actor.transform.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = false);
+        actor.GetActorComponent<IRenderer>().SetVisibility(false);
 
         GameObject.Instantiate(effect, actor.transform.position, Quaternion.identity);
         GameObject movingEffect = GameObject.Instantiate(effectMove, actor.transform.position, Quaternion.identity);
@@ -134,7 +134,8 @@ public class DarkDashAbility : MonoBehaviour, IAbility
 
         rigidBody.isKinematic = false;
         colliders.ForEach(x => x.enabled = true);
-        actor.transform.GetComponentsInChildren<Renderer>().ToList().ForEach(x => x.enabled = true);
+
+        StartCoroutine(SetVisible());
 
         _isComplete = true;
         GameObject.Instantiate(effectUp, actor.transform.position, Quaternion.identity);
@@ -144,5 +145,14 @@ public class DarkDashAbility : MonoBehaviour, IAbility
         yield return new WaitForSeconds(cooldown);
 
         _canPerform = true;
+    }
+
+    private IEnumerator SetVisible()
+    {
+
+        actor.GetActorComponent<IRenderer>().SetVisibility(true);
+
+        yield return new WaitForSeconds(0.2f);
+
     }
 }

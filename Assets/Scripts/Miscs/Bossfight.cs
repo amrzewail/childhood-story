@@ -15,6 +15,7 @@ public class Bossfight : MonoBehaviour
 
     public bool isFloorFalling = false;
 
+    public bool isBossStarted { get; private set; }
 
     private int _explosionCount = 0;
 
@@ -73,6 +74,7 @@ public class Bossfight : MonoBehaviour
 
     private IEnumerator BeginCoroutine()
     {
+        isBossStarted = true;
         _temporaryBarrier.gameObject.SetActive(true);
 
         yield return StartCoroutine(LayoutBricks());

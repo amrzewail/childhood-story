@@ -18,9 +18,6 @@ MonoBehaviour:
   - GUID: 6f172efb-eae8-4eed-9ce3-f08ae1d1162d
     position: {x: 0, y: 0, z: 0}
     state: {fileID: 11400000, guid: fa17497885822be49bddf753d8ddb969, type: 2}
-  - GUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
-    position: {x: -11, y: 241, z: 0}
-    state: {fileID: 11400000, guid: 4efde91ba8f31644bbea89825f309e3d, type: 2}
   - GUID: 0d0fdd62-9cc0-44f7-a9b4-0e41c84502dd
     position: {x: 0, y: -378, z: 0}
     state: {fileID: 11400000, guid: e56f836a9bd2a1e4bad03fdb6ea816fe, type: 2}
@@ -45,6 +42,9 @@ MonoBehaviour:
   - GUID: 5554cfe8-b1e0-4bd8-85e6-2e9a10f8defe
     position: {x: -104, y: 1069, z: 0}
     state: {fileID: 11400000, guid: ab87db80c2b39d946b4883f4940162aa, type: 2}
+  - GUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
+    position: {x: -11, y: 241, z: 0}
+    state: {fileID: 11400000, guid: 4efde91ba8f31644bbea89825f309e3d, type: 2}
   shortStateNodes:
   - GUID: 61dd295d-ff28-4eee-80de-3b73fdd12142
     position: {x: 562, y: 69, z: 0}
@@ -153,9 +153,6 @@ MonoBehaviour:
     position: {x: 226, y: 617, z: 0}
     transition: {fileID: 11400000, guid: 6b7b73a63957f354bbc8a073beb94179, type: 2}
   pluggerNodes:
-  - GUID: 5ece8c15-c564-4e97-a59b-c47a38e905b6
-    position: {x: 295, y: 219, z: 0}
-    pluggerObj: {fileID: 11400000, guid: 325ca41e465f826419173e8ead9ec8b9, type: 2}
   - GUID: 5b37f921-af95-4ec2-8690-86020e6cac99
     position: {x: 302, y: -29, z: 0}
     pluggerObj: {fileID: 11400000, guid: 8813d8ffe4f8e2049b175b692cb2456b, type: 2}
@@ -171,18 +168,6 @@ MonoBehaviour:
     index: 0
   - outputGUID: 0df78757-965a-467c-9b13-d755bec82074
     inputGUID: 6f172efb-eae8-4eed-9ce3-f08ae1d1162d
-    index: 0
-  - outputGUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
-    inputGUID: 792cee83-c671-46d0-ad11-b7c819a0f6b8
-    index: 0
-  - outputGUID: 792cee83-c671-46d0-ad11-b7c819a0f6b8
-    inputGUID: 64c9c411-b91a-4336-b711-34a65e3f1faa
-    index: 0
-  - outputGUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
-    inputGUID: 5ece8c15-c564-4e97-a59b-c47a38e905b6
-    index: 0
-  - outputGUID: bf9c3429-3d30-4c53-accd-7868ae2c717b
-    inputGUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
     index: 0
   - outputGUID: 0d0fdd62-9cc0-44f7-a9b4-0e41c84502dd
     inputGUID: ede41912-2c0c-4341-b816-844cea05bb17
@@ -270,4 +255,13 @@ MonoBehaviour:
     index: 0
   - outputGUID: 79ea9193-a92a-4755-b7ac-b2cf215754ec
     inputGUID: 256bdfb6-23a3-402b-86a7-12feb0a7ab21
+    index: 0
+  - outputGUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
+    inputGUID: 792cee83-c671-46d0-ad11-b7c819a0f6b8
+    index: 0
+  - outputGUID: 792cee83-c671-46d0-ad11-b7c819a0f6b8
+    inputGUID: 64c9c411-b91a-4336-b711-34a65e3f1faa
+    index: 0
+  - outputGUID: bf9c3429-3d30-4c53-accd-7868ae2c717b
+    inputGUID: 48cbc167-3494-45f7-82c5-e83b9c0bf610
     index: 0
