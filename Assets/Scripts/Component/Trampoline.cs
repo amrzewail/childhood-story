@@ -18,6 +18,7 @@ public class Trampoline : MonoBehaviour
         {
             if (rb.transform.position.y >= transform.position.y - 1)
             {
+                //rb.position += Vector3.up * 0.51f;
                 rb.velocity = transform.up * distance / rb.mass;// new Vector3(rb.velocity.x, distance, rb.velocity.z);
                 OnShoot?.Invoke();
 

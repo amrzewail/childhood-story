@@ -36,7 +36,8 @@ public class BasicMovement : MonoBehaviour, IMover
         _position = _rigidbody.transform.position;
 
         RaycastHit hit;
-        Ray downRay = new Ray(_rigidbody.transform.position + Vector3.up, Vector3.down);
+        Ray downRay = new Ray(_rigidbody.transform.position + Vector3.up * 0.26f, Vector3.down);
+        //_directioner.eulerAngles = Vector3.zero;
 
         if (Physics.SphereCast(downRay, 0.25f, out hit, 1.5f, ~LayerMask.GetMask(new string[] {"TransparentShadow"}), queryTriggerInteraction: QueryTriggerInteraction.Ignore))
         {
@@ -62,21 +63,23 @@ public class BasicMovement : MonoBehaviour, IMover
                         Debug.Log($"y:{_position.y} hit:{hit.transform.name}");
                     }
                 }
+
+
+
+                Vector3 dir = _directioner.forward * _direction.z;
+                dir += _directioner.right * _direction.x;
+                dir += Vector3.up * _direction.y;
+
+                Vector3 velocity = _rigidbody.velocity;
+                velocity.x = Mathf.MoveTowards(velocity.x, dir.x, _lastSpeed * 10 * Time.deltaTime);
+                velocity.z = Mathf.MoveTowards(velocity.z, dir.z, _lastSpeed * 10 * Time.deltaTime);
+                velocity.y = dir.y;
+                _rigidbody.velocity = velocity;
             }
         }
 
         _rigidbody.transform.position = _position;
 
-
-        Vector3 dir = _directioner.forward * _direction.z;
-        dir += _directioner.right * _direction.x;
-        dir += Vector3.up * _direction.y;
-
-        Vector3 velocity = _rigidbody.velocity;
-        velocity.x = Mathf.MoveTowards(velocity.x, dir.x, _lastSpeed * 10 * Time.deltaTime);
-        velocity.z = Mathf.MoveTowards(velocity.z, dir.z, _lastSpeed * 10 * Time.deltaTime);
-        velocity.y = dir.y;
-        _rigidbody.velocity = velocity;
 
 
         if (_rotateDirection.magnitude > 0)
