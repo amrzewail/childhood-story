@@ -5,7 +5,7 @@
 * Use `git add path/to/file` to add a change in the working directory to the staging area. It tells Git that you want to include updates to a particular file in the next commit
 * Use `git add .` to add *all* changes in the working directory to the staging area. It tells Git that you want to include updates to all files in the next commit
 * Use `git commit -m "some message"` to flag the staged changes by `git add` as ready to push. "some message" is the message you want to include with the commit to summary your changes
-* Use `git diff to see the difference between old saved version of file and the new modification to that file you modified
+* Use `git diff` to see the difference between old saved version of file and the new modification to that file you modified
 * Use `git push` to push (upload) all local commited changes to the github servers 
 * Use `gitk --all` to view a graphical representation of the current local and remote commits with a tree-like structure
 * Use `git fetch` to download remote changes in the repo without applying them to your local branches. Can be thought as a refresh command
